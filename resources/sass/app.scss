@@ -1,0 +1,77 @@
+// Font
+// Fontss
+@import 'fonts';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+@import 'variables';
+@import 'helpers';
+@import 'homepage';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+body {
+  font-family: 'Gilroy';
+}
+
+header {
+  height: 85px;
+
+  #logo {
+    img {
+      max-width: 170px;
+      margin-left: 25px;
+    }
+  }
+
+  #search {
+    .searchbar {
+      position: relative;
+      height: 58px;
+      width: 428px;
+      padding-left: 17px;
+      padding-top: 17px;
+      background-color: #f0f0f0;
+      border: none;
+      border-radius: 5px;
+      color: #b3afb6;
+      cursor: pointer;
+
+      > span {
+        margin-left: 20px;
+      }
+
+      .search-type {
+        color: #585655;
+      }
+
+      &:hover {
+        .fa-search, .search-type {
+          color: $primary;
+        }
+
+        .search-type {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .menu {
+    color: #b3afb6;
+
+    a {
+      color: #b3afb6;
+
+      &:hover {
+        color: $primary;
+      }
+
+      &.login {
+        font-weight: 500;
+        color: $primary;
+      }
+    }
+  }
+}
