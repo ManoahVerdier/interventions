@@ -7,3 +7,13 @@
     align-items: center;
     flex-wrap: wrap;
 }
+
+.primary-text {
+    color: $primary;
+}
+
+.scroller-x {
+    width: 100%;
+    overflow-x: auto;
+    background-color: red;
+}

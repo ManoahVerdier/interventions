@@ -8,8 +8,7 @@
 @import 'helpers';
 @import 'homepage';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import '~owl.carousel/dist/assets/owl.carousel.css';
 
 body {
   font-family: 'Gilroy';
@@ -31,7 +30,7 @@ header {
       height: 58px;
       width: 428px;
       padding-left: 17px;
-      padding-top: 17px;
+      padding-top: 20px;
       background-color: #f0f0f0;
       border: none;
       border-radius: 5px;
@@ -71,6 +70,147 @@ header {
       &.login {
         font-weight: 500;
         color: $primary;
+      }
+    }
+  }
+}
+
+h2 {
+  line-height: 1rem;
+
+  img {
+    margin-right: 13px;
+  }
+
+  span {
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 21px;
+  }
+
+  small {
+    display: block;
+    font-size: 15px;
+    margin-left: 40px;
+    color: #b3b0b6;
+  }
+}
+
+.owl-carousel {
+  .item {
+    position: relative;
+    background-color: #f3f3f3;
+    border-radius: 20px;
+    padding: 50px 30px;
+    margin: 5px;
+    width: 200px;
+
+    a.favorite {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      color: #414042;
+
+      &:hover {
+        color: $primary;
+      }
+    }
+
+    span.discount {
+      position: absolute;
+      left: -5px;
+      top: -5px;
+      background-color: #f4413d;
+      color: white;
+      padding: 10px;
+      border-radius: 20px;
+      width: 90px;
+      height: 40px;
+      text-align: center;
+      font-weight: 500;
+      font-size: 18px;
+    }
+
+    div.category-icon {
+      position: absolute;
+      bottom: -27px;
+      left: 20px;
+      background-color: #414042;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      text-align: center;
+
+      img {
+        width: 20px;
+        height: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 17px;
+      }
+    }
+
+    div.category-name {
+      position: absolute;
+      bottom: -27px;
+      right: 20px;
+      color: #414042;
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+  }
+
+  div.description {
+    margin-top: 50px;
+    padding-left: 30px;
+    padding-right: 20px;
+    line-height: 1rem;
+    font-size: 12px;
+
+    a.product-name {
+      color: $primary;
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+
+    .product-description {
+      color: #414042;
+    }
+
+    .quantity {
+      .label {
+        color: #b3b0b6;
+      }
+
+      .value {
+        color: #000000;
+        font-weight: 500;
+      }
+    }
+
+    .price {
+      margin-top: 10px;
+
+      .label {
+        color: #b3b0b6;
+      }
+
+      .striked-value {
+        float: right;
+        color: #414042;
+        text-decoration: line-through;
+        font-weight: 500;
+        font-size: 12px;
+        margin-right: 5px;
+      }
+
+      .value {
+        color: #f4403e;
+        font-weight: 500;
+        font-size: 17px;
+        float: right;
       }
     }
   }

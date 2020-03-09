@@ -9,6 +9,27 @@ require('./bootstrap');
 
 import '@fortawesome/fontawesome-free/js/all';
 
+// import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel';
+
+$('.owl-carousel').each((index, el) => {
+    $(el).owlCarousel({
+        loop: $(el).data('loop') === false ? false : true,
+        margin:20,
+        // nav:true,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:3
+            },
+            1000:{
+                items:5
+            }
+        }
+    })
+});
 // window.Vue = require('vue');
 
 /**
