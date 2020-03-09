@@ -15,17 +15,21 @@ import 'owl.carousel';
 $('.owl-carousel').each((index, el) => {
     $(el).owlCarousel({
         loop: $(el).data('loop') === false ? false : true,
-        margin:20,
-        // nav:true,
+        margin: 20,
+        center: true,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
+        dots: true,
         responsive:{
             0:{
-                items:1
+                items: 1
             },
             600:{
-                items:3
+                items: 3
             },
             1000:{
-                items:5
+                items: 5
             }
         }
     })

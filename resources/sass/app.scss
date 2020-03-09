@@ -9,6 +9,7 @@
 @import 'homepage';
 
 @import '~owl.carousel/dist/assets/owl.carousel.css';
+@import '~owl.carousel/dist/assets/owl.theme.default.css'; // Obligatoire pour avoir les points (dots). Pour information ils s'affichent à partir de 4 items
 
 body {
   font-family: 'Gilroy';
@@ -213,5 +214,30 @@ h2 {
         float: right;
       }
     }
+  }
+}
+
+.owl-theme .owl-nav.disabled + .owl-dots {
+  margin-top: 40px;
+}
+
+.owl-theme .owl-dots {
+  .owl-dot {
+    outline: none;
+  }
+
+  .owl-dot span {
+    background-color: #d1d0d3;
+    width: 8px;
+    height: 8px;
+  }
+
+  .owl-dot.active span, .owl-dot:hover span {
+    background-color: $primary;
+  }
+
+  .owl-dot.active span {
+    width: 10px;
+    height: 10px;
   }
 }
