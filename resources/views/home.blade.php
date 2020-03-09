@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Aguapassion')
+@section('title', 'Prodice')
 
-@section('extra-meta')
+{{-- Header --}}
+@section('header')
+    @include('layouts.partials.header.homepage')
+@endsection
 
-@append
-
+{{-- Content --}}
 @section('content')
 <section id="slideshow">
     <div class="container">
@@ -24,208 +26,8 @@
     <img src="{{ asset('img/homepage/reasurrance.png') }}">
 </section>
 
-<section id="selection">
-    <div class="container">
-        {{-- Title --}}
-        <div class="row">
-            <div class="col-10">
-                <h2>
-                    <img src="{{ asset('img/layout/chevron-bottom.png') }}">
-                    <span>Notre sélection</span>
-                    <small class="primary-text">du moment</small>
-                </h2>
-            </div>
-            <div class="col-2">
-                <button type="button" class="btn btn-outline-secondary float-right">Voir +</button>
-            </div>
-        </div>
-
-        {{-- Products --}}
-        <div class="row">
-            <div class="col-12">
-                <div class="owl-carousel owl-theme" data-loop="true" data-center="true" data-margin="20" data-autoplay="true" data-autoplay-timeout="5000">
-                    <div>
-                        <div class="product">
-                            <a href="" class="favorite"><i class="far fa-heart fa-lg"></i></a>
-                            <span class="discount">-10%</span>
-                            <img src="https://raja.scene7.com/is/image/Raja/products/jerrican-plastique-bleu-20_JE20B.jpg?template=withpicto&$image=M_JE20B_S_FR&$picto=ALL_planet&hei=300&wid=300" class="img-responsive">
-                            <div class="category-icon">
-                                <img src="{{ asset('img/product/category/four.png') }}">
-                            </div>
-                            <div class="category-name">
-                                Four
-                            </div>
-                        </div>
-
-                        <div class="description">
-                            <a href="" class="product-name">Tablette de nettoyage</a>
-                            <p class="product-description">Self Cooking Center</p>
-
-                            <div class="quantity">
-                                <span class="label">Quantité :</span>
-                                <span class="value">100 Tabs</span>
-                            </div>
-
-                            <div class="price">
-                                <span class="label">Prix H.T.</span>
-                                <span class="value">42,60 €</span>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div>
-                        <div class="product">
-                            <a href="" class="favorite"><i class="far fa-heart fa-lg"></i></a>
-                            <img src="https://raja.scene7.com/is/image/Raja/products/jerrican-plastique-bleu-20_JE20B.jpg?image=M_JE10N_S_FR$default$" class="img-responsive">
-                            <div class="category-icon">
-                                <img src="{{ asset('img/product/category/four.png') }}">
-                            </div>
-                            <div class="category-name">
-                                Vaisselle
-                            </div>
-                        </div>
-
-                        <div class="description">
-                            <a href="" class="product-name">F420E - Détergent</a>
-                            <p class="product-description">Self Cooking Center</p>
-
-                            <div class="quantity">
-                                <span class="label">Quantité :</span>
-                                <span class="value">12 kg</span>
-                            </div>
-
-                            <div class="price">
-                                <span class="label">Prix H.T.</span>
-                                <span class="value">38,25 €</span>
-                                <span class="striked-value">35,25 €</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="product">
-                            <a href="" class="favorite"><i class="far fa-heart fa-lg"></i></a>
-                            <span class="discount">-10%</span>
-                            <img src="https://raja.scene7.com/is/image/Raja/products/jerrican-plastique-bleu-20_JE20B.jpg?template=withpicto&$image=M_JE20B_S_FR&$picto=ALL_planet&hei=300&wid=300" class="img-responsive">
-                            <div class="category-icon">
-                                <img src="{{ asset('img/product/category/four.png') }}">
-                            </div>
-                            <div class="category-name">
-                                Four
-                            </div>
-                        </div>
-
-                        <div class="description">
-                            <a href="" class="product-name">Tablette de nettoyage</a>
-                            <p class="product-description">Self Cooking Center</p>
-
-                            <div class="quantity">
-                                <span class="label">Quantité :</span>
-                                <span class="value">100 Tabs</span>
-                            </div>
-
-                            <div class="price">
-                                <span class="label">Prix H.T.</span>
-                                <span class="value">42,60 €</span>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div>
-                        <div class="product">
-                            <a href="" class="favorite"><i class="far fa-heart fa-lg"></i></a>
-                            <img src="https://raja.scene7.com/is/image/Raja/products/jerrican-plastique-bleu-20_JE20B.jpg?image=M_JE10N_S_FR$default$" class="img-responsive">
-                            <div class="category-icon">
-                                <img src="{{ asset('img/product/category/four.png') }}">
-                            </div>
-                            <div class="category-name">
-                                Vaisselle
-                            </div>
-                        </div>
-
-                        <div class="description">
-                            <a href="" class="product-name">F420E - Détergent</a>
-                            <p class="product-description">Self Cooking Center</p>
-
-                            <div class="quantity">
-                                <span class="label">Quantité :</span>
-                                <span class="value">12 kg</span>
-                            </div>
-
-                            <div class="price">
-                                <span class="label">Prix H.T.</span>
-                                <span class="value">38,25 €</span>
-                                <span class="striked-value">35,25 €</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="product">
-                            <a href="" class="favorite"><i class="far fa-heart fa-lg"></i></a>
-                            <span class="discount">-10%</span>
-                            <img src="https://raja.scene7.com/is/image/Raja/products/jerrican-plastique-bleu-20_JE20B.jpg?template=withpicto&$image=M_JE20B_S_FR&$picto=ALL_planet&hei=300&wid=300" class="img-responsive">
-                            <div class="category-icon">
-                                <img src="{{ asset('img/product/category/four.png') }}">
-                            </div>
-                            <div class="category-name">
-                                Four
-                            </div>
-                        </div>
-
-                        <div class="description">
-                            <a href="" class="product-name">Tablette de nettoyage</a>
-                            <p class="product-description">Self Cooking Center</p>
-
-                            <div class="quantity">
-                                <span class="label">Quantité :</span>
-                                <span class="value">100 Tabs</span>
-                            </div>
-
-                            <div class="price">
-                                <span class="label">Prix H.T.</span>
-                                <span class="value">42,60 €</span>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div>
-                        <div class="product">
-                            <a href="" class="favorite"><i class="far fa-heart fa-lg"></i></a>
-                            <img src="https://raja.scene7.com/is/image/Raja/products/jerrican-plastique-bleu-20_JE20B.jpg?image=M_JE10N_S_FR$default$" class="img-responsive">
-                            <div class="category-icon">
-                                <img src="{{ asset('img/product/category/four.png') }}">
-                            </div>
-                            <div class="category-name">
-                                Vaisselle
-                            </div>
-                        </div>
-
-                        <div class="description">
-                            <a href="" class="product-name">F420E - Détergent</a>
-                            <p class="product-description">Self Cooking Center</p>
-
-                            <div class="quantity">
-                                <span class="label">Quantité :</span>
-                                <span class="value">12 kg</span>
-                            </div>
-
-                            <div class="price">
-                                <span class="label">Prix H.T.</span>
-                                <span class="value">38,25 €</span>
-                                <span class="striked-value">35,25 €</span>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-            </div>
-        </div>
-
-    </div>
-</section>
+{{-- Selection --}}
+@include('layouts.partials.selection.main')
 
 <section id="partner">
     <div class="container">
@@ -243,26 +45,37 @@
             <div class="col-md-12">
                 <div class="owl-carousel owl-theme" data-loop="true" data-dots="false" data-md="5" data-autoplay="true" data-margin="30">
                     <div class="partner-logo">
-                        <a href="https://www.rational-online.com" target="_blank"><img src="{{ asset('img/partner/rational.png') }}" alt="Rational" class="img-responsive"></a>
+                        {{-- <a href="https://www.rational-online.com" target="_blank"><img src="{{ asset('img/partner/rational.png') }}" alt="Rational" class="img-responsive"></a> --}}
+                        <img src="{{ asset('img/partner/rational.png') }}" alt="Rational" class="img-responsive">
                     </div>
                     <div class="partner-logo">
-                        <a href="https://www.convotherm.com" target="_blank"><img src="{{ asset('img/partner/convotherm.png') }}" alt="Convotherm" class="img-responsive"></a>
+                        {{-- <a href="https://www.convotherm.com" target="_blank"><img src="{{ asset('img/partner/convotherm.png') }}" alt="Convotherm" class="img-responsive"></a> --}}
+                        <img src="{{ asset('img/partner/convotherm.png') }}" alt="Convotherm" class="img-responsive">
                     </div>
                     <div class="partner-logo">
-                        <a href="https://www.granuldisk.com/fr" target="_blank"><img src="{{ asset('img/partner/granuldisk.png') }}" alt="Granuldisk" class="img-responsive"></a>
+                        {{-- <a href="https://www.granuldisk.com/fr" target="_blank"><img src="{{ asset('img/partner/granuldisk.png') }}" alt="Granuldisk" class="img-responsive"></a> --}}
+                        <img src="{{ asset('img/partner/granuldisk.png') }}" alt="Granuldisk" class="img-responsive">
                     </div>
                     <div class="partner-logo">
-                        <a href="https://www.unox.com/fr_fr" target="_blank"><img src="{{ asset('img/partner/unox.png') }}" alt="Unox" class="img-responsive"></a>
+                        {{-- <a href="https://www.unox.com/fr_fr" target="_blank"><img src="{{ asset('img/partner/unox.png') }}" alt="Unox" class="img-responsive"></a> --}}
+                        <img src="{{ asset('img/partner/unox.png') }}" alt="Unox" class="img-responsive">
                     </div>
                     <div class="partner-logo">
-                        <a href="http://www.franstal.fr" target="_blank"><img src="{{ asset('img/partner/franstal.png') }}" alt="Franstal" class="img-responsive"></a>
+                        {{-- <a href="http://www.franstal.fr" target="_blank"><img src="{{ asset('img/partner/franstal.png') }}" alt="Franstal" class="img-responsive"></a> --}}
+                        <img src="{{ asset('img/partner/franstal.png') }}" alt="Franstal" class="img-responsive">
                     </div>
                     <div class="partner-logo">
-                        <a href="https://www.winterhalter.com/fr-fr" target="_blank"><img src="{{ asset('img/partner/winterhalter.png') }}" alt="Winterhalter" class="img-responsive"></a>
+                        {{-- <a href="https://www.winterhalter.com/fr-fr" target="_blank"><img src="{{ asset('img/partner/winterhalter.png') }}" alt="Winterhalter" class="img-responsive"></a> --}}
+                        <img src="{{ asset('img/partner/winterhalter.png') }}" alt="Winterhalter" class="img-responsive">
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+@endsection
+
+{{-- Footer --}}
+@section('footer')
+    @include('layouts.partials.footer.main')
 @endsection

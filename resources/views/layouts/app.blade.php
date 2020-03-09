@@ -21,7 +21,7 @@
 
     <body>
         {{-- Header --}}
-        @include('layouts.partials.header.main')
+        @yield('header')
 
         {{-- Content --}}
         <main class="content">
@@ -29,7 +29,7 @@
         </main>
 
         {{-- Footer --}}
-        @include('layouts.partials.footer.main')
+        @yield('footer')
 
         {{-- JavaScript --}}
         @section('script')

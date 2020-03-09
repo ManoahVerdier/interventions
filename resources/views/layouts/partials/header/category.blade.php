@@ -6,12 +6,12 @@
         </div>
 
         {{-- Search bar --}}
-        <div id="search" class="col-md-5 valign-middle">
+        <a id="search" href="{{ route('search') }}" class="col-md-5 valign-middle">
             <div class="searchbar">
                 <i class="fas fa-search fa-lg"></i>
                 <span>Vous recherchez : <span class="search-type">un produit, une marque ?</span></span>
             </div>
-        </div>
+        </a>
 
         {{-- Menu --}}
         <div class="col-md-1 menu">

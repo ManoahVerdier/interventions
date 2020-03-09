@@ -7,6 +7,7 @@
 @import 'variables';
 @import 'helpers';
 @import 'homepage';
+@import 'product';
 
 @import '~owl.carousel/dist/assets/owl.carousel.css';
 @import '~owl.carousel/dist/assets/owl.theme.default.css'; // Obligatoire pour avoir les points (dots). Pour information ils s'affichent à partir de 4 items
@@ -45,15 +46,17 @@ header {
       .search-type {
         color: #585655;
       }
+    }
 
-      &:hover {
-        .fa-search, .search-type {
-          color: $primary;
-        }
+    &:hover {
+      text-decoration: none;
 
-        .search-type {
-          text-decoration: underline;
-        }
+      .fa-search, .search-type {
+        color: $primary;
+      }
+
+      .search-type {
+        text-decoration: underline;
       }
     }
   }
@@ -88,6 +91,10 @@ footer {
     font-weight: 500;
     font-size: 11px;
   }
+
+  &.grey {
+    background-color: #ececec;
+  }
 }
 
 h2 {
@@ -119,6 +126,7 @@ h2 {
     padding: 50px 30px;
     margin: 5px;
     width: 200px;
+    text-align: center;
 
     a.favorite {
       position: absolute;
@@ -254,5 +262,15 @@ h2 {
   .owl-dot.active span {
     width: 10px;
     height: 10px;
+  }
+}
+
+.btn-outline-warning {
+  color: $orange;
+  border-color: $orange;
+
+  &:hover {
+    background-color: $orange;
+    color: white;
   }
 }
