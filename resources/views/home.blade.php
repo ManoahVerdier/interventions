@@ -43,9 +43,9 @@
         {{-- Products --}}
         <div class="row">
             <div class="col-12">
-                <div class="owl-carousel owl-theme" data-loop="true">
+                <div class="owl-carousel owl-theme" data-loop="true" data-center="true" data-margin="20" data-autoplay="true" data-autoplay-timeout="5000">
                     <div>
-                        <div class="item">
+                        <div class="product">
                             <a href="" class="favorite"><i class="far fa-heart fa-lg"></i></a>
                             <span class="discount">-10%</span>
                             <img src="https://raja.scene7.com/is/image/Raja/products/jerrican-plastique-bleu-20_JE20B.jpg?template=withpicto&$image=M_JE20B_S_FR&$picto=ALL_planet&hei=300&wid=300" class="img-responsive">
@@ -75,7 +75,7 @@
 
 
                     <div>
-                        <div class="item">
+                        <div class="product">
                             <a href="" class="favorite"><i class="far fa-heart fa-lg"></i></a>
                             <img src="https://raja.scene7.com/is/image/Raja/products/jerrican-plastique-bleu-20_JE20B.jpg?image=M_JE10N_S_FR$default$" class="img-responsive">
                             <div class="category-icon">
@@ -104,7 +104,7 @@
                     </div>
 
                     <div>
-                        <div class="item">
+                        <div class="product">
                             <a href="" class="favorite"><i class="far fa-heart fa-lg"></i></a>
                             <span class="discount">-10%</span>
                             <img src="https://raja.scene7.com/is/image/Raja/products/jerrican-plastique-bleu-20_JE20B.jpg?template=withpicto&$image=M_JE20B_S_FR&$picto=ALL_planet&hei=300&wid=300" class="img-responsive">
@@ -134,7 +134,7 @@
 
 
                     <div>
-                        <div class="item">
+                        <div class="product">
                             <a href="" class="favorite"><i class="far fa-heart fa-lg"></i></a>
                             <img src="https://raja.scene7.com/is/image/Raja/products/jerrican-plastique-bleu-20_JE20B.jpg?image=M_JE10N_S_FR$default$" class="img-responsive">
                             <div class="category-icon">
@@ -163,7 +163,7 @@
                     </div>
 
                     <div>
-                        <div class="item">
+                        <div class="product">
                             <a href="" class="favorite"><i class="far fa-heart fa-lg"></i></a>
                             <span class="discount">-10%</span>
                             <img src="https://raja.scene7.com/is/image/Raja/products/jerrican-plastique-bleu-20_JE20B.jpg?template=withpicto&$image=M_JE20B_S_FR&$picto=ALL_planet&hei=300&wid=300" class="img-responsive">
@@ -193,7 +193,7 @@
 
 
                     <div>
-                        <div class="item">
+                        <div class="product">
                             <a href="" class="favorite"><i class="far fa-heart fa-lg"></i></a>
                             <img src="https://raja.scene7.com/is/image/Raja/products/jerrican-plastique-bleu-20_JE20B.jpg?image=M_JE10N_S_FR$default$" class="img-responsive">
                             <div class="category-icon">
@@ -236,6 +236,31 @@
                     <span>Nos partenaires</span>
                     <small>fournisseurs</small>
                 </h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="owl-carousel owl-theme" data-loop="true" data-dots="false" data-md="5" data-autoplay="true" data-margin="30">
+                    <div class="partner-logo">
+                        <a href="https://www.rational-online.com" target="_blank"><img src="{{ asset('img/partner/rational.png') }}" alt="Rational" class="img-responsive"></a>
+                    </div>
+                    <div class="partner-logo">
+                        <a href="https://www.convotherm.com" target="_blank"><img src="{{ asset('img/partner/convotherm.png') }}" alt="Convotherm" class="img-responsive"></a>
+                    </div>
+                    <div class="partner-logo">
+                        <a href="https://www.granuldisk.com/fr" target="_blank"><img src="{{ asset('img/partner/granuldisk.png') }}" alt="Granuldisk" class="img-responsive"></a>
+                    </div>
+                    <div class="partner-logo">
+                        <a href="https://www.unox.com/fr_fr" target="_blank"><img src="{{ asset('img/partner/unox.png') }}" alt="Unox" class="img-responsive"></a>
+                    </div>
+                    <div class="partner-logo">
+                        <a href="http://www.franstal.fr" target="_blank"><img src="{{ asset('img/partner/franstal.png') }}" alt="Franstal" class="img-responsive"></a>
+                    </div>
+                    <div class="partner-logo">
+                        <a href="https://www.winterhalter.com/fr-fr" target="_blank"><img src="{{ asset('img/partner/winterhalter.png') }}" alt="Winterhalter" class="img-responsive"></a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

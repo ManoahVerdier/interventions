@@ -76,6 +76,20 @@ header {
   }
 }
 
+footer {
+  padding: 20px;
+
+  .copyright {
+    font-weight: bold;
+    font-size: 13px;
+  }
+
+  .email a {
+    font-weight: 500;
+    font-size: 11px;
+  }
+}
+
 h2 {
   line-height: 1rem;
 
@@ -98,7 +112,7 @@ h2 {
 }
 
 .owl-carousel {
-  .item {
+  .product {
     position: relative;
     background-color: #f3f3f3;
     border-radius: 20px;
@@ -217,6 +231,7 @@ h2 {
   }
 }
 
+// Configuration de l'affichage des boutons
 .owl-theme .owl-nav.disabled + .owl-dots {
   margin-top: 40px;
 }

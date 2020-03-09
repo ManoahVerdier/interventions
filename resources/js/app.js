@@ -15,21 +15,21 @@ import 'owl.carousel';
 $('.owl-carousel').each((index, el) => {
     $(el).owlCarousel({
         loop: $(el).data('loop') === false ? false : true,
-        margin: 20,
-        center: true,
-        autoplay: true,
-        autoplayTimeout: 5000,
-        autoplayHoverPause: true,
-        dots: true,
+        margin: $(el).data('margin') ? $(el).data('margin') : 10,
+        center: $(el).data('center') === true ? true : false,
+        autoplay: $(el).data('autoplay') === true ? true : false,
+        autoplayTimeout: $(el).data('autoplay-timeout') ? $(el).data('autoplay-timeout') : 5000,
+        autoplayHoverPause: $(el).data('autoplay-hover-pause') === false ? false : true,
+        dots: $(el).data('dots') === false ? false : true,
         responsive:{
             0:{
-                items: 1
+                items: $(el).data('xs') ? $(el).data('xs') : 1,
             },
             600:{
-                items: 3
+                items: $(el).data('sm') ? $(el).data('sm') : 3,
             },
             1000:{
-                items: 5
+                items: $(el).data('md') ? $(el).data('md') : 5,
             }
         }
     })
