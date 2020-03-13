@@ -9,7 +9,7 @@
     <nav class="sub-header">
         <div class="container">
             <div class="row">
-                <div class="col-10 offset-1">
+                <div class="col-9 offset-2">
                     <span class="category-pagination">
                         <span class="active">1</span>
                         <span>/ 3</span>
@@ -27,6 +27,44 @@
             </div>
         </div>
     </nav>
+
+    <div id="categories">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-2">
+                    <ul>
+                        <li>
+                            <a href="">
+                                <img src="{{ asset('img/layout/category-icon.png') }}"><span>Tablette de nettoyage</span>
+                                <div class="counter">
+                                    <span>4</span>
+                                    <img src="{{ asset('img/layout/chevron-right-blue.png') }}">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="{{ asset('img/layout/category-icon.png') }}"><span>Tablette d'entretien</span>
+                                <div class="counter">
+                                    <span>2</span>
+                                    <img src="{{ asset('img/layout/chevron-right-blue.png') }}">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="{{ asset('img/layout/category-icon.png') }}"><span>Tablette de rinçage</span>
+                                <div class="counter">
+                                    <span>1</span>
+                                    <img src="{{ asset('img/layout/chevron-right-blue.png') }}">
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 {{-- Content --}}
@@ -34,7 +72,7 @@
 <section id="product-detail">
     <div class="container">
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-5 offset-md-2">
                 <div class="product">
                     <a href="" class="close"><i class="fas fa-times"></i></a>
                     <a href="" class="favorite"><i class="far fa-heart fa-lg"></i></a>
@@ -51,7 +89,7 @@
                 </div>
             </div>
 
-            <div class="col-md-7">
+            <div class="col-md-5">
                 <div class="description">
                     <a href="" class="product-name">Tablette de nettoyage</a>
                     <p class="product-description">Self Cooking Center</p>
@@ -66,7 +104,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-2">
+                        <div class="col-3">
                             <div class="form-group">
                                 <select class="form-control" id="exampleFormControlSelect1">
                                     <option>1</option>
@@ -78,7 +116,7 @@
                             </div>
                         </div>
 
-                        <div class="col-4">
+                        <div class="col-6">
                             <div class="price">
                                 <span class="value">42,60 €</span><br>
                                 <span class="label">Prix H.T.</span>
@@ -87,7 +125,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-9">
                             <button type="button" class="btn btn-outline-warning btn-lg btn-block cart-btn">
                                 <i class="fas fa-shopping-cart cart-icon"></i>
                                 Ajouter au panier

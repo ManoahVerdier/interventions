@@ -34,6 +34,17 @@ $('.owl-carousel').each((index, el) => {
         }
     })
 });
+
+$('nav.sub-header a.category').on('click', e => {
+    e.preventDefault();
+
+    if ($('#categories').is(':visible')) {
+        $('#categories').slideUp();
+    } else {
+        $('#categories').slideDown();
+    }
+});
+
 // window.Vue = require('vue');
 
 /**
