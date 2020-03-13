@@ -16,3 +16,4 @@ Auth::routes();
 Route::get('/', 'SiteController@index')->name('home');
 Route::get('/search', 'SiteController@search')->name('search');
 Route::get('/product', 'SiteController@product')->name('product');
+Route::get('/category', 'SiteController@category')->name('category');

@@ -35,4 +35,9 @@ class SiteController extends Controller
     {
         return view('product');
     }
+
+    public function category()
+    {
+        return view('category');
+    }
 }
