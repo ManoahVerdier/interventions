@@ -219,3 +219,7 @@ h2 {
     color: white;
   }
 }
+
+a.favorite.active {
+  color: $primary !important;
+}

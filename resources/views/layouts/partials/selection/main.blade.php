@@ -23,7 +23,8 @@
                             'discount' => 10,
                             'image' => 'https://raja.scene7.com/is/image/Raja/products/jerrican-plastique-bleu-20_JE20B.jpg?template=withpicto&$image=M_JE20B_S_FR&$picto=ALL_planet&hei=300&wid=300',
                             'category_icon' => asset('img/product/category/four.png'),
-                            'category_name' => 'Four'
+                            'category_name' => 'Four',
+                            'isFavorite' => true,
                         ])
 
                         @include('layouts.partials.product.description', [

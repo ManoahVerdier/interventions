@@ -1,4 +1,4 @@
-#product-page, #category-page {
+#product-page, #category-page, #favorites-page {
     @import '../headers/blue';
     @import '../headers/categories';
 
@@ -6,9 +6,13 @@
         padding-top: 20px;
         border-bottom: solid 1px #c7c5c9;
 
-        .category-pagination {
+        span {
             font-size: 14px;
-            color: #b3b0b6;
+            color: #B3B0B6;
+
+            &.bold {
+                font-weight: 500;
+            }
 
             span.active {
                 color: $primary;
@@ -16,16 +20,20 @@
             }
         }
 
-        .category {
+        a {
             span {
                 display: inline-block;
-                color: $primary;
                 text-transform: uppercase;
                 font-weight: 500;
                 font-size: 15px;
                 margin-left: 15px;
                 padding-bottom: 10px;
-                border-bottom: solid 4px $primary;
+                color: #B3B0B6;
+
+                &.active {
+                    color: $primary;
+                    border-bottom: solid 4px $primary;
+                }
             }
 
             img {
@@ -35,6 +43,12 @@
             &:hover {
                 text-decoration: none;
             }
+        }
+
+        .separator {
+            width: 1px;
+            height: 20px;
+            border-right: solid 1px #E3E1E3;
         }
     }
 

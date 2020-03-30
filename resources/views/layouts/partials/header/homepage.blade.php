@@ -16,7 +16,7 @@
         {{-- Menu --}}
         <div class="col-md-1 menu">
             <div class="h-100 valign-middle">
-                <a href="" class="favorite"><i class="far fa-heart fa-lg"></i></a>
+                <a href="{{ route('favorites') }}" class="favorite"><i class="far fa-heart fa-lg"></i></a>
             </div>
         </div>
         <div class="col-md-2 menu">

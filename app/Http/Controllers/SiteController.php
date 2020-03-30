@@ -40,4 +40,9 @@ class SiteController extends Controller
     {
         return view('pages.category');
     }
+
+    public function favorites()
+    {
+        return view('pages.favorites');
+    }
 }

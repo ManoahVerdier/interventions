@@ -8,7 +8,7 @@
                 </span>
 
                 <a href="" class="category">
-                    <span>
+                    <span class="active">
                         Tablettes de nettoyage
                     </span>
 

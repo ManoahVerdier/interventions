@@ -11,23 +11,25 @@
                 <a href="/"><img src="{{ asset('img/layout/chevron-return.png') }}" class="img-fluid"></a>
             </div>
 
-            {{-- Search bar --}}
-            <div id="category" class="col-md-2 d-flex align-items-center ">
+            {{-- Title --}}
+            <div id="title" class="@if ($withSearch ?? false)col-md-2 @else col-md-3 @endif d-flex align-items-center ">
                 <div>
-                    <span class="category_name">Ma recherche</span><br>
-                    <small>456 produits</small>
+                    <span>{{ $title }}</span><br>
+                    <small>{{ $subtitle }}</small>
                 </div>
             </div>
 
             {{-- Search bar --}}
-            <div id="search" class="col-md-5">
+            @if ($withSearch ?? false)
+            <div id="search" class="col-md-4">
                 <input type="email" class="form-control" placeholder="Un produit, une marque ?">
             </div>
+            @endif
 
             {{-- Menu --}}
-            <div class="col-md-1 menu">
+            <div class="col-md-1 @if (empty($withSearch))offset-md-4 @endif menu">
                 <div class="h-100 valign-middle">
-                    <a href="" class="favorite"><i class="far fa-heart fa-lg"></i></a>
+                    <a href="{{ route('favorites') }}" class="favorite"><i class="far fa-heart fa-lg"></i></a>
                 </div>
             </div>
             <div class="col-md-1 menu">
@@ -42,10 +44,12 @@
             </div>
         </div>
 
+        @if ($punchLine ?? false)
         <div class="row title">
             <div class="col-md-6 offset-md-4">
-                Quel produit<br>recherchez-vous ?
+                {!! $punchLine !!}
             </div>
         </div>
+        @endif
     </div>
 </header>
