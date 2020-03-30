@@ -2,11 +2,15 @@
 
 @section('title', 'Prodice')
 
+@section('body-attr')
+id="category-page"
+@endsection
+
 {{-- Header --}}
 @section('header')
     @include('layouts.partials.header.category')
-
     @include('layouts.partials.header.sub_header')
+    @include('layouts.partials.header.categories', ['hide' => true])
 @endsection
 
 {{-- Content --}}

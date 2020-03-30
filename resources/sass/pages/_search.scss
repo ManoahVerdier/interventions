@@ -1,0 +1,12 @@
+#search-page {
+    @import '../headers/blue';
+    @import '../headers/categories';
+
+    .title {
+        color: #ffffff;
+        font-size: 28px;
+        font-weight: 300;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}

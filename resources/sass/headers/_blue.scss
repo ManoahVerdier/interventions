@@ -1,0 +1,33 @@
+header.primary-bg {
+    @import 'search';
+
+    padding-top: 20px;
+
+    #category {
+        color: white;
+        line-height: 1rem;
+        padding-top: 10px;
+
+        .category_name {
+            font-weight: bold;
+            font-size: 21px;
+        }
+
+        small {
+            // font-weight: 500;
+            font-size: 12px;
+        }
+    }
+
+    .menu {
+        color: #a9ddeb;
+
+        a {
+            color: #a9ddeb;
+
+            &:hover {
+                color: #ffffff;
+            }
+        }
+    }
+}

@@ -23,21 +23,21 @@ class SiteController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('pages.home');
     }
 
     public function search()
     {
-        return view('search');
+        return view('pages.search');
     }
 
     public function product()
     {
-        return view('product');
+        return view('pages.product');
     }
 
     public function category()
     {
-        return view('category');
+        return view('pages.category');
     }
 }

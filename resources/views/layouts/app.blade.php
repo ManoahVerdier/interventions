@@ -19,7 +19,7 @@
         @show
     </head>
 
-    <body>
+    <body @yield('body-attr')>
         {{-- Header --}}
         @yield('header')
 

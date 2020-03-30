@@ -2,6 +2,10 @@
 
 @section('title', 'Prodice')
 
+@section('body-attr')
+id="home-page"
+@endsection
+
 {{-- Header --}}
 @section('header')
     @include('layouts.partials.header.homepage')

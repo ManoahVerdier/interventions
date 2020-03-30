@@ -1,0 +1,16 @@
+.menu {
+    color: #b3afb6;
+
+    a {
+      color: #b3afb6;
+
+      &:hover {
+        color: $primary;
+      }
+
+      &.login {
+        font-weight: 500;
+        color: $primary;
+      }
+    }
+}
