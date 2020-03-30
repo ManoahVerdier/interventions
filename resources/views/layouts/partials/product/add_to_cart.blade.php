@@ -23,11 +23,18 @@
 
     <div class="row">
         <div class="col-12">
-            <button type="button" class="btn btn-outline-warning btn-lg btn-block cart-btn">
-                <i class="fas fa-shopping-cart cart-icon"></i>
-                Ajouter au panier
-                {{-- <i class="fas fa-plus add-icon"></i> --}}
-            </button>
+            @if ($remove ?? false)
+                <button type="button" class="btn btn-outline-secondary btn-lg btn-block delete-btn">
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                    Supprimer
+                </button>
+            @else
+                <button type="button" class="btn btn-outline-warning btn-lg btn-block cart-btn">
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                    Ajouter au panier
+                    {{-- <i class="fas fa-plus add-icon"></i> --}}
+                </button>
+            @endif
         </div>
     </div>
 </div>

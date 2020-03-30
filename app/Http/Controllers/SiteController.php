@@ -45,4 +45,9 @@ class SiteController extends Controller
     {
         return view('pages.favorites');
     }
+
+    public function cart()
+    {
+        return view('pages.cart');
+    }
 }

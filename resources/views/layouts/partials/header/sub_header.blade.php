@@ -14,7 +14,6 @@
 
                     <img src="{{ asset('img/layout/chevron-bottom-blue.png') }}">
                 </a>
-
             </div>
         </div>
     </div>

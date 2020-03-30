@@ -1,4 +1,4 @@
-#product-page, #category-page, #favorites-page {
+#product-page, #category-page, #favorites-page, #cart-page {
     @import '../headers/blue';
     @import '../headers/categories';
 
@@ -231,6 +231,33 @@
                 .add-icon {
                     margin-left: 15px;
                 }
+            }
+        }
+    }
+
+    #cart-summary {
+        background-color: #ffffff;
+        border-radius: 5px;
+        padding: 8px 10px;
+        color: #585655;
+        font-size: 11px;
+
+        svg {
+            color: #B3AFB6;
+        }
+
+        .amount {
+            margin-left: 2rem;
+            color: #B3B0B6;
+            font-size: 10px;
+            line-height: 0.7rem;
+            text-align: right;
+
+            .value {
+                color: #f4403e;
+                font-weight: 500;
+                font-size: 19px;
+                font-weight: bold;
             }
         }
     }

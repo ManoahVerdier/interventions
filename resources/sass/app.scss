@@ -220,6 +220,12 @@ h2 {
   }
 }
 
+.btn-warning, .btn-warning:hover {
+  background-color: $orange;
+  color: white !important;
+  border: none;
+}
+
 a.favorite.active {
   color: $primary !important;
 }

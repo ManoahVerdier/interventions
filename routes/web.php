@@ -18,3 +18,4 @@ Route::get('/search', 'SiteController@search')->name('search');
 Route::get('/product', 'SiteController@product')->name('product');
 Route::get('/category', 'SiteController@category')->name('category');
 Route::get('/favorites', 'SiteController@favorites')->name('favorites');
+Route::get('/cart', 'SiteController@cart')->name('cart');
