@@ -24,7 +24,7 @@
         @yield('header')
 
         {{-- Content --}}
-        <main class="content h-100">
+        <main class="content" style="height: calc(100% - 60px)">
             @yield('content')
         </main>
 

@@ -23,6 +23,20 @@ id="home-page"
                 <i class="far fa-smile-wink fa-2x mt-2"></i>
             </div>
         </div>
+
+        <img src="{{ asset('img/homepage/caroussel/logo-transparent.png') }}" class="logo">
+
+        <div class="owl-carousel owl-theme mt-4" data-loop="true" data-dots="true" data-md="1" data-autoplay="true" data-margin="30">
+            <div>
+                <img src="{{ asset('img/homepage/caroussel/slideshow-1.png') }}">
+            </div>
+            <div>
+                <img src="{{ asset('img/homepage/caroussel/slideshow-2.png') }}">
+            </div>
+            <div>
+                <img src="{{ asset('img/homepage/caroussel/slideshow-3.png') }}">
+            </div>
+        </div>
     </div>
 </section>
 

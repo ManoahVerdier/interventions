@@ -2,8 +2,8 @@
     @import '../headers/blue';
 }
 
-#login-page {
-    .register {
+#login-page, #register-page {
+    .register-link, .login-link {
         padding: 0.7rem;
         border: solid 2px #E9E6EB;
         border-radius: 1.4rem;
@@ -34,7 +34,7 @@
         }
     }
 
-    .login {
+    .login-form, .register-form {
         background-color: #ffffff;
         padding: 0.7rem;
         border-radius: 1.4rem;

@@ -19,7 +19,7 @@ id="login-page" class="h-100"
     <div class="row h-100">
         <div class="col-md-6 pr-5 pt-5">
             {{-- Register --}}
-            <a href="{{ route('register') }}" class="register float-right d-flex align-items-center">
+            <a href="{{ route('register') }}" class="register-link float-right d-flex align-items-center">
                 <img src="{{ asset('img/layout/round.png') }}">
                 <div class="ml-3 flex-fill">
                     <span>Créer un compte</span><br>
@@ -33,7 +33,7 @@ id="login-page" class="h-100"
 
         <div class="col-md-6 pl-5 pt-5" style="background-color: #EFEFEF">
             {{-- Login --}}
-            <form method="POST" action="{{ route('login') }}" class="login">
+            <form method="POST" action="{{ route('login') }}" class="login-form">
                 @csrf
                 <div class="d-flex align-items-center">
                     <img src="{{ asset('img/layout/round-blue.png') }}">
