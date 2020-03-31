@@ -25,7 +25,7 @@
         <div class="col-12">
             @if ($remove ?? false)
                 <button type="button" class="btn btn-outline-secondary btn-lg btn-block delete-btn">
-                    <i class="fas fa-shopping-cart cart-icon"></i>
+                    {{-- <i class="fas fa-shopping-cart cart-icon"></i> --}}
                     Supprimer
                 </button>
             @else

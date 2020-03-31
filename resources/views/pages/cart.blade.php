@@ -46,7 +46,7 @@ id="cart-page"
             'brandName' => 'Unox',
             'striked_price' => 38.25,
             'price' => 35.25,
-            'isFavorite' => true,
+            'isFavorite' => false,
             'remove' => true
         ])
     </div>

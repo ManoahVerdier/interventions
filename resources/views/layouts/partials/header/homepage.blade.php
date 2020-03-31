@@ -16,18 +16,15 @@
         {{-- Menu --}}
         <div class="col-md-1 menu">
             <div class="h-100 valign-middle">
-                <a href="{{ route('favorites') }}" class="favorite"><i class="far fa-heart fa-lg"></i></a>
+                <a href="{{ route('favorites') }}" class="favorite"><i class="fas fa-heart fa-lg"></i></a>
             </div>
         </div>
-        <div class="col-md-2 menu">
-            <div class="h-100 valign-middle d-flex justify-content-between">
-                <a href=""><i class="fas fa-shopping-cart fa-lg"></i></a>
-                <a href="" class="login">Connectez-vous</a>
-            </div>
-        </div>
-        <div class="col-md-1 menu">
+        <div class="col-md-3 menu">
             <div class="h-100 valign-middle">
-                <a href="" class="profile"><i class="fas fa-user-alt fa-lg"></i></a>
+                <a href="{{ route('cart') }}"><i class="fas fa-shopping-cart fa-lg"></i></a>
+                <a href="{{ route('login') }}" class="ml-4">
+                    <span class="login mr-2">Connectez-vous</span><i class="fas fa-user-alt fa-lg"></i>
+                </a>
             </div>
         </div>
     </div>

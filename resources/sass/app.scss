@@ -1,11 +1,11 @@
-// Font
-// Fontss
+// Fonts
 @import 'fonts';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 @import 'variables';
 @import 'helpers';
+@import './pages/auth';
 @import './pages/homepage';
 @import './pages/product';
 @import './pages/search';
@@ -61,6 +61,10 @@ h2 {
     margin-left: 40px;
     color: #b3b0b6;
   }
+}
+
+a, a:hover, a:visited {
+  color: $primary;
 }
 
 .owl-carousel {

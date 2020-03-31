@@ -29,7 +29,7 @@
             {{-- Menu --}}
             <div class="col-md-1 @if (empty($withSearch))offset-md-4 @endif menu">
                 <div class="h-100 valign-middle">
-                    <a href="{{ route('favorites') }}" class="favorite"><i class="far fa-heart fa-lg"></i></a>
+                    <a href="{{ route('favorites') }}" class="favorite"><i class="fas fa-heart fa-lg"></i></a>
                 </div>
             </div>
             <div class="col-md-1 menu">
@@ -39,7 +39,7 @@
             </div>
             <div class="col-md-1 menu">
                 <div class="h-100 valign-middle">
-                    <a href="" class="profile"><i class="fas fa-user-alt fa-lg"></i></a>
+                    <a href="{{ route('login') }}" class="profile"><i class="fas fa-user-alt fa-lg"></i></a>
                 </div>
             </div>
         </div>

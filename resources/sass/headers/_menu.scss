@@ -7,10 +7,10 @@
       &:hover {
         color: $primary;
       }
+    }
 
-      &.login {
-        font-weight: 500;
-        color: $primary;
-      }
+    .login {
+      font-weight: 500;
+      color: $primary;
     }
 }

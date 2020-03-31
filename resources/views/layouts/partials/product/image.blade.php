@@ -1,5 +1,5 @@
 <div class="product">
-    <a href="" class="favorite @if ($isFavorite ?? false)active @endif"><i class="far fa-heart fa-lg"></i></a>
+    <a href="" class="favorite @if ($isFavorite ?? false)active @endif"><i class="@if ($isFavorite ?? false)fas @else far @endif fa-heart fa-lg"></i></a>
     @if ($discount ?? false)<span class="discount">-{{ $discount }}%</span>@endif
     <a href="{{ route('product') }}">
         <img src="{{ $image }}" class="img-responsive">
