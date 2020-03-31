@@ -24,9 +24,9 @@ id="home-page"
             </div>
         </div>
 
-        <img src="{{ asset('img/homepage/caroussel/logo-transparent.png') }}" class="logo">
+        <img src="{{ asset('img/homepage/caroussel/logo-transparent.png') }}" class="logo d-none d-lg-block">
 
-        <div class="owl-carousel owl-theme mt-4" data-loop="true" data-dots="true" data-md="1" data-autoplay="true" data-margin="30">
+        <div class="owl-carousel owl-theme mt-4" data-loop="true" data-dots="true" data-sm="1" data-md="1" data-autoplay="true" data-margin="30">
             <div>
                 <img src="{{ asset('img/homepage/caroussel/slideshow-1.png') }}">
             </div>

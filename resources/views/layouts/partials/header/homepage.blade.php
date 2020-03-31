@@ -14,18 +14,28 @@
         </a>
 
         {{-- Menu --}}
-        <div class="col-md-1 menu">
-            <div class="h-100 valign-middle">
-                <a href="{{ route('favorites') }}" class="favorite"><i class="fas fa-heart fa-lg"></i></a>
-            </div>
-        </div>
         <div class="col-md-3 menu">
-            <div class="h-100 valign-middle">
+            <div class="h-100 valign-middle justify-content-around">
+                <a href="{{ route('favorites') }}" class="favorite"><i class="fas fa-heart fa-lg"></i></a>
+
                 <a href="{{ route('cart') }}"><i class="fas fa-shopping-cart fa-lg"></i></a>
-                <a href="{{ route('login') }}" class="ml-4">
+
+                @auth
+                    <a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt fa-lg"></i></a>
+                @endauth
+
+                @guest
+                <a href="{{ route('login') }}">
                     <span class="login mr-2">Connectez-vous</span><i class="fas fa-user-alt fa-lg"></i>
                 </a>
+                @endguest
             </div>
         </div>
+
+        {{-- <div class="col-md-3 menu">
+            <div class="h-100 valign-middle">
+
+            </div>
+        </div> --}}
     </div>
 </header>

@@ -8,7 +8,7 @@
 
             {{-- Return --}}
             <div class="col-md-1 d-flex align-items-center justify-content-center">
-                <a href="/"><img src="{{ asset('img/layout/chevron-return.png') }}" class="img-fluid"></a>
+                <a href="{{ url()->previous() }}"><img src="{{ asset('img/layout/chevron-return.png') }}" class="img-fluid"></a>
             </div>
 
             {{-- Title --}}
@@ -37,11 +37,19 @@
                     <a href="{{ route('cart') }}"><i class="fas fa-shopping-cart fa-lg"></i></a>
                 </div>
             </div>
+
             <div class="col-md-1 menu">
                 <div class="h-100 valign-middle">
-                    <a href="{{ route('login') }}" class="profile"><i class="fas fa-user-alt fa-lg"></i></a>
+                    @auth
+                        <a href="{{ route('logout') }}" class="profile"><i class="fas fa-sign-out-alt fa-lg"></i></a>
+                    @endauth
+
+                    @guest
+                        <a href="{{ route('login') }}" class="profile"><i class="fas fa-user-alt fa-lg"></i></a>
+                    @endguest
                 </div>
             </div>
+
         </div>
 
         @if ($punchLine ?? false)
