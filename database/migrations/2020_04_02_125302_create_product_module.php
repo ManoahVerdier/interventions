@@ -62,8 +62,9 @@ class CreateProductModule extends Migration
             $table->string('short_description')->nullable();
             $table->text('description')->nullable();
             $table->decimal('price', 13, 2);
-            $table->decimal('discount', 13, 2)->nullable();
+            $table->unsignedInteger('discount')->nullable();
             $table->string('quantity')->nullable();
+            $table->string('image')->nullable();
             $table->unsignedInteger('domain_id');
             $table->timestamps();
             $table->softDeletes();
@@ -188,7 +189,7 @@ class CreateProductModule extends Migration
             'uitype_id' => uitype('number')->id,
             'displaytype_id' => displaytype('everywhere')->id,
             'sequence' => $block->fields()->count(),
-            'data' => json_decode('{"rules":"required","min":0,"max":0,"step":0,"precision":2}')
+            'data' => json_decode('{"rules":"required"}')
         ]);
 
         // Field discount
@@ -196,10 +197,10 @@ class CreateProductModule extends Migration
             'module_id' => $module->id,
             'block_id' => $block->id,
             'name' => 'discount',
-            'uitype_id' => uitype('number')->id,
+            'uitype_id' => uitype('integer')->id,
             'displaytype_id' => displaytype('everywhere')->id,
             'sequence' => $block->fields()->count(),
-            'data' => json_decode('{"min":0,"max":0,"step":0,"precision":2}')
+            'data' => null
         ]);
 
         // Field quantity
@@ -213,6 +214,17 @@ class CreateProductModule extends Migration
             'data' => json_decode('{"info":"field_info.quantity"}')
         ]);
 
+        // Field image
+        Field::create([
+            'module_id' => $module->id,
+            'block_id' => $block->id,
+            'name' => 'image',
+            'uitype_id' => uitype('image')->id,
+            'displaytype_id' => displaytype('everywhere')->id,
+            'sequence' => $block->fields()->count(),
+            'data' => null
+        ]);
+
     }
 
     protected function createFilters($module)
@@ -224,7 +236,7 @@ class CreateProductModule extends Migration
             'user_id' => null,
             'name' => 'filter.all',
             'type' => 'list',
-            'columns' => [ 'name', 'reference', 'category', 'short_description', 'description', 'brand', 'price', 'discount', 'quantity' ],
+            'columns' => [ 'image', 'name', 'reference', 'category', 'short_description', 'brand', 'price', 'discount', 'quantity' ],
             'conditions' => null,
             'order' => null,
             'is_default' => true,

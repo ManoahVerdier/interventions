@@ -8,12 +8,16 @@ id="product-page"
 
 {{-- Header --}}
 @section('header')
+    @php($productsCount = $product->category->products->count())
     @include('layouts.partials.header.blue', [
-        'title' => 'Self Cooking Center',
-        'subtitle' => '237 produits',
+        'title' => $product->category->name,
+        'subtitle' => trans_choice('category.products', $productsCount, ['value' => $productsCount]),
     ])
     @include('layouts.partials.header.sub_header')
-    @include('layouts.partials.header.categories', ['hide' => true])
+
+    @if ($categories->count() > 0)
+        @include('layouts.partials.header.categories', ['hide' => true])
+    @endif
 @endsection
 
 {{-- Content --}}
@@ -23,25 +27,25 @@ id="product-page"
         <div class="row">
             <div class="col-md-5 offset-md-2">
                 @include('layouts.partials.product.image_big', [
-                    'discount' => 10,
-                    'image' => 'https://raja.scene7.com/is/image/Raja/products/jerrican-plastique-bleu-20_JE20B.jpg?template=withpicto&$image=M_JE20B_S_FR&$picto=ALL_planet&hei=300&wid=300',
-                    'category_icon' => asset('img/product/category/four.png'),
-                    'category_name' => 'Four',
-                    'isFavorite' => true,
+                    'discount' => $product->discount,
+                    'image' => $product->image ?? asset('img/product/image_not_available.png'),
+                    'category_icon' => $product->category->pictogram ?? null,
+                    'category_name' => $product->category->name,
+                    'isFavorite' => $product->isUserFavorite,
                 ])
             </div>
 
             <div class="col-md-5">
                 @include('layouts.partials.product.description', [
-                    'name' => 'Tablette de nettoyage',
-                    'short_description' => 'Self Cooking Center',
-                    'quantity' => '100 Tabs',
+                    'name' => $product->name,
+                    'short_description' => $product->short_description,
+                    'quantity' => $product->quantity,
                     'withPrice' => false,
                     'withBrand' => true,
                     'withAddToCart' => true,
-                    'price' => 42.60,
-                    'brandImage' => asset('img/partner/rational.png'),
-                    'brandName' => 'Rational'
+                    'price' => $product->priceAfterDiscount,
+                    'brandImage' => $product->brand->logo ?? null,
+                    'brandName' => $product->brand->name ?? null
                 ])
             </div>
         </div>

@@ -16,7 +16,8 @@ return [
         'brand' => 'Marque',
         'price' => 'Tarif (€)',
         'discount' => 'Remise (%)',
-        'quantity' => 'Quantité'
+        'quantity' => 'Quantité',
+        'image' => 'Image',
     ],
     'field_info' => [
         'quantity' => 'Ex: 10 capsules'

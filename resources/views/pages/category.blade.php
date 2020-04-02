@@ -8,47 +8,39 @@ id="category-page"
 
 {{-- Header --}}
 @section('header')
+    @php($productsCount = $category->products->count())
     @include('layouts.partials.header.blue', [
-        'title' => 'Four',
-        'subtitle' => '237 produits',
+        'title' => $category->name,
+        'subtitle' => trans_choice('category.products', $productsCount, ['value' => $productsCount]),
     ])
     @include('layouts.partials.header.sub_header')
-    @include('layouts.partials.header.categories', ['hide' => true])
+
+    @if ($categories->count() > 0)
+        @include('layouts.partials.header.categories', ['hide' => true])
+    @endif
 @endsection
 
 {{-- Content --}}
 @section('content')
 <section id="product-list">
     <div class="container">
-        @include('layouts.partials.product.line', [
-            'image' => 'https://raja.scene7.com/is/image/Raja/products/jerrican-plastique-bleu-20_JE20B.jpg?template=withpicto&$image=M_JE20B_S_FR&$picto=ALL_planet&hei=300&wid=300',
-            'category_icon' => asset('img/product/category/four.png'),
-            'category_name' => 'Four',
-            'name' => 'Tablette de nettoyage',
-            'short_description' => 'Self Cooking Center',
-            'quantity' => '100 Tabs',
-            'withBrand' => true,
-            'brandImage' => asset('img/partner/rational.png'),
-            'brandName' => 'Rational',
-            'price' => 42.60,
-            'isFavorite' => true
-        ])
-
-        @include('layouts.partials.product.line', [
-            'discount' => 10,
-            'image' => 'https://raja.scene7.com/is/image/Raja/products/jerrican-plastique-bleu-20_JE20B.jpg?image=M_JE10N_S_FR$default$',
-            'category_icon' => asset('img/product/category/four.png'),
-            'category_name' => 'Vaisselle',
-            'name' => 'Tablette d\'entretien',
-            'short_description' => 'Self Cooking Center',
-            'quantity' => '12 kg',
-            'withBrand' => true,
-            'brandImage' => asset('img/partner/unox.png'),
-            'brandName' => 'Unox',
-            'striked_price' => 38.25,
-            'price' => 35.25,
-            'isFavorite' => true
-        ])
+        @foreach ($products as $product)
+            @include('layouts.partials.product.line', [
+                'image' => $product->image ?? asset('img/product/image_not_available.png'),
+                'category_icon' => $product->category->pictogram ?? null,
+                'category_name' => $product->category->name,
+                'name' => $product->name,
+                'short_description' => $product->short_description,
+                'quantity' => $product->quantity,
+                'withBrand' => true,
+                'brandImage' => $product->brand->logo ?? null,
+                'brandName' => $product->brand->name ?? null,
+                'striked_price' => $product->discount ? $product->price : null,
+                'price' => $product->priceAfterDiscount,
+                'discount' => $product->discount,
+                'isFavorite' => $product->isUserFavorite
+            ])
+        @endforeach
     </div>
 </section>
 @endsection

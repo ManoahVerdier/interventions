@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use App\Product;
 use Illuminate\Http\Request;
 
 class SiteController extends Controller
@@ -23,22 +25,35 @@ class SiteController extends Controller
      */
     public function index()
     {
-        return view('pages.home');
+        $selectionProducts = Product::all()->random(10);
+
+        return view('pages.home', compact('selectionProducts'));
     }
 
     public function search()
     {
-        return view('pages.search');
+        $categories = Category::getRoots()->get();
+        $productsCount = Product::count();
+
+        return view('pages.search', compact('categories', 'productsCount'));
     }
 
-    public function product()
+    public function product($id)
     {
-        return view('pages.product');
+        $product = Product::findOrFail($id);
+        $categories = $product->category->children()->get();
+        $selectionProducts = Product::all()->random(10);
+
+        return view('pages.product', compact('product', 'categories', 'selectionProducts'));
     }
 
-    public function category()
+    public function category($id)
     {
-        return view('pages.category');
+        $category = Category::findOrFail($id);
+        $categories = $category->children()->get();
+        $products = $category->products()->get();
+
+        return view('pages.category', compact('category', 'categories', 'products'));
     }
 
     public function favorites()

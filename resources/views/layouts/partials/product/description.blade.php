@@ -1,5 +1,5 @@
 <div class="description">
-    <a href="{{ route('product') }}" class="product-name">{{ $name }}</a>
+    <a href="{{ route('product', ['id' => $product->getKey(), 'name' => $product->name]) }}" class="product-name">{{ $name }}</a>
     <p class="product-description">{{ $short_description }}</p>
 
     <div class="quantity">
@@ -9,7 +9,11 @@
 
     @if ($withBrand ?? false)
     <div class="logo">
+        @if ($brandImage)
         <img src="{{ $brandImage }}" alt="{{ $brandName }}" class="img-responsive">
+        @else
+        <b>{{ $brandName }}</b>
+        @endif
     </div>
     @endif
 

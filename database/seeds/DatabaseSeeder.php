@@ -25,5 +25,9 @@ class DatabaseSeeder extends Seeder
             'module_id' => ucmodule('user')->id,
             'record_id' => $user->getKey(),
         ]);
+
+        factory(\App\Brand::class, 40)->create();
+        factory(\App\Category::class, 10)->create();
+        factory(\App\Product::class, 50)->create();
     }
 }

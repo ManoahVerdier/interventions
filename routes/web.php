@@ -21,8 +21,8 @@ Route::get('/admin', function () {
 
 Route::get('/', 'SiteController@index')->name('home');
 Route::get('/product/search', 'SiteController@search')->name('product.search');
-Route::get('/product', 'SiteController@product')->name('product');
-Route::get('/category', 'SiteController@category')->name('category');
+Route::get('/product/{id}/{name}', 'SiteController@product')->name('product');
+Route::get('/category/{id}/{name}', 'SiteController@category')->name('category');
 Route::get('/favorites', 'SiteController@favorites')->name('favorites');
 Route::get('/cart', 'SiteController@cart')->name('cart');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');

@@ -62,7 +62,6 @@ class CreateBrandModule extends Migration
             $table->softDeletes();
 
             $table->foreign('domain_id')->references('id')->on('uccello_domains');
-// %table_foreign_keys%
         });
     }
 

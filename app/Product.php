@@ -32,7 +32,27 @@ class Product extends Model
 
     public function brand()
     {
-        return $this->belongsTo(\App\Category::class);
+        return $this->belongsTo(\App\Brand::class);
+    }
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
+
+    public function getPriceAfterDiscountAttribute()
+    {
+        return $this->discount ? $this->price - ($this->price * $this->discount / 100) : $this->price;
+    }
+
+    public function getIsUserFavoriteAttribute()
+    {
+        return $this->favorites->where('user_id', auth()->id())->count() > 0;
     }
 
     /**

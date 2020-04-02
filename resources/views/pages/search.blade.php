@@ -10,10 +10,12 @@ id="search-page"
 @section('header')
     @include('layouts.partials.header.blue', [
         'title' => 'Ma recherche',
-        'subtitle' => '456 produits',
+        'subtitle' => trans_choice('category.products', $productsCount, ['value' => $productsCount]),
         'withSearch' => true,
         'punchLine' => 'Quel produit<br>recherchez-vous ?'
     ])
+
+    {{-- Categories --}}
     @include('layouts.partials.header.categories')
 @endsection
 
