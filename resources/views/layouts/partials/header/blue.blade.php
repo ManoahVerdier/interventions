@@ -28,14 +28,18 @@
 
             {{-- Menu --}}
             <div class="col-md-1 @if (empty($withSearch))offset-md-4 @endif menu">
+                @auth
                 <div class="h-100 valign-middle">
                     <a href="{{ route('favorites') }}" class="favorite"><i class="fas fa-heart fa-lg"></i></a>
                 </div>
+                @endauth
             </div>
             <div class="col-md-1 menu">
+                @auth
                 <div class="h-100 valign-middle">
                     <a href="{{ route('cart') }}"><i class="fas fa-shopping-cart fa-lg"></i></a>
                 </div>
+                @endauth
             </div>
 
             <div class="col-md-1 menu">

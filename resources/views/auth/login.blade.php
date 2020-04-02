@@ -54,12 +54,12 @@ id="login-page" class="h-100"
                             <img src="{{ asset('img/layout/smiley.png') }}">
                         </div>
                         <div class="flex-fill form-group">
-                            <label for="email">J'entre mon identifiant</label>
-                            <input id="email" type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="Adresse email" value="{{ old('email') }}"  autofocus>
+                            <label for="identity">J'entre mon identifiant</label>
+                            <input id="identity" type="text" name="identity" class="form-control{{ $errors->has('identity') ? ' is-invalid' : '' }}" placeholder="Adresse email" value="{{ old('email') }}"  autofocus>
 
-                            @if ($errors->has('email'))
+                            @if ($errors->has('identity'))
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('email') }}</strong>
+                                    <strong>{{ $errors->first('identity') }}</strong>
                                 </span>
                             @endif
                         </div>

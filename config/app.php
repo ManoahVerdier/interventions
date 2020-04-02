@@ -165,6 +165,8 @@ return [
         /*
          * Package Service Providers...
          */
+        Uccello\Core\Providers\AppServiceProvider::class,
+        Uccello\Core\Providers\RouteServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -223,6 +225,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Uccello' => Uccello\Core\Facades\Uccello::class,
 
     ],
 

@@ -6,7 +6,7 @@
         </div>
 
         {{-- Search bar --}}
-        <a id="search" href="{{ route('search') }}" class="col-md-5 valign-middle">
+        <a id="search" href="{{ route('product.search') }}" class="col-md-5 valign-middle">
             <div class="searchbar">
                 <i class="fas fa-search fa-lg"></i>
                 <span>Vous recherchez : <span class="search-type">un produit, une marque ?</span></span>
@@ -16,11 +16,12 @@
         {{-- Menu --}}
         <div class="col-md-3 menu">
             <div class="h-100 valign-middle justify-content-around">
+                @auth
                 <a href="{{ route('favorites') }}" class="favorite"><i class="fas fa-heart fa-lg"></i></a>
 
                 <a href="{{ route('cart') }}"><i class="fas fa-shopping-cart fa-lg"></i></a>
 
-                @auth
+
                     <a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt fa-lg"></i></a>
                 @endauth
 

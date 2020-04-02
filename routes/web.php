@@ -13,8 +13,14 @@
 
 Auth::routes();
 
+Route::get('/admin', function () {
+    $domain = uccello()->useMultiDomains() ? uccello()->getLastOrDefaultDomain()->slug : null;
+    $route = ucroute('uccello.home', $domain);
+    return redirect($route);
+});
+
 Route::get('/', 'SiteController@index')->name('home');
-Route::get('/search', 'SiteController@search')->name('search');
+Route::get('/product/search', 'SiteController@search')->name('product.search');
 Route::get('/product', 'SiteController@product')->name('product');
 Route::get('/category', 'SiteController@category')->name('category');
 Route::get('/favorites', 'SiteController@favorites')->name('favorites');
