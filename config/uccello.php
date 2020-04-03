@@ -2,7 +2,7 @@
 
 return [
     // Name of the theme you want to use.
-    'theme' => 'uccello',
+    'theme' => 'prodice',
 
     'domains' => [
         // If true, display the modal for switching between domains.

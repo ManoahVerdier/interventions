@@ -9,7 +9,7 @@
     {{-- Put your global CSS files here --}}
 
     {{-- Uncomment below to load css/app.js with Mix --}}
-    {{-- {!! Html::style(mix('css/app.css')) !!} --}}
+    {!! Html::style(mix('css/uccello.css')) !!}
 @endsection
 
 @section('script')
