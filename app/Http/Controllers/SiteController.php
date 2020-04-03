@@ -28,7 +28,10 @@ class SiteController extends Controller
      */
     public function index()
     {
-        $selectionProducts = Product::all()->random(10);
+        $selectionProducts = Product::all();
+        if ($selectionProducts->count() > 10) {
+            $selectionProducts = $selectionProducts->random(10);
+        }
 
         return view('pages.home', compact('selectionProducts'));
     }
@@ -45,7 +48,11 @@ class SiteController extends Controller
     {
         $product = Product::findOrFail($id);
         $categories = $product->category->children()->get();
-        $selectionProducts = Product::all()->random(10);
+
+        $selectionProducts = Product::all();
+        if ($selectionProducts->count() > 10) {
+            $selectionProducts = $selectionProducts->random(10);
+        }
 
         return view('pages.product', compact('product', 'categories', 'selectionProducts'));
     }
