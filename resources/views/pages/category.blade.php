@@ -8,9 +8,9 @@ id="category-page"
 
 {{-- Header --}}
 @section('header')
-    @php($productsCount = $category->products->count())
+    @php($productsCount = isset($brand) ? $brand->productsCountForCategory($category) : $category->products->count())
     @include('layouts.partials.header.blue', [
-        'title' => $category->name,
+        'title' => isset($brand) ? $brand->name : $category->name,
         'subtitle' => trans_choice('site.category.products', $productsCount, ['value' => $productsCount]),
     ])
     @include('layouts.partials.header.sub_header')

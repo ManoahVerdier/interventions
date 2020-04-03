@@ -26,8 +26,8 @@ class DatabaseSeeder extends Seeder
             'record_id' => $user->getKey(),
         ]);
 
-        factory(\App\Brand::class, 40)->create();
-        factory(\App\Category::class, 10)->create();
-        factory(\App\Product::class, 50)->create();
+        // factory(\App\Brand::class, 40)->create();
+        // factory(\App\Category::class, 10)->create();
+        // factory(\App\Product::class, 50)->create();
     }
 }

@@ -22,7 +22,7 @@
             {{-- Search bar --}}
             @if ($withSearch ?? false)
             <div id="search" class="col-md-5">
-                <input type="email" class="form-control" placeholder="Un produit, une marque ?">
+                <input type="email" class="form-control" placeholder="Un produit, une marque ?" autofocus>
             </div>
             @endif
 

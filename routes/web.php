@@ -22,7 +22,9 @@ Route::get('/admin', function () {
 Route::get('/', 'SiteController@index')->name('home');
 Route::get('/product/search', 'SiteController@search')->name('product.search');
 Route::get('/product/{id}/{name}', 'SiteController@product')->name('product');
+Route::get('/category/{id}/brands', 'SiteController@searchBrands')->name('category.brands');
 Route::get('/category/{id}/{name}', 'SiteController@category')->name('category');
+Route::get('/category/{categoryId}/brand/{brandId}', 'SiteController@categoryBrand')->name('category.brand');
 Route::get('/favorites', 'SiteController@favorites')->name('favorites');
 Route::get('/favorites/{id}', 'SiteController@toggleFavorite')->name('favorites.toggle')->middleware('auth');
 Route::get('/cart', 'SiteController@cart')->name('cart')->middleware('auth');

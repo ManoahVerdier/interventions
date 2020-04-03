@@ -11,7 +11,7 @@
 
                 <a href="" class="category">
                     <span class="active">
-                        Tablettes de nettoyage
+                        {{ $category->name }}
                     </span>
 
                     <img src="{{ asset('img/layout/chevron-bottom-blue.png') }}">

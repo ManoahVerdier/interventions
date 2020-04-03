@@ -30,6 +30,13 @@ class Brand extends Model
         return $this->hasMany(Product::class);
     }
 
+    public function productsCountForCategory($category)
+    {
+        $descendantsCategoriesIds = $category->findDescendants()->pluck('id');
+
+        return $this->products()->whereIn('category_id', $descendantsCategoriesIds)->count();
+    }
+
     /**
     * Returns record label
     *

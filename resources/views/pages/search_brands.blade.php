@@ -15,8 +15,8 @@ id="search-page"
         'punchLine' => 'Quel produit<br>recherchez-vous ?'
     ])
 
-    {{-- Categories --}}
-    @include('layouts.partials.header.categories', ['linkToBrands' => true])
+    {{-- Brands --}}
+    @include('layouts.partials.header.brands')
 @endsection
 
 {{-- Footer --}}

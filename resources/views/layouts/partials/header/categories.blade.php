@@ -4,12 +4,21 @@
             <div class="col-md-6 offset-md-2">
                 <ul>
                     @foreach($categories as $category)
-                    @continue($category->products()->count() === 0)
+                    {{-- @continue($category->products()->count() === 0 && $category->children() === 0) --}}
+                    <?php
+                        if (!empty($brand)) {
+                            $route = route('category.brand', ['categoryId' => $category->getKey(), 'brandId' => $brand->getKey()]);
+                        } elseif (!empty($linkToBrands)) {
+                            $route = route('category.brands', ['id' => $category->getKey()]);
+                        } else {
+                            $route = route('category', ['id' => $category->getKey(), 'name' => $category->name]);
+                        }
+                    ?>
                     <li>
-                        <a href="{{ route('category', ['id' => $category->getKey(), 'name' => $category->name]) }}">
+                        <a href="{{ $route }}">
                             <img src="{{ asset('img/layout/category-icon.png') }}"><span>{{ $category->name }}</span>
                             <div class="counter">
-                                <span>{{ $category->products->count() }}</span>
+                                {{-- <span>{{ $category->products->count() }}</span> --}}
                                 <img src="{{ asset('img/layout/chevron-right-blue.png') }}">
                             </div>
                         </a>

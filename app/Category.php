@@ -33,6 +33,31 @@ class Category extends Tree implements Searchable
         'name'
     ];
 
+    public static function boot()
+    {
+        parent::boot();
+
+        // Linck to parent record
+        static::created(function ($model) {
+            static::linkToParentRecord($model);
+        });
+
+        static::updated(function ($model) {
+            static::linkToParentRecord($model);
+        });
+    }
+
+    public static function linkToParentRecord($model)
+    {
+        // Set parent record
+        $parentRecord = Category::find(request('parent'));
+        if (!is_null($parentRecord)) {
+            with($model)->setChildOf($parentRecord);
+        } else { // Remove parent domain
+            with($model)->setAsRoot();
+        }
+    }
+
     /**
      * Check if node is root
      * This function check foreign key field
@@ -67,6 +92,20 @@ class Category extends Tree implements Searchable
     public function products()
     {
         return $this->hasMany(\App\Product::class);
+    }
+
+    public function getBrandsAttribute()
+    {
+        $brandTable = (new Brand)->getTable();
+        $productTable = (new Product)->getTable();
+
+        $descendantsCategoriesIds = $this->findDescendants()->pluck('id');
+
+        return Brand::selectRaw("$brandTable.*")
+                ->join($productTable, "$productTable.brand_id", '=', "$brandTable.id")
+                ->whereIn("$productTable.category_id", $descendantsCategoriesIds)
+                ->groupBy("$brandTable.id")
+                ->get();
     }
 
     /**
