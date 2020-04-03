@@ -18,3 +18,7 @@
     {{-- Uncomment below to load js/app.js with Mix --}}
     {{-- {!! Html::script(mix('js/app.js')) !!} --}}
 @endsection
+
+@section('logo')
+{{ Html::image(asset('img/layout/logo-prodice.png'), null, ['style' => 'max-width: 150px;']) }}
+@endsection
