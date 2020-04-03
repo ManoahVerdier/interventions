@@ -19,12 +19,12 @@ id="favorites-page"
                 <div class="col-4 offset-2">
                     <div class="d-flex">
                         <span>
-                            <span class="bold">1</span>
+                            <span class="bold active favorites-count">{{ auth()->user()->favorites->count() }}</span>
                         </span>
 
                         <a href="" class="flex-fill">
-                            <span>
-                                Ajout
+                            <span class="active">
+                                {{ trans_choice('site.favorite.adding', auth()->user()->favorites->count())}}
                             </span>
                         </a>
 
@@ -41,12 +41,12 @@ id="favorites-page"
                 <div class="col-4">
                     <div class="d-flex">
                         <span>
-                            <span class="active">5</span>
+                            <span class="bold">5</span>
                         </span>
 
                         <a href="" class="flex-fill">
-                            <span class="active">
-                                Besoins
+                            <span class="">
+                                {{ trans_choice('site.favorite.needs', 5)}}
                             </span>
                         </a>
 
@@ -64,35 +64,25 @@ id="favorites-page"
 @section('content')
 <section id="product-list">
     <div class="container">
-        @include('layouts.partials.product.line', [
-            'image' => 'https://raja.scene7.com/is/image/Raja/products/jerrican-plastique-bleu-20_JE20B.jpg?template=withpicto&$image=M_JE20B_S_FR&$picto=ALL_planet&hei=300&wid=300',
-            'category_icon' => asset('img/product/category/four.png'),
-            'category_name' => 'Four',
-            'name' => 'Tablette de nettoyage',
-            'short_description' => 'Self Cooking Center',
-            'quantity' => '100 Tabs',
-            'withBrand' => true,
-            'brandImage' => asset('img/partner/rational.png'),
-            'brandName' => 'Rational',
-            'price' => 42.60,
-            'isFavorite' => true,
-        ])
-
-        @include('layouts.partials.product.line', [
-            'discount' => 10,
-            'image' => 'https://raja.scene7.com/is/image/Raja/products/jerrican-plastique-bleu-20_JE20B.jpg?image=M_JE10N_S_FR$default$',
-            'category_icon' => asset('img/product/category/four.png'),
-            'category_name' => 'Vaisselle',
-            'name' => 'Tablette d\'entretien',
-            'short_description' => 'Self Cooking Center',
-            'quantity' => '12 kg',
-            'withBrand' => true,
-            'brandImage' => asset('img/partner/unox.png'),
-            'brandName' => 'Unox',
-            'striked_price' => 38.25,
-            'price' => 35.25,
-            'isFavorite' => true,
-        ])
+        @forelse ($products as $product)
+            @include('layouts.partials.product.line', [
+                'image' => $product->image ?? asset('img/product/image_not_available.png'),
+                'category_icon' => $product->category->pictogram ?? null,
+                'category_name' => $product->category->name,
+                'name' => $product->name,
+                'short_description' => $product->short_description,
+                'quantity' => $product->quantity,
+                'withBrand' => true,
+                'brandImage' => $product->brand->logo ?? null,
+                'brandName' => $product->brand->name ?? null,
+                'striked_price' => $product->discount ? $product->price : null,
+                'price' => $product->priceAfterDiscount,
+                'discount' => $product->discount,
+                'isFavorite' => $product->isUserFavorite
+            ])
+        @empty
+            <div class="text-danger text-center">{{ __('site.favorite.empty') }}</div>
+        @endforelse
     </div>
 </section>
 @endsection

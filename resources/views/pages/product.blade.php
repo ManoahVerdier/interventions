@@ -11,7 +11,7 @@ id="product-page"
     @php($productsCount = $product->category->products->count())
     @include('layouts.partials.header.blue', [
         'title' => $product->category->name,
-        'subtitle' => trans_choice('category.products', $productsCount, ['value' => $productsCount]),
+        'subtitle' => trans_choice('site.category.products', $productsCount, ['value' => $productsCount]),
     ])
     @include('layouts.partials.header.sub_header')
 

@@ -17,5 +17,4 @@ return [
         'products' => 'Articles',
     ],
     'category' => 'Catégories',
-    'products' => '{0} Aucun produit|{1} :value produit|[2,*] :value produits',
 ];

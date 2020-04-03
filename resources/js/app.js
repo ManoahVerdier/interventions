@@ -8,8 +8,6 @@
 require('./bootstrap');
 
 import '@fortawesome/fontawesome-free/js/all';
-
-// import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel';
 
 $('.owl-carousel').each((index, el) => {
@@ -45,29 +43,74 @@ $('nav.sub-header a.category').on('click', e => {
     }
 });
 
-// window.Vue = require('vue');
+// Change price according to quantity
+$('select[name="quantity"]').on('change', (event) => {
+    // Récupère les éléments
+    let quantityEl = $(event.currentTarget);
+    let formEl = quantityEl.parents('form:first');
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+    // Calcule le prix total
+    let unitPrice = parseFloat($('.unit-price', formEl).val());
+    let quantity = parseFloat(quantityEl.val());
+    let totalPrice = unitPrice * quantity;
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+    // Formatte le prix
+    let totalPriceFormatted = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(totalPrice);
 
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+    // Si on est sur la page Panier, on met à jour la quantité
+    if ($('#cart-page').length > 0) {
+        let url = $('meta[name="cart-update-url"]').attr('content');
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+        // Récupère l'id du produit
+        let productId = $('input[name="product"]', formEl).val();
 
-// const app = new Vue({
-//     el: '#app'
-// });
+        // Crée le champ data
+        let data = {
+            product: productId,
+            quantity: quantity,
+            _token: $('meta[name="csrf-token"]').attr('content')
+        };
 
+        $.post(url, data).then(response => {
+            if (response) {
+                // Met à jour le prix total
+                $('span.value', formEl).html(totalPriceFormatted);
+            }
+        });
+    } else {
+        // Met à jour le prix total
+        $('span.value', formEl).html(totalPriceFormatted);
+    }
+});
 
+// Toggle favorite
+$('a.toggle-favorite').on('click', (event) => {
+    event.preventDefault();
+
+    let linkEl = $(event.currentTarget);
+    let url = linkEl.attr('href');
+
+    $.get(url).then(response => {
+        if (response.action === 'delete') {
+            // Si on est sur la page des favoris on supprime la ligne
+            // et on met à jour le compteur d'ajout
+            if ($('#favorites-page').length > 0) {
+                $(linkEl).parents('.product-line:first').remove();
+                let favoritesCount = $('.product-line').length;
+                $('.favorites-count').html(favoritesCount);
+            }
+            // Sinon on affiche l'icone de favoris inactif
+            else {
+                $(linkEl).removeClass('active');
+                $('.is-favorite', linkEl).hide();
+                $('.is-not-favorite', linkEl).show();
+            }
+
+        } else {
+            // On affiche l'icone de favoris actif
+            $(linkEl).addClass('active');
+            $('.is-favorite', linkEl).show();
+            $('.is-not-favorite', linkEl).hide();
+        }
+    });
+})

@@ -22,5 +22,5 @@ return [
     'field_info' => [
         'quantity' => 'Ex: 10 capsules'
     ],
-    'product' => 'Articles'
+    'product' => 'Articles',
 ];

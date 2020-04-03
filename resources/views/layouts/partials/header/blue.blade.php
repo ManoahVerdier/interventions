@@ -71,9 +71,9 @@
                     <i class="fas fa-shopping-cart fa-2x"></i>
 
                     <div class="d-flex pt-1">
-                        <span>Sous-total (3 articles):</span>
+                        <span>Sous-total ({{ trans_choice('site.cart.items', $productsCount, ['value' => $productsCount]) }}):</span>
                         <div class="amount">
-                            <span class="value">155, 30€</span><br>
+                            <span class="value">{{ number_format($totalPrice, 2, ',', ' ') }} €</span><br>
                             Prix H.T.
                         </div>
                     </div>
