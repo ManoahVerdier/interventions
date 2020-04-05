@@ -21,6 +21,7 @@ Route::get('/admin', function () {
 
 Route::get('/', 'SiteController@index')->name('home');
 Route::get('/product/search', 'SiteController@search')->name('product.search');
+Route::get('/product/search/results', 'SiteController@searchResults')->name('product.search.results');
 Route::get('/product/{id}/{name}', 'SiteController@product')->name('product');
 Route::get('/category/{id}/brands', 'SiteController@searchBrands')->name('category.brands');
 Route::get('/category/{id}/{name}', 'SiteController@category')->name('category');
@@ -32,3 +33,4 @@ Route::post('/cart', 'SiteController@addToCart')->name('cart.add')->middleware('
 Route::post('/cart/update', 'SiteController@updateCart')->name('cart.update')->middleware('auth');
 Route::post('/cart/delete', 'SiteController@deleteFromCart')->name('cart.delete')->middleware('auth');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/activation', 'SiteController@activation')->name('activation');

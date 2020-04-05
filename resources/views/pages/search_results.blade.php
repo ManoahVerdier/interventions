@@ -3,29 +3,24 @@
 @section('title', 'Prodice')
 
 @section('body-attr')
-id="category-page"
+id="search-results-page"
 @endsection
 
 {{-- Header --}}
 @section('header')
-    @php($productsCount = isset($brand) ? $brand->productsCountForCategory($category) : $category->products->count())
+    @php($productsCount = 1)
     @include('layouts.partials.header.blue', [
-        'title' => isset($brand) ? $brand->name : $category->name,
-        'subtitle' => trans_choice('site.category.products', $productsCount, ['value' => $productsCount]),
-        'withSearch' => true,
+        'title' => 'Ma recherche',
+        // 'subtitle' => trans_choice('site.category.products', $productsCount, ['value' => $productsCount]),
+        'withSearch' => true
     ])
-    @include('layouts.partials.header.sub_header')
-
-    @if ($categories->count() > 0)
-        @include('layouts.partials.header.categories', ['hide' => true])
-    @endif
 @endsection
 
 {{-- Content --}}
 @section('content')
 <section id="product-list">
     <div class="container">
-        @foreach ($products as $product)
+        @forelse ($products as $product)
             @include('layouts.partials.product.line', [
                 'image' => $product->image ?? asset('img/product/image_not_available.png'),
                 'category_icon' => $product->category->pictogram ?? null,
@@ -41,7 +36,9 @@ id="category-page"
                 'discount' => $product->discount,
                 'isFavorite' => $product->isUserFavorite
             ])
-        @endforeach
+        @empty
+            <div class="text-danger text-center">{{ __('site.search.empty') }}</div>
+        @endforelse
     </div>
 </section>
 @endsection

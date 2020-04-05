@@ -38,6 +38,16 @@ class SiteController extends Controller
     }
 
     /**
+     * Affiche la page d'activation de compte.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function activation()
+    {
+        return view('pages.activation');
+    }
+
+    /**
      * Affiche les catégories de niveau 0
      *
      * @return \Illuminite\Http\Response
@@ -68,6 +78,23 @@ class SiteController extends Controller
         return view('pages.search_brands', compact('category', 'brands', 'productsCount'));
     }
 
+    public function searchResults()
+    {
+        $q = request('q');
+
+        $brandTable = (new Brand)->getTable();
+        $productTable = (new Product)->getTable();
+
+        $products = Product::selectRaw("$productTable.*")
+                ->join($brandTable, "$productTable.brand_id", '=', "$brandTable.id")
+                ->where("$productTable.name", 'like', "%$q%")
+                ->orWhere("$brandTable.name", 'like', "%$q%")
+                ->groupBy("$productTable.id")
+                ->get();
+
+        return view('pages.search_results', compact('products', 'q'));
+    }
+
     /**
      * Affiche la fiche d'un produit ainsi que les sous-catégories de la catégorie à laquelle il est lié.
      *
@@ -76,14 +103,15 @@ class SiteController extends Controller
     public function product($id)
     {
         $product = Product::findOrFail($id);
-        $categories = $product->category->children()->get();
+        $category = $product->category;
+        $categories = $category->children()->get();
 
         $selectionProducts = Product::all();
         if ($selectionProducts->count() > 10) {
             $selectionProducts = $selectionProducts->random(10);
         }
 
-        return view('pages.product', compact('product', 'categories', 'selectionProducts'));
+        return view('pages.product', compact('product', 'category', 'categories', 'selectionProducts'));
     }
 
     /**
@@ -184,15 +212,10 @@ class SiteController extends Controller
     {
         $cartLines = auth()->user()->carts;
 
-        $totalPrice = 0;
-        $totalQuantity = 0;
+        $cartTotals = $this->getCartTotals();
 
-        if ($cartLines) {
-            foreach ($cartLines as $line) {
-                $totalPrice += $line->product->priceAfterDiscount * $line->quantity;
-                $totalQuantity += $line->quantity;
-            }
-        }
+        $totalPrice = $cartTotals['price'];
+        $totalQuantity = $cartTotals['quantity'];
 
         return view('pages.cart', compact('cartLines', 'totalPrice', 'totalQuantity'));
     }
@@ -237,7 +260,9 @@ class SiteController extends Controller
             $cart->save();
         }
 
-        return $cart;
+        $cartTotals = $this->getCartTotals();
+
+        return $cartTotals;
     }
 
     /**
@@ -252,5 +277,25 @@ class SiteController extends Controller
             ->delete();
 
         return redirect(route('cart'));
+    }
+
+    protected function getCartTotals()
+    {
+        $cartLines = auth()->user()->carts;
+
+        $totalPrice = 0;
+        $totalQuantity = 0;
+
+        if ($cartLines) {
+            foreach ($cartLines as $line) {
+                $totalPrice += $line->product->priceAfterDiscount * $line->quantity;
+                $totalQuantity += $line->quantity;
+            }
+        }
+
+        return [
+            'price' => $totalPrice,
+            'quantity' => $totalQuantity
+        ];
     }
 }

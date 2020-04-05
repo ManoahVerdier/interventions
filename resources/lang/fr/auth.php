@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-    'is_active' => 'Your account is not active',
+    'failed' => 'Ces identifiants ne correspondent à aucun utilisateur.',
+    'throttle' => 'Nombre trop grand d\'essais. Veuillez réessayer dans :seconds secondes.',
+    'not_active' => 'Votre compte n\'est pas encore actif. Vous recevrez un email quand notre équipe l\'activera.',
 ];

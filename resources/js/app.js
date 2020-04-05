@@ -51,11 +51,14 @@ $('select[name="quantity"]').on('change', (event) => {
 
     // Calcule le prix total
     let unitPrice = parseFloat($('.unit-price', formEl).val());
+    let unitStrikedPrice = parseFloat($('.unit-striked-price', formEl).val());
     let quantity = parseFloat(quantityEl.val());
     let totalPrice = unitPrice * quantity;
+    let totalStrikedPrice = unitStrikedPrice * quantity;
 
     // Formatte le prix
     let totalPriceFormatted = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(totalPrice);
+    let totalStrikedPriceFormatted = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(totalStrikedPrice);
 
     // Si on est sur la page Panier, on met à jour la quantité
     if ($('#cart-page').length > 0) {
@@ -73,13 +76,19 @@ $('select[name="quantity"]').on('change', (event) => {
 
         $.post(url, data).then(response => {
             if (response) {
-                // Met à jour le prix total
+                // Met à jour le prix total et le prix barré de l'article
                 $('span.value', formEl).html(totalPriceFormatted);
+                $('span.striked-value', formEl).html(totalStrikedPriceFormatted);
+
+                // Met à jour le nombre d'articles et le prix total du panier
+                $('#cart-summary .items-count').html(response.quantity);
+                $('#cart-summary .amount .value').html(new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(response.price));
             }
         });
     } else {
         // Met à jour le prix total
         $('span.value', formEl).html(totalPriceFormatted);
+        $('span.striked-value', formEl).html(totalStrikedPriceFormatted);
     }
 });
 
@@ -114,3 +123,8 @@ $('a.toggle-favorite').on('click', (event) => {
         }
     });
 })
+
+// Sélectionne le texte au clic dans le champ de recherche
+$('#search input').on('click', event => {
+    $(event.currentTarget).select();
+});

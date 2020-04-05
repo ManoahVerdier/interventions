@@ -12,6 +12,11 @@
     color: $primary;
 }
 
+.error {
+    color: $red;
+    text-transform: none;
+}
+
 .primary-bg {
     background-color: $primary;
 }

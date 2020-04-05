@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 use Uccello\Core\Database\Eloquent\Model;
 use Uccello\Core\Support\Traits\UccelloModule;
 
-class Product extends Model
+class Product extends Model implements Searchable
 {
     use SoftDeletes;
     use UccelloModule;
@@ -24,6 +26,20 @@ class Product extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    public $searchableType = 'product';
+
+    public $searchableColumns = [
+        'name',
+    ];
+
+    public function getSearchResult(): SearchResult
+    {
+        return new SearchResult(
+            $this,
+            $this->recordLabel
+        );
+    }
 
     public function category()
     {

@@ -71,7 +71,7 @@ id="register-page" class="h-100"
                         <div class="pr-3">
                             <img src="{{ asset('img/login/name.png') }}" width="35">
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="first_name">Prénom</label>
                             <input id="first_name" type="text" name="first_name" class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}" value="{{ old('first_name') }}">
 
@@ -80,14 +80,14 @@ id="register-page" class="h-100"
                                     <strong>{{ $errors->first('first_name') }}</strong>
                                 </span>
                             @endif
-                        </div>
-                        <div class="form-group ml-3">
-                            <label for="last_name">Nom</label>
-                            <input id="last_name" type="text" name="last_name" class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" value="{{ old('last_name') }}">
+                        </div> --}}
+                        <div class="flex-fill form-group">
+                            <label for="name">Prénom et Nom</label>
+                            <input id="name" type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ old('name') }}">
 
-                            @if ($errors->has('last_name'))
+                            @if ($errors->has('name'))
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('last_name') }}</strong>
+                                    <strong>{{ $errors->first('name') }}</strong>
                                 </span>
                             @endif
                         </div>
@@ -129,11 +129,11 @@ id="register-page" class="h-100"
 
                     {{-- Password confirmation --}}
                     <div class="d-flex mt-2">
-                        <div class="pr-3">
+                        {{-- <div class="pr-3">
                             <img src="{{ asset('img/login/password.png') }}" width="35">
-                        </div>
-                        <div class="flex-fill form-group mb-2">
-                            <label for="password_confirmation">Mot de passe</label>
+                        </div> --}}
+                        <div class="flex-fill form-group mb-2 ml-5">
+                            <label for="password_confirmation">Mot de passe (confirmation)</label>
                             <input id="password_confirmation" type="password" name="password_confirmation" class="form-control">
                         </div>
                     </div>
@@ -162,11 +162,14 @@ id="register-page" class="h-100"
                             J'accepte les <a href="">conditions générales de ventes</a> de Prodice.
                         </label>
 
-                        @if ($errors->has('cgv'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('phone') }}</strong>
-                            </span>
-                        @endif
+                    </div>
+
+                    @if ($errors->has('cgv'))
+                    <div class="mb-3 text-center">
+                        <span role="alert">
+                            <strong class="error">{{ $errors->first('cgv') }}</strong>
+                        </span>
+                    @endif
                     </div>
 
                     <div class="pb-3">

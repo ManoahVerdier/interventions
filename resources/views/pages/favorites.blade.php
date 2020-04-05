@@ -10,7 +10,7 @@ id="favorites-page"
 @section('header')
     @include('layouts.partials.header.blue', [
         'title' => 'Favoris',
-        'subtitle' => 'liés à ma gamme de produits',
+        // 'subtitle' => 'liés à ma gamme de produits',
     ])
 
     <nav class="sub-header">
@@ -29,12 +29,12 @@ id="favorites-page"
                         </a>
 
                         <div>
-                            <img src="{{ asset('img/layout/chevron-right.png') }}">
+                            <img src="{{ asset('img/layout/chevron-bottom-blue.png') }}">
                         </div>
                     </div>
                 </div>
 
-                <div class="col-1 d-flex justify-content-center">
+                {{-- <div class="col-1 d-flex justify-content-center">
                     <div class="separator"></div>
                 </div>
 
@@ -51,10 +51,10 @@ id="favorites-page"
                         </a>
 
                         <div>
-                            <img src="{{ asset('img/layout/chevron-bottom-blue.png') }}">
+                            <img src="{{ asset('img/layout/chevron-right.png') }}">
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </nav>

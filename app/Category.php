@@ -37,7 +37,7 @@ class Category extends Tree implements Searchable
     {
         parent::boot();
 
-        // Linck to parent record
+        // Link to parent record
         static::created(function ($model) {
             static::linkToParentRecord($model);
         });

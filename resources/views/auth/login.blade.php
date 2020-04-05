@@ -57,11 +57,11 @@ id="login-page" class="h-100"
                             <label for="identity">J'entre mon identifiant</label>
                             <input id="identity" type="text" name="identity" class="form-control{{ $errors->has('identity') ? ' is-invalid' : '' }}" placeholder="Adresse email" value="{{ old('email') }}"  autofocus>
 
-                            @if ($errors->has('identity'))
+                            {{-- @if ($errors->has('identity'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('identity') }}</strong>
                                 </span>
-                            @endif
+                            @endif --}}
                         </div>
                     </div>
 
@@ -89,10 +89,20 @@ id="login-page" class="h-100"
                         @endif
                     </div>
 
+                    @if ($errors->has('is_active'))
+                    <div class="mb-3 text-center">
+                        <span class="text-danger error" role="alert" style="text-transform: none">
+                            <strong>{{ $errors->first('is_active') }}</strong>
+                        </span>
+                    </div>
+                    @endif
+
                     <div class="pb-3">
                         <button type="submit" class="btn btn-warning btn-lg btn-block delete-btn">
                             Connexion
                         </button>
+
+
                     </div>
 
                     <div class="pb-3">

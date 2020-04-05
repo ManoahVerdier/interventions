@@ -24,7 +24,7 @@ id="cart-page"
 @section('content')
 <section id="product-list">
     <div class="container">
-        @foreach ($cartLines as $line)
+        @forelse ($cartLines as $line)
             @php ($product = $line->product)
             @include('layouts.partials.product.line', [
                 'image' => $product->image ?? asset('img/product/image_not_available.png'),
@@ -43,7 +43,9 @@ id="cart-page"
                 'isFavorite' => $product->isUserFavorite,
                 'remove' => true
             ])
-        @endforeach
+        @empty
+            <div class="text-danger text-center">{{ __('site.cart.empty') }}</div>
+        @endforelse
     </div>
 </section>
 @endsection

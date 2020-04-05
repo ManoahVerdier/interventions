@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $user->username = 'admin';
         $user->name = 'Admin';
         $user->is_admin = true;
+        $user->is_active = true;
         $user->save();
 
         // Create uuid

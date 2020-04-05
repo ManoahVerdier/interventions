@@ -22,7 +22,9 @@
             {{-- Search bar --}}
             @if ($withSearch ?? false)
             <div id="search" class="col-md-5">
-                <input type="email" class="form-control" placeholder="Un produit, une marque ?" autofocus>
+                <form method="get" action="{{ route('product.search.results') }}">
+                    <input type="text" name="q" class="form-control" placeholder="Un produit, une marque ?" value="{{ $q ?? '' }}" autofocus>
+                </form>
             </div>
             @endif
 
@@ -71,7 +73,7 @@
                     <i class="fas fa-shopping-cart fa-2x"></i>
 
                     <div class="d-flex pt-1">
-                        <span>Sous-total ({{ trans_choice('site.cart.items', $productsCount, ['value' => $productsCount]) }}):</span>
+                        <span>Sous-total (<span class="items-count">{{ $productsCount }}</span> {{ trans_choice('site.cart.items', $productsCount) }}):</span>
                         <div class="amount">
                             <span class="value">{{ number_format($totalPrice, 2, ',', ' ') }} €</span><br>
                             Prix H.T.
