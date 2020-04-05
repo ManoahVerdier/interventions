@@ -13,6 +13,7 @@
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.7",
+        "nothingworks/blade-svg": "^0.3.4",
         "uccello/module-designer": "^1.1",
         "uccello/uccello": "^1.0"
     },

@@ -24,6 +24,9 @@
             <div id="search" class="col-md-5">
                 <form method="get" action="{{ route('product.search.results') }}">
                     <input type="text" name="q" class="form-control" placeholder="Un produit, une marque ?" value="{{ $q ?? '' }}" autofocus>
+                    <button type="sybmit" class="btn btn-link">
+                        @svg('resources/svg/search', ['width' => 40, 'height' => 40])
+                    </button>
                 </form>
             </div>
             @endif
