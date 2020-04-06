@@ -27,8 +27,50 @@ class DatabaseSeeder extends Seeder
             'record_id' => $user->getKey(),
         ]);
 
-        // factory(\App\Brand::class, 40)->create();
-        // factory(\App\Category::class, 10)->create();
-        // factory(\App\Product::class, 50)->create();
+        $this->makeBrands();
+        $this->makeCategories();
+
+        factory(\App\Product::class, 50)->create();
+    }
+
+    protected function makeBrands()
+    {
+        $brands = ['Rational', 'Unox', 'Convotherm', 'Granuldisk', 'Franstal'];
+
+        foreach ($brands as $name) {
+            $brand = factory(\App\Brand::class)->make();
+            $brand->name = $name;
+            $brand->save();
+        }
+    }
+
+    protected function makeCategories()
+    {
+        $categories = [
+            'Four' => [
+                'Self Cooking Center',
+                'Combimaster & Climaplus Combi',
+                'Gamme mini 6 à 20 niveaux',
+                'Four à sol 20/40 niveaux',
+                'Four jusqu\'à 10 niveaux',
+            ],
+
+            'Vaisselle' => [
+                'Produits nettoyants'
+            ]
+        ];
+
+        foreach ($categories as $rootName => $subCategories) {
+            $rootCategory = factory(\App\Category::class)->make();
+            $rootCategory->name = $rootName;
+            $rootCategory->save();
+
+            foreach ($subCategories as $name) {
+                $category = factory(\App\Category::class)->make();
+                $category->name = $name;
+                $category->save();
+                $category->setChildOf($rootCategory);
+            }
+        }
     }
 }
