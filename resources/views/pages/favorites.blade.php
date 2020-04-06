@@ -76,7 +76,7 @@ id="favorites-page"
                 'brandImage' => $product->brand->logo ?? null,
                 'brandName' => $product->brand->name ?? null,
                 'striked_price' => $product->discount ? $product->price : null,
-                'price' => $product->priceAfterDiscount,
+                'price' => $product->amountHTAfterDiscount,
                 'discount' => $product->discount,
                 'isFavorite' => $product->isUserFavorite
             ])

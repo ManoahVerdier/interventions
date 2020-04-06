@@ -31,8 +31,8 @@ id="search-results-page"
                 'withBrand' => true,
                 'brandImage' => $product->brand->logo ?? null,
                 'brandName' => $product->brand->name ?? null,
-                'striked_price' => $product->discount ? $product->price : null,
-                'price' => $product->priceAfterDiscount,
+                'striked_price' => $product->discount ? $product->amount_ht : null,
+                'price' => $product->amountHTAfterDiscount,
                 'discount' => $product->discount,
                 'isFavorite' => $product->isUserFavorite
             ])

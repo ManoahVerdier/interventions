@@ -2,8 +2,11 @@
 
 @section('title', 'Prodice')
 
+@section('page', 'cart')
+
 @section('extra-meta')
 <meta name="cart-update-url" content="{{ route('cart.update') }}">
+<meta name="cart-validate-url" content="{{ route('cart.validate') }}">
 @append
 
 @section('body-attr')
@@ -38,7 +41,7 @@ id="cart-page"
                 'brandImage' => $product->brand->logo ?? null,
                 'brandName' => $product->brand->name ?? null,
                 'striked_price' => $product->discount ? $product->price * $line->quantity : null,
-                'price' => $product->priceAfterDiscount * $line->quantity,
+                'price' => $product->amountHTAfterDiscount * $line->quantity,
                 'discount' => $product->discount,
                 'isFavorite' => $product->isUserFavorite,
                 'remove' => true

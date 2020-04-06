@@ -1,3 +1,5 @@
+import {Cart} from './cart';
+
 export class Autoloader {
     constructor() {
         this.lazyLoad()
@@ -8,7 +10,7 @@ export class Autoloader {
 
         switch (page) {
             case 'cart':
-                // new Homepage();
+                    new Cart();
                 break;
 
             default:

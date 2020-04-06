@@ -12,7 +12,7 @@ use Uccello\Core\Models\Filter;
 use Uccello\Core\Models\Relatedlist;
 use Uccello\Core\Models\Link;
 
-class CreateProductModule extends Migration
+class CreateOrderModule extends Migration
 {
     /**
      * Run the migrations.
@@ -38,10 +38,10 @@ class CreateProductModule extends Migration
     public function down()
     {
         // Drop table
-        Schema::dropIfExists($this->tablePrefix . 'products');
+        Schema::dropIfExists($this->tablePrefix . 'orders');
 
         // Delete module
-        Module::where('name', 'product')->forceDelete();
+        Module::where('name', 'order')->forceDelete();
     }
 
     protected function initTablePrefix()
@@ -53,34 +53,28 @@ class CreateProductModule extends Migration
 
     protected function createTable()
     {
-        Schema::create($this->tablePrefix . 'products', function (Blueprint $table) {
+        Schema::create($this->tablePrefix . 'orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('reference')->nullable();
-            $table->unsignedInteger('category_id');
-            $table->unsignedInteger('brand_id')->nullable();
-            $table->string('short_description')->nullable();
-            $table->text('description')->nullable();
-            $table->decimal('amount_ht', 13, 2);
-            $table->decimal('amount_ttc', 13, 2);
-            $table->unsignedInteger('discount')->nullable();
-            $table->string('quantity')->nullable();
-            $table->string('image')->nullable();
+            $table->unsignedInteger('user_id')->nullable();
+            $table->decimal('total_ht', 13, 2)->nullable();
+            $table->decimal('total_ttc', 13, 2)->nullable();
+            $table->string('status')->nullable();
             $table->unsignedInteger('domain_id');
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('domain_id')->references('id')->on('uccello_domains');
-// %table_foreign_keys%
+            $table->foreign('user_id')->references('id')->on('users');
+
         });
     }
 
     protected function createModule()
     {
         $module = Module::create([
-            'name' => 'product',
-            'icon' => 'category',
-            'model_class' => 'App\Product',
+            'name' => 'order',
+            'icon' => 'shopping_cart',
+            'model_class' => 'App\Order',
             'data' => null
         ]);
 
@@ -116,125 +110,67 @@ class CreateProductModule extends Migration
             'data' => null
         ]);
 
-        // Field name
+        // Field createdat
         Field::create([
             'module_id' => $module->id,
             'block_id' => $block->id,
-            'name' => 'name',
-            'uitype_id' => uitype('text')->id,
-            'displaytype_id' => displaytype('everywhere')->id,
-            'sequence' => $block->fields()->count(),
-            'data' => json_decode('{"rules":"required"}')
-        ]);
-
-        // Field reference
-        Field::create([
-            'module_id' => $module->id,
-            'block_id' => $block->id,
-            'name' => 'reference',
-            'uitype_id' => uitype('text')->id,
-            'displaytype_id' => displaytype('everywhere')->id,
+            'name' => 'created_at',
+            'uitype_id' => uitype('datetime')->id,
+            'displaytype_id' => displaytype('detail')->id,
             'sequence' => $block->fields()->count(),
             'data' => null
         ]);
 
-        // Field category
+        // Field user
         Field::create([
             'module_id' => $module->id,
             'block_id' => $block->id,
-            'name' => 'category',
+            'name' => 'user',
             'uitype_id' => uitype('entity')->id,
             'displaytype_id' => displaytype('everywhere')->id,
             'sequence' => $block->fields()->count(),
-            'data' => json_decode('{"rules":"required","module":"category"}')
+            'data' => json_decode('{"module":"user"}')
         ]);
 
-        // Field brand
+        // Field total_ht
         Field::create([
             'module_id' => $module->id,
             'block_id' => $block->id,
-            'name' => 'brand',
-            'uitype_id' => uitype('entity')->id,
-            'displaytype_id' => displaytype('everywhere')->id,
-            'sequence' => $block->fields()->count(),
-            'data' => json_decode('{"module":"brand"}')
-        ]);
-
-        // Field short_description
-        Field::create([
-            'module_id' => $module->id,
-            'block_id' => $block->id,
-            'name' => 'short_description',
-            'uitype_id' => uitype('text')->id,
-            'displaytype_id' => displaytype('everywhere')->id,
-            'sequence' => $block->fields()->count(),
-            'data' => null
-        ]);
-
-        // Field description
-        Field::create([
-            'module_id' => $module->id,
-            'block_id' => $block->id,
-            'name' => 'description',
-            'uitype_id' => uitype('textarea')->id,
-            'displaytype_id' => displaytype('everywhere')->id,
-            'sequence' => $block->fields()->count(),
-            'data' => null
-        ]);
-
-        // Field amount_ht
-        Field::create([
-            'module_id' => $module->id,
-            'block_id' => $block->id,
-            'name' => 'amount_ht',
+            'name' => 'total_ht',
             'uitype_id' => uitype('number')->id,
             'displaytype_id' => displaytype('everywhere')->id,
             'sequence' => $block->fields()->count(),
-            'data' => json_decode('{"rules":"required"}')
+            'data' => null
         ]);
 
-        // Field amount_ttc
+        // Field total_ttc
         Field::create([
             'module_id' => $module->id,
             'block_id' => $block->id,
-            'name' => 'amount_ttc',
+            'name' => 'total_ttc',
             'uitype_id' => uitype('number')->id,
             'displaytype_id' => displaytype('everywhere')->id,
             'sequence' => $block->fields()->count(),
-            'data' => json_decode('{"rules":"required"}')
-        ]);
-
-        // Field discount
-        Field::create([
-            'module_id' => $module->id,
-            'block_id' => $block->id,
-            'name' => 'discount',
-            'uitype_id' => uitype('integer')->id,
-            'displaytype_id' => displaytype('everywhere')->id,
-            'sequence' => $block->fields()->count(),
             'data' => null
         ]);
 
-        // Field quantity
+        // Field status
         Field::create([
             'module_id' => $module->id,
             'block_id' => $block->id,
-            'name' => 'quantity',
-            'uitype_id' => uitype('text')->id,
+            'name' => 'status',
+            'uitype_id' => uitype('select')->id,
             'displaytype_id' => displaytype('everywhere')->id,
             'sequence' => $block->fields()->count(),
-            'data' => json_decode('{"info":"field_info.quantity"}')
-        ]);
-
-        // Field image
-        Field::create([
-            'module_id' => $module->id,
-            'block_id' => $block->id,
-            'name' => 'image',
-            'uitype_id' => uitype('image')->id,
-            'displaytype_id' => displaytype('everywhere')->id,
-            'sequence' => $block->fields()->count(),
-            'data' => null
+            'data' => [
+                'default' => 'status.pending',
+                'choices' => [
+                    'status.pending',
+                    'status.confirmed',
+                    'status.validated',
+                    'status.canceled',
+                ]
+            ]
         ]);
 
     }
@@ -248,29 +184,30 @@ class CreateProductModule extends Migration
             'user_id' => null,
             'name' => 'filter.all',
             'type' => 'list',
-            'columns' => [ 'image', 'name', 'reference', 'category', 'brand', 'amount_ht', 'amount_ttc', 'discount', 'quantity' ],
+            'columns' => [ 'created_at', 'user', 'total_ht', 'total_ttc', 'status' ],
             'conditions' => null,
             'order' => null,
             'is_default' => true,
             'is_public' => false,
             'data' => [ 'readonly' => true ]
         ]);
+
     }
 
     protected function createRelatedLists($module)
     {
-        $relatedModule = Module::where('name', 'category')->first();
+        $relatedModule = Module::where('name', 'user')->first();
 
         Relatedlist::create([
             'module_id' => $relatedModule->id,
             'related_module_id' => $module->id,
-            'related_field_id' => $module->fields->where('name', 'category')->first()->id,
+            'related_field_id' => $module->fields->where('name', 'user')->first()->id,
             'tab_id' => null,
-            'label' => 'relatedlist.products',
+            'label' => 'relatedlist.orders',
             'type' => 'n-1',
             'method' => 'getDependentList',
             'sequence' => $module->relatedlists()->count(),
-            'data' => [ 'actions' => [ 'add', 'select' ] ]
+            'data' => null
         ]);
     }
 

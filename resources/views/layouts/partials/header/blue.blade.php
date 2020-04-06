@@ -87,7 +87,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <a class="btn btn-warning btn-lg btn-block">
+                <a id="order-btn" class="btn btn-warning btn-lg btn-block">
                     Passer commande
                 </a>
             </div>

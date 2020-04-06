@@ -6,7 +6,12 @@ use App\Brand;
 use App\Cart;
 use App\Category;
 use App\Favorite;
+use App\Notifications\NewOrder;
+use App\Notifications\OrderConfirmation;
+use App\Order;
+use App\OrderLine;
 use App\Product;
+use App\User;
 use Illuminate\Http\Request;
 use Uccello\Core\Models\Domain;
 
@@ -279,6 +284,73 @@ class SiteController extends Controller
         return redirect(route('cart'));
     }
 
+    /**
+     * Valide le panier : Crée la commande dans la base de données,
+     * envoie un email aux responsables et un email à l'utilisateur,
+     * supprime le panier actuel.
+     *
+     * @return \Illuminite\Http\Response
+     */
+    public function validateCart()
+    {
+        // Create order
+        $order = $this->createOrder();
+
+        // Send email to order managers
+        $usersToNotify = explode(';', env('USERS_TO_NOTIFY_AFTER_ORDER'));
+        if ($usersToNotify) {
+            foreach ($usersToNotify as $userName) {
+                $user = User::where('username', trim($userName))->first();
+
+                if ($user) {
+                    $user->notify(new NewOrder(auth()->user(), $order));
+                }
+            }
+        }
+
+        // Send confirmation email to user
+        auth()->user()->notify(new OrderConfirmation($order));
+
+        // Delete user cart
+        Cart::where('user_id', auth()->id())
+            ->delete();
+
+        return [
+            'success' => true
+        ];
+    }
+
+    protected function createOrder()
+    {
+        $cartLines = auth()->user()->carts;
+
+        $totalHT = $totalTTC = 0;
+        foreach ($cartLines as $line) {
+            $totalHT += $line->product->amountHTAfterDiscount;
+            $totalTTC += $line->product->amountTTCAfterDiscount;
+        }
+
+        $order = Order::create([
+            'user_id' => auth()->id(),
+            'total_ht' => $totalHT,
+            'total_ttc' => $totalTTC,
+            'status' => 'status.pending',
+            'domain_id' => Domain::first()->id
+        ]);
+
+        foreach ($cartLines as $line) {
+            OrderLine::create([
+                'order_id' => $order->getKey(),
+                'product_id' => $line->product_id,
+                'quantity' => $line->quantity,
+                'amount_ht' => $line->product->amountHTAfterDiscount,
+                'amount_ttc' => $line->product->amountTTCAfterDiscount,
+            ]);
+        }
+
+        return $order;
+    }
+
     protected function getCartTotals()
     {
         $cartLines = auth()->user()->carts;
@@ -288,7 +360,7 @@ class SiteController extends Controller
 
         if ($cartLines) {
             foreach ($cartLines as $line) {
-                $totalPrice += $line->product->priceAfterDiscount * $line->quantity;
+                $totalPrice += $line->product->amountHTAfterDiscount * $line->quantity;
                 $totalQuantity += $line->quantity;
             }
         }

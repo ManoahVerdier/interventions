@@ -61,9 +61,14 @@ class Product extends Model implements Searchable
         return $this->hasMany(Cart::class);
     }
 
-    public function getPriceAfterDiscountAttribute()
+    public function getAmountHTAfterDiscountAttribute()
     {
-        return $this->discount ? $this->price - ($this->price * $this->discount / 100) : $this->price;
+        return $this->discount ? $this->amount_ht - ($this->amount_ht * $this->discount / 100) : $this->amount_ht;
+    }
+
+    public function getAmountTTCAfterDiscountAttribute()
+    {
+        return $this->discount ? $this->amount_ttc - ($this->amount_ttc * $this->discount / 100) : $this->amount_ttc;
     }
 
     public function getIsUserFavoriteAttribute()

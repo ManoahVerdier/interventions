@@ -32,5 +32,6 @@ Route::get('/cart', 'SiteController@cart')->name('cart')->middleware('auth');
 Route::post('/cart', 'SiteController@addToCart')->name('cart.add')->middleware('auth');
 Route::post('/cart/update', 'SiteController@updateCart')->name('cart.update')->middleware('auth');
 Route::post('/cart/delete', 'SiteController@deleteFromCart')->name('cart.delete')->middleware('auth');
+Route::post('/cart/validate', 'SiteController@validateCart')->name('cart.validate')->middleware('auth');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/activation', 'SiteController@activation')->name('activation');

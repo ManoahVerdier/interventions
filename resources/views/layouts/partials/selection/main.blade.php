@@ -34,7 +34,7 @@
                             'quantity' => $product->quantity,
                             'withPrice' => true,
                             'striked_price' => $product->discount ? $product->price : null,
-                            'price' => $product->priceAfterDiscount
+                            'price' => $product->amountHTAfterDiscount
                         ])
                     </div>
                     @endforeach

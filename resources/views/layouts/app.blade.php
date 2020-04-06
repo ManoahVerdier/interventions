@@ -8,6 +8,7 @@
 
         {{-- CSRF Token --}}
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="page" content="@yield('page')">
 
         @yield('extra-meta')
 

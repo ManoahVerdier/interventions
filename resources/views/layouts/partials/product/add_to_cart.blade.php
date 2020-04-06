@@ -18,8 +18,8 @@
                 @if (!empty($striked_price))<span class="striked-value">{{ number_format($striked_price, 2, ',', ' ') }} €</span>@endif
                 <span class="value">{{ number_format($price, 2, ',', ' ') }} €</span><br>
                 <span class="label">Prix H.T.</span>
-                <input type="hidden" class="unit-price" value="{{ $product->priceAfterDiscount }}">
-                <input type="hidden" class="unit-striked-price" value="{{ $product->price }}">
+                <input type="hidden" class="unit-price" value="{{ $product->amountHTAfterDiscount }}">
+                <input type="hidden" class="unit-striked-price" value="{{ $product->amount_ht }}">
             </div>
         </div>
     </div>

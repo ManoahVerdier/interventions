@@ -43,7 +43,7 @@ id="product-page"
                     'withPrice' => false,
                     'withBrand' => true,
                     'withAddToCart' => true,
-                    'price' => $product->priceAfterDiscount,
+                    'price' => $product->amountHTAfterDiscount,
                     'brandImage' => $product->brand->logo ?? null,
                     'brandName' => $product->brand->name ?? null
                 ])

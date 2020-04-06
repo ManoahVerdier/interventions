@@ -11,6 +11,8 @@ $factory->define(Product::class, function (Faker $faker) {
     $categoriesCount = Category::count();
     $hasDiscount = rand(0, 3) === 0;
 
+    $amountHT = rand(10, 200);
+
     return [
         'name' => $faker->word,
         'reference' => rand(1000, 99999),
@@ -19,7 +21,8 @@ $factory->define(Product::class, function (Faker $faker) {
         'brand_id' => rand(1, $brandsCount-1),
         'short_description' => $faker->paragraph(1),
         'description' => $faker->paragraph(20),
-        'price' => rand(10, 200),
+        'amount_ht' => $amountHT,
+        'amount_ttc' => $amountHT * 1.2,
         'discount' => $hasDiscount ? $faker->randomElement([10, 20, 30, 40, 50]) : null,
         'quantity' => $faker->randomElement(['1 litre', '10 capsules', '10 kg']),
         'domain_id' => Domain::first()->id

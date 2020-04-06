@@ -9,6 +9,8 @@ require('./bootstrap');
 
 import '@fortawesome/fontawesome-free/js/all';
 import 'owl.carousel';
+import './autoloader';
+import { Autoloader } from './autoloader';
 
 $('.owl-carousel').each((index, el) => {
     $(el).owlCarousel({
@@ -128,3 +130,5 @@ $('a.toggle-favorite').on('click', (event) => {
 $('#search input').on('click', event => {
     $(event.currentTarget).select();
 });
+
+new Autoloader();
