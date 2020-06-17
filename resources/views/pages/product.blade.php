@@ -37,15 +37,18 @@ id="product-page"
 
             <div class="col-md-5">
                 @include('layouts.partials.product.description', [
+                    'reference' => $product->reference,
                     'name' => $product->name,
                     'short_description' => $product->short_description,
+                    'description' => $product->description,
                     'quantity' => $product->quantity,
                     'withPrice' => false,
                     'withBrand' => true,
                     'withAddToCart' => true,
+                    'withDescription' => true,
                     'price' => $product->amountHTAfterDiscount,
                     'brandImage' => $product->brand->logo ?? null,
-                    'brandName' => $product->brand->name ?? null
+                    'brandName' => $product->brand->name ?? null,
                 ])
             </div>
         </div>

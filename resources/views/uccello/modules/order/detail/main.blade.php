@@ -14,6 +14,7 @@
                 <th>{{ uctrans('line.product', $module) }}</th>
                 <th class="right-align">{{ uctrans('line.quantity', $module) }}</th>
                 <th class="right-align">{{ uctrans('line.amount_ht', $module) }}</th>
+                <th class="right-align">{{ uctrans('line.amount_vat', $module) }}</th>
                 <th class="right-align">{{ uctrans('line.amount_ttc', $module) }}</th>
             </tr>
             @forelse($record->lines as $line)
@@ -21,6 +22,7 @@
                 <td><a href="{{ ucroute('uccello.detail', $domain, $productModule, ['id' => $line->product_id]) }}">{{ $line->product->name }}</a></td>
                 <td class="right-align">{{ $line->quantity }}</td>
                 <td class="right-align">{{ number_format($line->amount_ht, 2, ',', ' ') }} €</td>
+                <td class="right-align">{{ number_format($line->amount_vat, 2, ',', ' ') }} €</td>
                 <td class="right-align">{{ number_format($line->amount_ttc, 2, ',', ' ') }} €</td>
             </tr>
             @empty

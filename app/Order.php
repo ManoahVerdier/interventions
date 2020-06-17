@@ -43,6 +43,11 @@ class Order extends Model
         return $this->hasMany(OrderLine::class);
     }
 
+    public function getTotalVatAttribute()
+    {
+        return $this->total_ttc - $this->total_ht;
+    }
+
     /**
     * Returns record label
     *

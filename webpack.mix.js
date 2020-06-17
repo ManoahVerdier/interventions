@@ -20,4 +20,6 @@ mix.js('resources/js/app.js', 'public/js')
   })
 
    .copyDirectory('resources/fonts', 'public/fonts')
-   .copyDirectory('resources/img', 'public/img');
+   .copyDirectory('resources/img', 'public/img')
+
+   mix.browserSync(process.env.MIX_APP_URL);

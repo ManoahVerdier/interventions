@@ -17,7 +17,7 @@
         {{-- Products --}}
         <div class="row">
             <div class="col-12">
-                <div class="owl-carousel owl-theme" data-loop="true" data-center="true" data-margin="20" data-autoplay="true" data-autoplay-timeout="5000">
+                <div class="owl-carousel owl-theme" data-xs="2" data-loop="true" data-center="true" data-margin="20" data-autoplay="true" data-autoplay-timeout="5000">
                     @foreach ($selectionProducts as $product)
                     <div>
                         @include('layouts.partials.product.image', [
@@ -29,8 +29,10 @@
                         ])
 
                         @include('layouts.partials.product.description', [
+                            'reference' => $product->reference,
                             'name' => $product->name,
                             'short_description' => substr($product->short_description, 0, 50),
+                            'description' => $product->description,
                             'quantity' => $product->quantity,
                             'withPrice' => true,
                             'striked_price' => $product->discount ? $product->price : null,

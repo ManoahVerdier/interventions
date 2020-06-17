@@ -25,6 +25,7 @@ return [
         'product' => 'Article',
         'quantity' => 'Quantité',
         'amount_ht' => 'Tarif HT',
+        'amount_vat' => 'Montant TVA',
         'amount_ttc' => 'Tarif TTC',
         'empty' => 'Aucun article lié à cette commande',
     ],

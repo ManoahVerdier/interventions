@@ -61,7 +61,7 @@ id="home-page"
 
         <div class="row">
             <div class="col-md-12">
-                <div class="owl-carousel owl-theme" data-loop="true" data-dots="false" data-md="5" data-autoplay="true" data-margin="30">
+                <div class="owl-carousel owl-theme" data-loop="true" data-dots="false" data-xs="2" data-md="5" data-autoplay="true" data-margin="30">
                     <div class="partner-logo">
                         {{-- <a href="https://www.rational-online.com" target="_blank"><img src="{{ asset('img/partner/rational.png') }}" alt="Rational" class="img-responsive"></a> --}}
                         <img src="{{ asset('img/partner/rational.png') }}" alt="Rational" class="img-responsive">

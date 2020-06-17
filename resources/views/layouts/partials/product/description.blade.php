@@ -2,6 +2,11 @@
     <a href="{{ route('product', ['id' => $product->getKey(), 'name' => $product->name]) }}" class="product-name">{{ $name }}</a>
     <p class="product-description">{{ $short_description }}</p>
 
+    <div class="reference">
+        <span class="label">Référence :</span>
+        <span class="value">{{ $reference }}</span>
+    </div>
+
     <div class="quantity">
         <span class="label">Quantité :</span>
         <span class="value">{{ $quantity }}</span>
@@ -15,6 +20,12 @@
         <b>{{ $brandName }}</b>
         @endif
     </div>
+    @endif
+
+    @if ($withDescription ?? false)
+    <p class="product-description">
+        {!! nl2br($description) !!}
+    </p>
     @endif
 
     @if ($withPrice ?? false)

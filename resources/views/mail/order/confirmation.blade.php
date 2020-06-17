@@ -1,5 +1,8 @@
 @component('mail::message')
-# Introduction
+# Confirmation de commande
+
+Le {{ date('d/m/Y') }} à {{ date('H:i') }}
+
 
 Bonjour,
 
@@ -13,13 +16,12 @@ Button Text
 @endcomponent --}}
 
 @component('mail::table')
-| Article       | Quantité      | Tarif HT |
-| ------------- |-------------:| --------:|
+| Article       | Quantité      | Tarif HT | Montant TVA | Total TTC |
+| ------------- |-------------:| --------:| --------:| --------:|
 @foreach($order->lines as $line)
-| {{ $line->product->name }}      | {{ $line->quantity }} | {{ number_format($line->amount_ht, 2, ',', ' ') }} € |
+| {{ $line->product->name }}      | {{ $line->quantity }} | {{ number_format($line->amount_ht, 2, ',', ' ') }} € | {{ number_format($line->amount_vat, 2, ',', ' ') }} € | {{ number_format($line->amount_ttc, 2, ',', ' ') }} € |
 @endforeach
-| **Total HT** | | **{{ number_format($order->total_ht, 2, ',', ' ') }} €** |
-| **Total TTC** | | **{{ number_format($order->total_ttc, 2, ',', ' ') }} €** |
+| **Total** | | **{{ number_format($order->total_ht, 2, ',', ' ') }} €** | **{{ number_format($order->total_vat, 2, ',', ' ') }} €** | **{{ number_format($order->total_ttc, 2, ',', ' ') }} €** |
 @endcomponent
 
 Cordialement,<br>

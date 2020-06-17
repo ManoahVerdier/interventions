@@ -23,4 +23,9 @@ class OrderLine extends Model
     {
         return $this->belongsTo(Product::class);
     }
+
+    public function getAmountVatAttribute()
+    {
+        return $this->amount_ttc - $this->amount_ht;
+    }
 }
