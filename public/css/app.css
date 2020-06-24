@@ -17057,20 +17057,6 @@ a.text-dark:focus {
   background-color: red;
 }
 
-nav {
-  transition: transform 0.5s cubic-bezier(0.86, 0, 0.07, 1);
-  z-index: 999;
-  position: fixed;
-}
-
-nav.hidden.fixed-top {
-  transform: translateY(-100%);
-}
-
-nav.hidden.fixed-bottom {
-  transform: translateY(100%);
-}
-
 .navbar-light {
   padding: 36px 0 0 0;
 }
