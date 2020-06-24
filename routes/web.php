@@ -26,7 +26,7 @@ Route::get('/product/{id}/{name}', 'SiteController@product')->name('product');
 Route::get('/category/{id}/brands', 'SiteController@searchBrands')->name('category.brands');
 Route::get('/category/{id}/{name}', 'SiteController@category')->name('category');
 Route::get('/category/{categoryId}/brand/{brandId}', 'SiteController@categoryBrand')->name('category.brand');
-Route::get('/favorites', 'SiteController@favorites')->name('favorites');
+Route::get('/favorites', 'SiteController@favorites')->name('favorites')->middleware('auth');
 Route::get('/favorites/{id}', 'SiteController@toggleFavorite')->name('favorites.toggle')->middleware('auth');
 Route::get('/cart', 'SiteController@cart')->name('cart')->middleware('auth');
 Route::post('/cart', 'SiteController@addToCart')->name('cart.add')->middleware('auth');

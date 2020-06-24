@@ -19,7 +19,7 @@ id="search-results-page"
 {{-- Content --}}
 @section('content')
 <section id="product-list">
-    <div class="container">
+    <div class="container d-flex d-md-block">
         @forelse ($products as $product)
             @include('layouts.partials.product.line', [
                 'image' => $product->image ?? asset('img/product/image_not_available.png'),
@@ -48,6 +48,9 @@ id="search-results-page"
 {{-- Footer --}}
 @section('footer')
     @include('layouts.partials.footer.main', ['footerClass' => 'grey'])
-
+    <div class="d-md-none">
+        {{-- Menu bottom --}}
+        @include('layouts.partials.footer.mobile')
+    </div>
     @section('footer-class', 'grey')
 @endsection

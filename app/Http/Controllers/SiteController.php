@@ -39,7 +39,10 @@ class SiteController extends Controller
             $selectionProducts = $selectionProducts->random(10);
         }
 
-        return view('pages.home', compact('selectionProducts'));
+        $categories = Category::getRoots()->get();
+        $productsCount = Product::count();
+
+        return view('pages.home', compact('selectionProducts','categories','productsCount'));
     }
 
     /**
@@ -57,12 +60,13 @@ class SiteController extends Controller
      *
      * @return \Illuminite\Http\Response
      */
-    public function search()
+    public function search($fromMenu=true)
     {
+        $fromMenu = request()->get('fromMenu') ?? true;
         $categories = Category::getRoots()->get();
         $productsCount = Product::count();
 
-        return view('pages.search', compact('categories', 'productsCount'));
+        return view('pages.search', compact('categories', 'productsCount','fromMenu'));
     }
 
     /**
@@ -168,6 +172,7 @@ class SiteController extends Controller
      */
     public function favorites()
     {
+
         $favorites = auth()->user()->favorites;
 
         $products = [];

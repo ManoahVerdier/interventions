@@ -14,9 +14,10 @@
     #slideshow {
         background-image: url("/img/layout/slideshow-bg.png");
         background-repeat: repeat-x;
-        height: 630px;
+        height: 550px;
         padding-top: 36px;
         color: white;
+        background-color: #f3f3f3;
 
         span.message {
             font-weight: 100;
@@ -51,5 +52,77 @@
         .partner-logo {
             padding: 30px;
         }
+    }
+
+    /*Recherche sur mobile = dans le corps*/
+    #search{
+        .searchbar {
+            position: relative;
+            height: 58px;
+            padding-left: 7px;
+            padding-top: 17px;
+            background-color: #f0f0f0;
+            border: none;
+            border-radius: 5px;
+            color: #b3afb6;
+            cursor: pointer;
+        
+            > span {
+              margin-left: 4px;
+              font-size:.80em;
+              width: calc(100% - 75px);
+              display: inline-block;
+              white-space: nowrap;
+            }
+        
+            .search-type {
+              color: #585655;
+            }
+        }
+    }
+
+    @import '../headers/categories';
+    #categories ul li a .counter img {
+        margin-bottom: 0px;
+    }
+
+    #categories ul li a span{
+        color:#414143;
+        font-size:10pt
+    }
+    
+    #categories ul li a .counter span{
+        color:#C5C3C8;
+        font-size:8pt
+    }
+}
+
+
+@media (max-width: 767px){
+    #slideshow .owl-carousel .owl-item img{
+        height:200px;
+    }
+
+    #selection{
+        .owl-carousel .product div.category-name{
+            font-size:8pt;
+            left:0px;
+            right:0px;
+            bottom:-35px;
+        }
+            
+        .owl-carousel div.description a.product-name{
+            font-size:8pt;
+        }
+            
+        .owl-carousel div.description .product-description{
+            font-size:8pt;
+        }
+            
+        .owl-carousel .product{
+            padding:50px 20px !important;
+            width:100%
+        }
+            
     }
 }

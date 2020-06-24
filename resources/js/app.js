@@ -24,12 +24,18 @@ $('.owl-carousel').each((index, el) => {
         responsive:{
             0:{
                 items: $(el).data('xs') ? $(el).data('xs') : 1,
+                autoHeight:true,
+                center:false,
             },
             600:{
                 items: $(el).data('sm') ? $(el).data('sm') : 3,
+                autoHeight:false,
+                center:true,
             },
             1000:{
                 items: $(el).data('md') ? $(el).data('md') : 5,
+                autoHeight:false,
+                center:true,
             }
         }
     })

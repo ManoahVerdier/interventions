@@ -24,7 +24,7 @@ id="category-page"
 {{-- Content --}}
 @section('content')
 <section id="product-list">
-    <div class="container">
+    <div class="container d-flex d-md-block" id="list-row">
         @foreach ($products as $product)
             @include('layouts.partials.product.line', [
                 'image' => $product->image ?? asset('img/product/image_not_available.png'),

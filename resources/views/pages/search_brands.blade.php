@@ -22,4 +22,8 @@ id="search-page"
 {{-- Footer --}}
 @section('footer')
     @include('layouts.partials.footer.main')
+    <div class="d-md-none">
+        {{-- Menu bottom --}}
+        @include('layouts.partials.footer.mobile')
+    </div>
 @endsection

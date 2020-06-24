@@ -5,21 +5,21 @@
 @section('body-attr')
 id="product-page"
 @endsection
+@if(!$agent->isMobile())
+    {{-- Header --}}
+    @section('header')
+        @php($productsCount = $product->category->products->count())
+        @include('layouts.partials.header.blue', [
+            'title' => $product->category->name,
+            'subtitle' => trans_choice('site.category.products', $productsCount, ['value' => $productsCount]),
+        ])
+        @include('layouts.partials.header.sub_header')
 
-{{-- Header --}}
-@section('header')
-    @php($productsCount = $product->category->products->count())
-    @include('layouts.partials.header.blue', [
-        'title' => $product->category->name,
-        'subtitle' => trans_choice('site.category.products', $productsCount, ['value' => $productsCount]),
-    ])
-    @include('layouts.partials.header.sub_header')
-
-    @if ($categories->count() > 0)
-        @include('layouts.partials.header.categories', ['hide' => true])
-    @endif
-@endsection
-
+        @if ($categories->count() > 0)
+            @include('layouts.partials.header.categories', ['hide' => true])
+        @endif
+    @endsection
+@endif
 {{-- Content --}}
 @section('content')
 <section id="product-detail">
@@ -32,6 +32,8 @@ id="product-page"
                     'category_icon' => $product->category->pictogram ?? null,
                     'category_name' => $product->category->name,
                     'isFavorite' => $product->isUserFavorite,
+                    'withAddToCart' => true,
+                    'price' => $product->amountHTAfterDiscount,
                 ])
             </div>
 
@@ -49,6 +51,7 @@ id="product-page"
                     'price' => $product->amountHTAfterDiscount,
                     'brandImage' => $product->brand->logo ?? null,
                     'brandName' => $product->brand->name ?? null,
+                    'isProductPage' => true,
                 ])
             </div>
         </div>
@@ -62,7 +65,10 @@ id="product-page"
 {{-- Footer --}}
 @section('footer')
     @include('layouts.partials.footer.main', ['footerClass' => 'grey'])
-
+    <div class="d-md-none">
+        {{-- Menu bottom --}}
+        @include('layouts.partials.footer.mobile')
+    </div>
     @section('footer-class')
     grey
     @endsection

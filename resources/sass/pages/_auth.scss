@@ -10,6 +10,10 @@
         width: 60%;
         line-height: .9;
 
+        @media(max-width:767px){
+            width:100%;
+        }
+
         &:hover {
             text-decoration: none;
 
@@ -43,6 +47,10 @@
         -webkit-box-shadow: 4px 4px 2px 0px rgba(233,233,233,1);
         -moz-box-shadow: 4px 4px 2px 0px rgba(233,233,233,1);
         box-shadow: 4px 4px 2px 0px rgba(233,233,233,1);
+
+        @media(max-width:767px){
+            width:100%;
+        }
 
         span {
             text-transform: uppercase;

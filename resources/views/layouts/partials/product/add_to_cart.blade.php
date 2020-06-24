@@ -3,7 +3,7 @@
     <input type="hidden" name="product" value="{{ $product->id }}">
 
     <div class="row">
-        <div class="col-4">
+        <div class="col-4 d-none d-md-block">
             <div class="form-group">
                 <select class="form-control" name="quantity">
                     @for ($i = 1; $i <= 50; $i++)
@@ -13,7 +13,7 @@
             </div>
         </div>
 
-        <div class="col-8">
+        <div class="col-12 col-md-8">
             <div class="price">
                 @if (!empty($striked_price))<span class="striked-value">{{ number_format($striked_price, 2, ',', ' ') }} €</span>@endif
                 <span class="value">{{ number_format($price, 2, ',', ' ') }} €</span><br>
@@ -24,7 +24,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row d-none d-md-flex">
         <div class="col-12">
             @if ($remove ?? false)
                 <button type="submit" class="btn btn-outline-secondary btn-lg btn-block delete-btn">
@@ -34,7 +34,7 @@
             @else
                 <button type="submit" class="btn btn-outline-warning btn-lg btn-block cart-btn">
                     <i class="fas fa-shopping-cart cart-icon"></i>
-                    Ajouter au panier
+                    <span class='d-none d-md-block'>Ajouter au panier</span>
                     {{-- <i class="fas fa-plus add-icon"></i> --}}
                 </button>
             @endif

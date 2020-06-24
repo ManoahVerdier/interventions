@@ -18,7 +18,7 @@
                         <a href="{{ $route }}">
                             <img src="{{ asset('img/layout/category-icon.png') }}"><span>{{ $category->name }}</span>
                             <div class="counter">
-                                {{-- <span>{{ $category->products->count() }}</span> --}}
+                                <span>{{ $category->products->count() }}</span>
                                 <img src="{{ asset('img/layout/chevron-right-blue.png') }}">
                             </div>
                         </a>
