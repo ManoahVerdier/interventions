@@ -34,7 +34,7 @@
             @else
                 <button type="submit" class="btn btn-outline-warning btn-lg btn-block cart-btn">
                     <i class="fas fa-shopping-cart cart-icon"></i>
-                    <span class='d-none d-md-block'>Ajouter au panier</span>
+                    <span class='d-none d-md-inline'>Ajouter au panier</span>
                     {{-- <i class="fas fa-plus add-icon"></i> --}}
                 </button>
             @endif
