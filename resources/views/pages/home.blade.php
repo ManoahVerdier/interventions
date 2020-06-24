@@ -48,11 +48,30 @@ id="home-page"
     </div>
 </section>
 
-{{-- Categories --}}
+@if($agent->isMobile())
+    {{-- Categories --}}
     @include('layouts.partials.header.categories', ['linkToBrands' => true])
-
+@endif
 <section id="reasurrance" class="d-flex justify-content-center valign-middle">
-    <img src="{{ asset('img/homepage/reasurrance.png') }}">
+    <div class="row py-4 d-flex d-md-none">
+        <div class="col-2 offset-1 p-3">
+            <img class="pt-1" width="40px" height="32px" src="{{ asset('img/homepage/headset.png') }}">
+        </div>
+        <div class="col-3 px-0 col_left">
+            <div class="first_line line">un service client</div>
+            <div class="second_line line">5j/7</div>
+            <div class="third_line line">09 67 89 53 54</div>
+        </div>
+        <div class="col-3 px-0 col_right">
+            <div class="first_line line">une livraison en</div>
+            <div class="second_line line">24/48h*</div>
+            <div class="third_line line">voir disponibilités*</div>
+        </div>
+        <div class="col-2 p-3 pt-4">
+            <img width="40px" height="28px" src="{{ asset('img/homepage/delivery.png') }}">
+        </div>
+    </div>
+    <img class='d-none d-md-flex' src="{{ asset('img/homepage/reasurrance.png') }}">
 </section>
 
 {{-- Selection --}}

@@ -39,7 +39,7 @@
     @endif
 
     @if ($withDescription ?? false)
-        @if($isProductPage ?? false)
+        @if(($isProductPage ?? false) && $agent->isMobile())
         <div class='description-wrap mt-3'>
             <a class="toggle-description mt-0 d-flex" data-toggle="collapse" href="#collapseDescription" role="button" aria-expanded="false" aria-controls="collapseDescription">
                 <div class="ml-3 flex-fill">

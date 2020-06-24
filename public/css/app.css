@@ -17202,21 +17202,24 @@ nav.hidden.fixed-bottom {
 #login-page header.primary-bg,
 #register-page header.primary-bg,
 #retrieve-password-page header.primary-bg,
-#reset-password-page header.primary-bg {
+#reset-password-page header.primary-bg,
+#profile-page header.primary-bg {
   padding-top: 20px;
 }
 
 #login-page header.primary-bg #search,
 #register-page header.primary-bg #search,
 #retrieve-password-page header.primary-bg #search,
-#reset-password-page header.primary-bg #search {
+#reset-password-page header.primary-bg #search,
+#profile-page header.primary-bg #search {
   position: relative;
 }
 
 #login-page header.primary-bg #search .searchbar,
 #register-page header.primary-bg #search .searchbar,
 #retrieve-password-page header.primary-bg #search .searchbar,
-#reset-password-page header.primary-bg #search .searchbar {
+#reset-password-page header.primary-bg #search .searchbar,
+#profile-page header.primary-bg #search .searchbar {
   position: relative;
   height: 58px;
   width: 428px;
@@ -17232,21 +17235,24 @@ nav.hidden.fixed-bottom {
 #login-page header.primary-bg #search .searchbar > span,
 #register-page header.primary-bg #search .searchbar > span,
 #retrieve-password-page header.primary-bg #search .searchbar > span,
-#reset-password-page header.primary-bg #search .searchbar > span {
+#reset-password-page header.primary-bg #search .searchbar > span,
+#profile-page header.primary-bg #search .searchbar > span {
   margin-left: 20px;
 }
 
 #login-page header.primary-bg #search .searchbar .search-type,
 #register-page header.primary-bg #search .searchbar .search-type,
 #retrieve-password-page header.primary-bg #search .searchbar .search-type,
-#reset-password-page header.primary-bg #search .searchbar .search-type {
+#reset-password-page header.primary-bg #search .searchbar .search-type,
+#profile-page header.primary-bg #search .searchbar .search-type {
   color: #585655;
 }
 
 #login-page header.primary-bg #search:hover,
 #register-page header.primary-bg #search:hover,
 #retrieve-password-page header.primary-bg #search:hover,
-#reset-password-page header.primary-bg #search:hover {
+#reset-password-page header.primary-bg #search:hover,
+#profile-page header.primary-bg #search:hover {
   text-decoration: none;
 }
 
@@ -17257,21 +17263,25 @@ nav.hidden.fixed-bottom {
 #retrieve-password-page header.primary-bg #search:hover .fa-search,
 #retrieve-password-page header.primary-bg #search:hover .search-type,
 #reset-password-page header.primary-bg #search:hover .fa-search,
-#reset-password-page header.primary-bg #search:hover .search-type {
+#reset-password-page header.primary-bg #search:hover .search-type,
+#profile-page header.primary-bg #search:hover .fa-search,
+#profile-page header.primary-bg #search:hover .search-type {
   color: #27aace;
 }
 
 #login-page header.primary-bg #search:hover .search-type,
 #register-page header.primary-bg #search:hover .search-type,
 #retrieve-password-page header.primary-bg #search:hover .search-type,
-#reset-password-page header.primary-bg #search:hover .search-type {
+#reset-password-page header.primary-bg #search:hover .search-type,
+#profile-page header.primary-bg #search:hover .search-type {
   text-decoration: underline;
 }
 
 #login-page header.primary-bg #search input,
 #register-page header.primary-bg #search input,
 #retrieve-password-page header.primary-bg #search input,
-#reset-password-page header.primary-bg #search input {
+#reset-password-page header.primary-bg #search input,
+#profile-page header.primary-bg #search input {
   height: 58px;
   width: 428px;
   padding-left: 17px;
@@ -17284,7 +17294,8 @@ nav.hidden.fixed-bottom {
   #login-page header.primary-bg #search input,
   #register-page header.primary-bg #search input,
   #retrieve-password-page header.primary-bg #search input,
-  #reset-password-page header.primary-bg #search input {
+  #reset-password-page header.primary-bg #search input,
+  #profile-page header.primary-bg #search input {
     width: 100%;
     height: 50px;
     background-image: url("/img/layout/search.png");
@@ -17297,40 +17308,43 @@ nav.hidden.fixed-bottom {
   #login-page header.primary-bg #search input:focus,
   #register-page header.primary-bg #search input:focus,
   #retrieve-password-page header.primary-bg #search input:focus,
-  #reset-password-page header.primary-bg #search input:focus {
+  #reset-password-page header.primary-bg #search input:focus,
+  #profile-page header.primary-bg #search input:focus {
     border-left: 10px solid #0083AD !important;
     background-image: none !important;
     padding-left: 5% !important;
   }
 }
 
-#login-page header.primary-bg #search input::-webkit-input-placeholder, #register-page header.primary-bg #search input::-webkit-input-placeholder, #retrieve-password-page header.primary-bg #search input::-webkit-input-placeholder, #reset-password-page header.primary-bg #search input::-webkit-input-placeholder {
+#login-page header.primary-bg #search input::-webkit-input-placeholder, #register-page header.primary-bg #search input::-webkit-input-placeholder, #retrieve-password-page header.primary-bg #search input::-webkit-input-placeholder, #reset-password-page header.primary-bg #search input::-webkit-input-placeholder, #profile-page header.primary-bg #search input::-webkit-input-placeholder {
   color: #b3afb6;
 }
 
-#login-page header.primary-bg #search input::-moz-placeholder, #register-page header.primary-bg #search input::-moz-placeholder, #retrieve-password-page header.primary-bg #search input::-moz-placeholder, #reset-password-page header.primary-bg #search input::-moz-placeholder {
+#login-page header.primary-bg #search input::-moz-placeholder, #register-page header.primary-bg #search input::-moz-placeholder, #retrieve-password-page header.primary-bg #search input::-moz-placeholder, #reset-password-page header.primary-bg #search input::-moz-placeholder, #profile-page header.primary-bg #search input::-moz-placeholder {
   color: #b3afb6;
 }
 
-#login-page header.primary-bg #search input:-ms-input-placeholder, #register-page header.primary-bg #search input:-ms-input-placeholder, #retrieve-password-page header.primary-bg #search input:-ms-input-placeholder, #reset-password-page header.primary-bg #search input:-ms-input-placeholder {
+#login-page header.primary-bg #search input:-ms-input-placeholder, #register-page header.primary-bg #search input:-ms-input-placeholder, #retrieve-password-page header.primary-bg #search input:-ms-input-placeholder, #reset-password-page header.primary-bg #search input:-ms-input-placeholder, #profile-page header.primary-bg #search input:-ms-input-placeholder {
   color: #b3afb6;
 }
 
-#login-page header.primary-bg #search input::-ms-input-placeholder, #register-page header.primary-bg #search input::-ms-input-placeholder, #retrieve-password-page header.primary-bg #search input::-ms-input-placeholder, #reset-password-page header.primary-bg #search input::-ms-input-placeholder {
+#login-page header.primary-bg #search input::-ms-input-placeholder, #register-page header.primary-bg #search input::-ms-input-placeholder, #retrieve-password-page header.primary-bg #search input::-ms-input-placeholder, #reset-password-page header.primary-bg #search input::-ms-input-placeholder, #profile-page header.primary-bg #search input::-ms-input-placeholder {
   color: #b3afb6;
 }
 
 #login-page header.primary-bg #search input::placeholder,
 #register-page header.primary-bg #search input::placeholder,
 #retrieve-password-page header.primary-bg #search input::placeholder,
-#reset-password-page header.primary-bg #search input::placeholder {
+#reset-password-page header.primary-bg #search input::placeholder,
+#profile-page header.primary-bg #search input::placeholder {
   color: #b3afb6;
 }
 
 #login-page header.primary-bg #search button,
 #register-page header.primary-bg #search button,
 #retrieve-password-page header.primary-bg #search button,
-#reset-password-page header.primary-bg #search button {
+#reset-password-page header.primary-bg #search button,
+#profile-page header.primary-bg #search button {
   position: absolute;
   top: 5px;
   right: 30px;
@@ -17339,14 +17353,16 @@ nav.hidden.fixed-bottom {
 #login-page header.primary-bg #search button svg,
 #register-page header.primary-bg #search button svg,
 #retrieve-password-page header.primary-bg #search button svg,
-#reset-password-page header.primary-bg #search button svg {
+#reset-password-page header.primary-bg #search button svg,
+#profile-page header.primary-bg #search button svg {
   fill: #28AACE;
 }
 
 #login-page header.primary-bg #title,
 #register-page header.primary-bg #title,
 #retrieve-password-page header.primary-bg #title,
-#reset-password-page header.primary-bg #title {
+#reset-password-page header.primary-bg #title,
+#profile-page header.primary-bg #title {
   color: white;
   line-height: 1rem;
   padding-top: 10px;
@@ -17355,7 +17371,8 @@ nav.hidden.fixed-bottom {
 #login-page header.primary-bg #title span,
 #register-page header.primary-bg #title span,
 #retrieve-password-page header.primary-bg #title span,
-#reset-password-page header.primary-bg #title span {
+#reset-password-page header.primary-bg #title span,
+#profile-page header.primary-bg #title span {
   font-weight: bold;
   font-size: 21px;
 }
@@ -17363,7 +17380,8 @@ nav.hidden.fixed-bottom {
 #login-page header.primary-bg #title small,
 #register-page header.primary-bg #title small,
 #retrieve-password-page header.primary-bg #title small,
-#reset-password-page header.primary-bg #title small {
+#reset-password-page header.primary-bg #title small,
+#profile-page header.primary-bg #title small {
   font-size: 12px;
 }
 
@@ -17371,28 +17389,32 @@ nav.hidden.fixed-bottom {
   #login-page header.primary-bg,
   #register-page header.primary-bg,
   #retrieve-password-page header.primary-bg,
-  #reset-password-page header.primary-bg {
+  #reset-password-page header.primary-bg,
+  #profile-page header.primary-bg {
     padding-top: 10px;
   }
 
   #login-page header.primary-bg #title,
   #register-page header.primary-bg #title,
   #retrieve-password-page header.primary-bg #title,
-  #reset-password-page header.primary-bg #title {
+  #reset-password-page header.primary-bg #title,
+  #profile-page header.primary-bg #title {
     padding-top: 3px;
   }
 
   #login-page header.primary-bg #title span,
   #register-page header.primary-bg #title span,
   #retrieve-password-page header.primary-bg #title span,
-  #reset-password-page header.primary-bg #title span {
+  #reset-password-page header.primary-bg #title span,
+  #profile-page header.primary-bg #title span {
     font-weight: 500;
   }
 
   #login-page header.primary-bg #order-btn,
   #register-page header.primary-bg #order-btn,
   #retrieve-password-page header.primary-bg #order-btn,
-  #reset-password-page header.primary-bg #order-btn {
+  #reset-password-page header.primary-bg #order-btn,
+  #profile-page header.primary-bg #order-btn {
     position: fixed;
     bottom: 80px;
     width: 80%;
@@ -17403,35 +17425,40 @@ nav.hidden.fixed-bottom {
 #login-page header.primary-bg .menu,
 #register-page header.primary-bg .menu,
 #retrieve-password-page header.primary-bg .menu,
-#reset-password-page header.primary-bg .menu {
+#reset-password-page header.primary-bg .menu,
+#profile-page header.primary-bg .menu {
   color: #a9ddeb;
 }
 
 #login-page header.primary-bg .menu a,
 #register-page header.primary-bg .menu a,
 #retrieve-password-page header.primary-bg .menu a,
-#reset-password-page header.primary-bg .menu a {
+#reset-password-page header.primary-bg .menu a,
+#profile-page header.primary-bg .menu a {
   color: #a9ddeb;
 }
 
 #login-page header.primary-bg .menu a:hover,
 #register-page header.primary-bg .menu a:hover,
 #retrieve-password-page header.primary-bg .menu a:hover,
-#reset-password-page header.primary-bg .menu a:hover {
+#reset-password-page header.primary-bg .menu a:hover,
+#profile-page header.primary-bg .menu a:hover {
   color: #ffffff;
 }
 
 #login-page header.primary-bg #search-mobile,
 #register-page header.primary-bg #search-mobile,
 #retrieve-password-page header.primary-bg #search-mobile,
-#reset-password-page header.primary-bg #search-mobile {
+#reset-password-page header.primary-bg #search-mobile,
+#profile-page header.primary-bg #search-mobile {
   fill: white;
 }
 
 #login-page header.primary-bg #search-mobile g,
 #register-page header.primary-bg #search-mobile g,
 #retrieve-password-page header.primary-bg #search-mobile g,
-#reset-password-page header.primary-bg #search-mobile g {
+#reset-password-page header.primary-bg #search-mobile g,
+#profile-page header.primary-bg #search-mobile g {
   fill: white;
 }
 
@@ -17442,7 +17469,9 @@ nav.hidden.fixed-bottom {
 #retrieve-password-page .register-link,
 #retrieve-password-page .login-link,
 #reset-password-page .register-link,
-#reset-password-page .login-link {
+#reset-password-page .login-link,
+#profile-page .register-link,
+#profile-page .login-link {
   padding: 0.7rem;
   border: solid 2px #E9E6EB;
   border-radius: 1.4rem;
@@ -17458,7 +17487,9 @@ nav.hidden.fixed-bottom {
   #retrieve-password-page .register-link,
   #retrieve-password-page .login-link,
   #reset-password-page .register-link,
-  #reset-password-page .login-link {
+  #reset-password-page .login-link,
+  #profile-page .register-link,
+  #profile-page .login-link {
     width: 100%;
   }
 }
@@ -17470,7 +17501,9 @@ nav.hidden.fixed-bottom {
 #retrieve-password-page .register-link:hover,
 #retrieve-password-page .login-link:hover,
 #reset-password-page .register-link:hover,
-#reset-password-page .login-link:hover {
+#reset-password-page .login-link:hover,
+#profile-page .register-link:hover,
+#profile-page .login-link:hover {
   text-decoration: none;
 }
 
@@ -17481,7 +17514,9 @@ nav.hidden.fixed-bottom {
 #retrieve-password-page .register-link:hover span,
 #retrieve-password-page .login-link:hover span,
 #reset-password-page .register-link:hover span,
-#reset-password-page .login-link:hover span {
+#reset-password-page .login-link:hover span,
+#profile-page .register-link:hover span,
+#profile-page .login-link:hover span {
   color: #27aace;
 }
 
@@ -17492,7 +17527,9 @@ nav.hidden.fixed-bottom {
 #retrieve-password-page .register-link span,
 #retrieve-password-page .login-link span,
 #reset-password-page .register-link span,
-#reset-password-page .login-link span {
+#reset-password-page .login-link span,
+#profile-page .register-link span,
+#profile-page .login-link span {
   text-transform: uppercase;
   font-weight: bold;
   font-size: 13px;
@@ -17507,7 +17544,9 @@ nav.hidden.fixed-bottom {
 #retrieve-password-page .register-link small,
 #retrieve-password-page .login-link small,
 #reset-password-page .register-link small,
-#reset-password-page .login-link small {
+#reset-password-page .login-link small,
+#profile-page .register-link small,
+#profile-page .login-link small {
   font-size: 11px;
   color: #B3B0B6;
   text-decoration: none;
@@ -17518,18 +17557,27 @@ nav.hidden.fixed-bottom {
 #login-page .register-form,
 #login-page .retrieve-password-form,
 #login-page .reset-password-form,
+#login-page .profile-form,
 #register-page .login-form,
 #register-page .register-form,
 #register-page .retrieve-password-form,
 #register-page .reset-password-form,
+#register-page .profile-form,
 #retrieve-password-page .login-form,
 #retrieve-password-page .register-form,
 #retrieve-password-page .retrieve-password-form,
 #retrieve-password-page .reset-password-form,
+#retrieve-password-page .profile-form,
 #reset-password-page .login-form,
 #reset-password-page .register-form,
 #reset-password-page .retrieve-password-form,
-#reset-password-page .reset-password-form {
+#reset-password-page .reset-password-form,
+#reset-password-page .profile-form,
+#profile-page .login-form,
+#profile-page .register-form,
+#profile-page .retrieve-password-form,
+#profile-page .reset-password-form,
+#profile-page .profile-form {
   background-color: #ffffff;
   padding: 0.7rem;
   border-radius: 1.4rem;
@@ -17543,18 +17591,27 @@ nav.hidden.fixed-bottom {
   #login-page .register-form,
   #login-page .retrieve-password-form,
   #login-page .reset-password-form,
+  #login-page .profile-form,
   #register-page .login-form,
   #register-page .register-form,
   #register-page .retrieve-password-form,
   #register-page .reset-password-form,
+  #register-page .profile-form,
   #retrieve-password-page .login-form,
   #retrieve-password-page .register-form,
   #retrieve-password-page .retrieve-password-form,
   #retrieve-password-page .reset-password-form,
+  #retrieve-password-page .profile-form,
   #reset-password-page .login-form,
   #reset-password-page .register-form,
   #reset-password-page .retrieve-password-form,
-  #reset-password-page .reset-password-form {
+  #reset-password-page .reset-password-form,
+  #reset-password-page .profile-form,
+  #profile-page .login-form,
+  #profile-page .register-form,
+  #profile-page .retrieve-password-form,
+  #profile-page .reset-password-form,
+  #profile-page .profile-form {
     width: 100%;
   }
 }
@@ -17563,18 +17620,27 @@ nav.hidden.fixed-bottom {
 #login-page .register-form span,
 #login-page .retrieve-password-form span,
 #login-page .reset-password-form span,
+#login-page .profile-form span,
 #register-page .login-form span,
 #register-page .register-form span,
 #register-page .retrieve-password-form span,
 #register-page .reset-password-form span,
+#register-page .profile-form span,
 #retrieve-password-page .login-form span,
 #retrieve-password-page .register-form span,
 #retrieve-password-page .retrieve-password-form span,
 #retrieve-password-page .reset-password-form span,
+#retrieve-password-page .profile-form span,
 #reset-password-page .login-form span,
 #reset-password-page .register-form span,
 #reset-password-page .retrieve-password-form span,
-#reset-password-page .reset-password-form span {
+#reset-password-page .reset-password-form span,
+#reset-password-page .profile-form span,
+#profile-page .login-form span,
+#profile-page .register-form span,
+#profile-page .retrieve-password-form span,
+#profile-page .reset-password-form span,
+#profile-page .profile-form span {
   text-transform: uppercase;
   font-weight: bold;
   font-size: 13px;
@@ -17585,18 +17651,27 @@ nav.hidden.fixed-bottom {
 #login-page .register-form small,
 #login-page .retrieve-password-form small,
 #login-page .reset-password-form small,
+#login-page .profile-form small,
 #register-page .login-form small,
 #register-page .register-form small,
 #register-page .retrieve-password-form small,
 #register-page .reset-password-form small,
+#register-page .profile-form small,
 #retrieve-password-page .login-form small,
 #retrieve-password-page .register-form small,
 #retrieve-password-page .retrieve-password-form small,
 #retrieve-password-page .reset-password-form small,
+#retrieve-password-page .profile-form small,
 #reset-password-page .login-form small,
 #reset-password-page .register-form small,
 #reset-password-page .retrieve-password-form small,
-#reset-password-page .reset-password-form small {
+#reset-password-page .reset-password-form small,
+#reset-password-page .profile-form small,
+#profile-page .login-form small,
+#profile-page .register-form small,
+#profile-page .retrieve-password-form small,
+#profile-page .reset-password-form small,
+#profile-page .profile-form small {
   font-size: 11px;
   color: #42403F;
   font-weight: 500;
@@ -17606,18 +17681,27 @@ nav.hidden.fixed-bottom {
 #login-page .register-form .form-group label,
 #login-page .retrieve-password-form .form-group label,
 #login-page .reset-password-form .form-group label,
+#login-page .profile-form .form-group label,
 #register-page .login-form .form-group label,
 #register-page .register-form .form-group label,
 #register-page .retrieve-password-form .form-group label,
 #register-page .reset-password-form .form-group label,
+#register-page .profile-form .form-group label,
 #retrieve-password-page .login-form .form-group label,
 #retrieve-password-page .register-form .form-group label,
 #retrieve-password-page .retrieve-password-form .form-group label,
 #retrieve-password-page .reset-password-form .form-group label,
+#retrieve-password-page .profile-form .form-group label,
 #reset-password-page .login-form .form-group label,
 #reset-password-page .register-form .form-group label,
 #reset-password-page .retrieve-password-form .form-group label,
-#reset-password-page .reset-password-form .form-group label {
+#reset-password-page .reset-password-form .form-group label,
+#reset-password-page .profile-form .form-group label,
+#profile-page .login-form .form-group label,
+#profile-page .register-form .form-group label,
+#profile-page .retrieve-password-form .form-group label,
+#profile-page .reset-password-form .form-group label,
+#profile-page .profile-form .form-group label {
   color: #27aace;
   font-size: 12px;
   font-weight: bold;
@@ -17628,18 +17712,27 @@ nav.hidden.fixed-bottom {
 #login-page .register-form .form-group input,
 #login-page .retrieve-password-form .form-group input,
 #login-page .reset-password-form .form-group input,
+#login-page .profile-form .form-group input,
 #register-page .login-form .form-group input,
 #register-page .register-form .form-group input,
 #register-page .retrieve-password-form .form-group input,
 #register-page .reset-password-form .form-group input,
+#register-page .profile-form .form-group input,
 #retrieve-password-page .login-form .form-group input,
 #retrieve-password-page .register-form .form-group input,
 #retrieve-password-page .retrieve-password-form .form-group input,
 #retrieve-password-page .reset-password-form .form-group input,
+#retrieve-password-page .profile-form .form-group input,
 #reset-password-page .login-form .form-group input,
 #reset-password-page .register-form .form-group input,
 #reset-password-page .retrieve-password-form .form-group input,
-#reset-password-page .reset-password-form .form-group input {
+#reset-password-page .reset-password-form .form-group input,
+#reset-password-page .profile-form .form-group input,
+#profile-page .login-form .form-group input,
+#profile-page .register-form .form-group input,
+#profile-page .retrieve-password-form .form-group input,
+#profile-page .reset-password-form .form-group input,
+#profile-page .profile-form .form-group input {
   border-top: 0;
   border-left: 0;
   border-right: 0;
@@ -17651,18 +17744,27 @@ nav.hidden.fixed-bottom {
 #login-page .register-form .form-group input:focus,
 #login-page .retrieve-password-form .form-group input:focus,
 #login-page .reset-password-form .form-group input:focus,
+#login-page .profile-form .form-group input:focus,
 #register-page .login-form .form-group input:focus,
 #register-page .register-form .form-group input:focus,
 #register-page .retrieve-password-form .form-group input:focus,
 #register-page .reset-password-form .form-group input:focus,
+#register-page .profile-form .form-group input:focus,
 #retrieve-password-page .login-form .form-group input:focus,
 #retrieve-password-page .register-form .form-group input:focus,
 #retrieve-password-page .retrieve-password-form .form-group input:focus,
 #retrieve-password-page .reset-password-form .form-group input:focus,
+#retrieve-password-page .profile-form .form-group input:focus,
 #reset-password-page .login-form .form-group input:focus,
 #reset-password-page .register-form .form-group input:focus,
 #reset-password-page .retrieve-password-form .form-group input:focus,
-#reset-password-page .reset-password-form .form-group input:focus {
+#reset-password-page .reset-password-form .form-group input:focus,
+#reset-password-page .profile-form .form-group input:focus,
+#profile-page .login-form .form-group input:focus,
+#profile-page .register-form .form-group input:focus,
+#profile-page .retrieve-password-form .form-group input:focus,
+#profile-page .reset-password-form .form-group input:focus,
+#profile-page .profile-form .form-group input:focus {
   box-shadow: none;
   border-bottom: solid 2px #27aace;
 }
@@ -17671,18 +17773,27 @@ nav.hidden.fixed-bottom {
 #login-page .register-form .invalid-feedback,
 #login-page .retrieve-password-form .invalid-feedback,
 #login-page .reset-password-form .invalid-feedback,
+#login-page .profile-form .invalid-feedback,
 #register-page .login-form .invalid-feedback,
 #register-page .register-form .invalid-feedback,
 #register-page .retrieve-password-form .invalid-feedback,
 #register-page .reset-password-form .invalid-feedback,
+#register-page .profile-form .invalid-feedback,
 #retrieve-password-page .login-form .invalid-feedback,
 #retrieve-password-page .register-form .invalid-feedback,
 #retrieve-password-page .retrieve-password-form .invalid-feedback,
 #retrieve-password-page .reset-password-form .invalid-feedback,
+#retrieve-password-page .profile-form .invalid-feedback,
 #reset-password-page .login-form .invalid-feedback,
 #reset-password-page .register-form .invalid-feedback,
 #reset-password-page .retrieve-password-form .invalid-feedback,
-#reset-password-page .reset-password-form .invalid-feedback {
+#reset-password-page .reset-password-form .invalid-feedback,
+#reset-password-page .profile-form .invalid-feedback,
+#profile-page .login-form .invalid-feedback,
+#profile-page .register-form .invalid-feedback,
+#profile-page .retrieve-password-form .invalid-feedback,
+#profile-page .reset-password-form .invalid-feedback,
+#profile-page .profile-form .invalid-feedback {
   text-transform: none;
   color: #e3342f;
   font-weight: 300;
@@ -17692,18 +17803,27 @@ nav.hidden.fixed-bottom {
 #login-page .register-form .forgot-password,
 #login-page .retrieve-password-form .forgot-password,
 #login-page .reset-password-form .forgot-password,
+#login-page .profile-form .forgot-password,
 #register-page .login-form .forgot-password,
 #register-page .register-form .forgot-password,
 #register-page .retrieve-password-form .forgot-password,
 #register-page .reset-password-form .forgot-password,
+#register-page .profile-form .forgot-password,
 #retrieve-password-page .login-form .forgot-password,
 #retrieve-password-page .register-form .forgot-password,
 #retrieve-password-page .retrieve-password-form .forgot-password,
 #retrieve-password-page .reset-password-form .forgot-password,
+#retrieve-password-page .profile-form .forgot-password,
 #reset-password-page .login-form .forgot-password,
 #reset-password-page .register-form .forgot-password,
 #reset-password-page .retrieve-password-form .forgot-password,
-#reset-password-page .reset-password-form .forgot-password {
+#reset-password-page .reset-password-form .forgot-password,
+#reset-password-page .profile-form .forgot-password,
+#profile-page .login-form .forgot-password,
+#profile-page .register-form .forgot-password,
+#profile-page .retrieve-password-form .forgot-password,
+#profile-page .reset-password-form .forgot-password,
+#profile-page .profile-form .forgot-password {
   font-size: 12px;
 }
 
@@ -17711,18 +17831,27 @@ nav.hidden.fixed-bottom {
 #login-page .register-form .cgv,
 #login-page .retrieve-password-form .cgv,
 #login-page .reset-password-form .cgv,
+#login-page .profile-form .cgv,
 #register-page .login-form .cgv,
 #register-page .register-form .cgv,
 #register-page .retrieve-password-form .cgv,
 #register-page .reset-password-form .cgv,
+#register-page .profile-form .cgv,
 #retrieve-password-page .login-form .cgv,
 #retrieve-password-page .register-form .cgv,
 #retrieve-password-page .retrieve-password-form .cgv,
 #retrieve-password-page .reset-password-form .cgv,
+#retrieve-password-page .profile-form .cgv,
 #reset-password-page .login-form .cgv,
 #reset-password-page .register-form .cgv,
 #reset-password-page .retrieve-password-form .cgv,
-#reset-password-page .reset-password-form .cgv {
+#reset-password-page .reset-password-form .cgv,
+#reset-password-page .profile-form .cgv,
+#profile-page .login-form .cgv,
+#profile-page .register-form .cgv,
+#profile-page .retrieve-password-form .cgv,
+#profile-page .reset-password-form .cgv,
+#profile-page .profile-form .cgv {
   color: #B4B0B7;
   font-size: 10px;
   font-weight: 500;
@@ -17733,19 +17862,47 @@ nav.hidden.fixed-bottom {
 #login-page .register-form .cgv a,
 #login-page .retrieve-password-form .cgv a,
 #login-page .reset-password-form .cgv a,
+#login-page .profile-form .cgv a,
 #register-page .login-form .cgv a,
 #register-page .register-form .cgv a,
 #register-page .retrieve-password-form .cgv a,
 #register-page .reset-password-form .cgv a,
+#register-page .profile-form .cgv a,
 #retrieve-password-page .login-form .cgv a,
 #retrieve-password-page .register-form .cgv a,
 #retrieve-password-page .retrieve-password-form .cgv a,
 #retrieve-password-page .reset-password-form .cgv a,
+#retrieve-password-page .profile-form .cgv a,
 #reset-password-page .login-form .cgv a,
 #reset-password-page .register-form .cgv a,
 #reset-password-page .retrieve-password-form .cgv a,
-#reset-password-page .reset-password-form .cgv a {
+#reset-password-page .reset-password-form .cgv a,
+#reset-password-page .profile-form .cgv a,
+#profile-page .login-form .cgv a,
+#profile-page .register-form .cgv a,
+#profile-page .retrieve-password-form .cgv a,
+#profile-page .reset-password-form .cgv a,
+#profile-page .profile-form .cgv a {
   color: #27aace;
+}
+
+#login-page .profile-form,
+#register-page .profile-form,
+#retrieve-password-page .profile-form,
+#reset-password-page .profile-form,
+#profile-page .profile-form {
+  margin-left: 20%;
+}
+
+@media (max-width: 767px) {
+  #login-page .profile-form,
+  #register-page .profile-form,
+  #retrieve-password-page .profile-form,
+  #reset-password-page .profile-form,
+  #profile-page .profile-form {
+    margin-left: 2%;
+    width: 96%;
+  }
 }
 
 #login-page .register-form .form-group label,
@@ -17755,9 +17912,15 @@ nav.hidden.fixed-bottom {
 #retrieve-password-page .register-form .form-group label,
 #retrieve-password-page .retrieve-password-form .form-group label,
 #reset-password-page .register-form .form-group label,
-#reset-password-page .retrieve-password-form .form-group label {
+#reset-password-page .retrieve-password-form .form-group label,
+#profile-page .register-form .form-group label,
+#profile-page .retrieve-password-form .form-group label {
   color: #C7C4C8;
   font-weight: normal;
+}
+
+#profile-page {
+  background: #F0F0F0;
 }
 
 #home-page {
@@ -17906,7 +18069,7 @@ nav.hidden.fixed-bottom {
 #home-page #slideshow {
   background-image: url("/img/layout/slideshow-bg.png");
   background-repeat: repeat-x;
-  height: 550px;
+  height: 630px;
   padding-top: 36px;
   color: white;
   background-color: #f3f3f3;
@@ -17927,6 +18090,55 @@ nav.hidden.fixed-bottom {
 #home-page #reasurrance {
   background-color: #414042;
   height: 134px;
+}
+
+@media (max-width: 767px) {
+  #home-page #reasurrance .first_line {
+    color: white;
+    font-size: 12px;
+  }
+
+  #home-page #reasurrance .line {
+    width: 100%;
+    display: inline-block;
+  }
+
+  #home-page #reasurrance .second_line {
+    color: white;
+    font-size: 24px;
+    line-height: 24px;
+    vertical-align: top;
+  }
+
+  #home-page #reasurrance .third_line {
+    margin-top: 5px;
+    color: #27ABCD;
+    line-height: 20px;
+    vertical-align: text-top;
+  }
+
+  #home-page #reasurrance .col_left .line {
+    text-align: right;
+    padding-right: 7px;
+  }
+
+  #home-page #reasurrance .col_left .third_line {
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  #home-page #reasurrance .col_left .second_line {
+    border-right: 2px solid white;
+  }
+
+  #home-page #reasurrance .col_right .line {
+    text-align: left;
+    padding-left: 5px;
+  }
+
+  #home-page #reasurrance .col_right .third_line {
+    font-size: 0.65rem;
+  }
 }
 
 #home-page #selection {

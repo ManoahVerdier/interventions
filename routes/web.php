@@ -35,3 +35,5 @@ Route::post('/cart/delete', 'SiteController@deleteFromCart')->name('cart.delete'
 Route::post('/cart/validate', 'SiteController@validateCart')->name('cart.validate')->middleware('auth');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/activation', 'SiteController@activation')->name('activation');
+Route::get('/profile', 'SiteController@profile')->name('profile')->middleware('auth');
+Route::post('/profile', 'SiteController@profile')->name('profile')->middleware('auth');
