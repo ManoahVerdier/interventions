@@ -1,5 +1,5 @@
 <div class="product big">
-    <a class="close close-product d-block d-md-none" href="{{ url()->previous() }}"><i class="fa fa-times"></i></a>
+    <a class="close close-product d-block d-md-none" href="javascript:history.back()"><i class="fa fa-times"></i></a>
     <a href="{{ route('favorites.toggle', $product->getKey()) }}" class="favorite toggle-favorite @if ($isFavorite ?? false)active @endif">
         <i class="far fa-heart fa-lg is-not-favorite" @if ($isFavorite)style="display: none"@endif></i>
         <i class="fas fa-heart fa-lg is-favorite" @if (!$isFavorite)style="display: none"@endif></i>
