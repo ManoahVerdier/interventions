@@ -8,5 +8,9 @@
         font-weight: 300;
         margin-top: 10px;
         margin-bottom: 10px;
+
+        @media (max-width:767px){
+            line-height:32px;
+        }
     }
 }

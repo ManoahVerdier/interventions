@@ -80,7 +80,8 @@ id="favorites-page"
                 'striked_price' => $product->discount ? $product->price : null,
                 'price' => $product->amountHTAfterDiscount,
                 'discount' => $product->discount,
-                'isFavorite' => $product->isUserFavorite
+                'isFavorite' => $product->isUserFavorite,
+                'isFavoritesPage'=>true
             ])
         @empty
             <div class="text-danger text-center">{{ __('site.favorite.empty') }}</div>
@@ -92,6 +93,9 @@ id="favorites-page"
 {{-- Footer --}}
 @section('footer')
     @include('layouts.partials.footer.main', ['footerClass' => 'grey'])
-
+    <div class="d-md-none">
+        {{-- Menu bottom --}}
+        @include('layouts.partials.footer.mobile')
+    </div>
     @section('footer-class', 'grey')
 @endsection

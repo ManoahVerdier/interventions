@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+	<defs>
+		<image width="26" height="26" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAMAAACelLz8AAAAAXNSR0IB2cksfwAAAQVQTFRFAAAAJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQJqrQdVCW4AAAAFd0Uk5TAE8IDlkh6FJn7ALO//gZFvrPsK/UQ/4wKErQyDc+Or/YcMAj/VAM4RKm8AQXyxsGX8PBxHac98e6Wl19tVR0tLi5ZaLzq7Pr1ePRaj9F1t4lp/YUyUEsR1xZdQAAASJJREFUeJxtkGlXwjAQRQcQl/RBEbW0iKIR3IpWqFIXtAUVd9z9/z/F5KRymtb3JTe9nWQyRCq5fAxUmCEtxdm5P5xfKCYNM1AqKzQrWNSqDKCqaAlY1tQKYNUk2AAcTbE6UJewKoqY3kdD/L2mlnVKpQlsMNoEeNrQVgto07axs5tRtAfs54m5WUOdEnBwmPziHXU57/nHjE5EC/3glIs0effMJQ6Vc8pBywUNYrqktq6uyHXCKIyGI6Jrsb8Z3A7DcRhGYyfx8HIF6P3TuUgVuPPI9bLGtuRcC/cPnYwSc30kehJvS5tn0UODqCaWF92wCRBI8IFXfVYO0LIlvFlyyqmid4ViyhNNBfgwFX728aUdaPrf07P18Ys7pne7PzH8AsW6Ho9rYtb7AAAAAElFTkSuQmCC"/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<use id="Calque 2" href="#img1" x="3" y="3" />
+</svg>

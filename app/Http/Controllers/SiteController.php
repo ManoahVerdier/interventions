@@ -14,6 +14,7 @@ use App\Product;
 use App\User;
 use Illuminate\Http\Request;
 use Uccello\Core\Models\Domain;
+use Illuminate\Support\Facades\Hash;
 
 class SiteController extends Controller
 {
@@ -39,7 +40,10 @@ class SiteController extends Controller
             $selectionProducts = $selectionProducts->random(10);
         }
 
-        return view('pages.home', compact('selectionProducts'));
+        $categories = Category::getRoots()->get();
+        $productsCount = Product::count();
+
+        return view('pages.home', compact('selectionProducts','categories','productsCount'));
     }
 
     /**
@@ -57,12 +61,13 @@ class SiteController extends Controller
      *
      * @return \Illuminite\Http\Response
      */
-    public function search()
+    public function search($fromMenu=true)
     {
+        $fromMenu = request()->get('fromMenu') ?? true;
         $categories = Category::getRoots()->get();
         $productsCount = Product::count();
 
-        return view('pages.search', compact('categories', 'productsCount'));
+        return view('pages.search', compact('categories', 'productsCount','fromMenu'));
     }
 
     /**
@@ -168,6 +173,7 @@ class SiteController extends Controller
      */
     public function favorites()
     {
+
         $favorites = auth()->user()->favorites;
 
         $products = [];
@@ -369,5 +375,33 @@ class SiteController extends Controller
             'price' => $totalPrice,
             'quantity' => $totalQuantity
         ];
+    }
+
+    public function profile(){  
+        $user = auth()->user();
+        
+
+        if(!empty($_POST)){
+            $this->validate(request(), [
+                'company' => ['required'],
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255'],
+                'password' => ['required', 'string', 'min:6', 'confirmed'],
+                'phone' => ['required'],
+            ]);
+
+            $user->company = request('company');
+            $user->username = request('email');
+            $user->name = request('name');
+            $user->email = request('email');
+            $user->password = Hash::make(request('password'));
+            $user->phone = request('phone');
+                     
+
+            $user->save();
+        }
+
+        return view('pages.profile', compact('user'));
+
     }
 }

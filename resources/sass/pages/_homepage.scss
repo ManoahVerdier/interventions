@@ -17,6 +17,7 @@
         height: 630px;
         padding-top: 36px;
         color: white;
+        background-color: #f3f3f3;
 
         span.message {
             font-weight: 100;
@@ -34,6 +35,60 @@
     #reasurrance {
         background-color: #414042;
         height: 134px;
+
+        @media (max-width:767px){
+            .first_line{
+                color:white;
+                font-size:12px
+            }
+                
+            .line{
+                width:100%;
+                display:inline-block;
+            }
+                
+            .second_line{
+                color:white;
+                font-size:24px;
+                line-height:24px;
+                vertical-align:top
+            }
+                
+            .third_line{
+                margin-top:5px;
+                color:#27ABCD;
+                line-height:20px;
+                vertical-align:text-top
+            }
+                
+                
+            .col_left{ 
+                .line{
+                    text-align:right;
+                    padding-right:7px;
+                }
+
+                .third_line{
+                    font-size:.85rem;
+                    font-weight:500
+                }
+
+                .second_line{
+                    border-right:2px solid white
+                }
+            }
+                
+            .col_right{
+                .line{
+                    text-align:left;
+                    padding-left:5px;
+                }
+
+                .third_line{
+                    font-size:.65rem;
+                }
+            } 
+        }
     }
 
     #selection {
@@ -51,5 +106,77 @@
         .partner-logo {
             padding: 30px;
         }
+    }
+
+    /*Recherche sur mobile = dans le corps*/
+    #search{
+        .searchbar {
+            position: relative;
+            height: 58px;
+            padding-left: 7px;
+            padding-top: 17px;
+            background-color: #f0f0f0;
+            border: none;
+            border-radius: 5px;
+            color: #b3afb6;
+            cursor: pointer;
+        
+            > span {
+              margin-left: 4px;
+              font-size:.80em;
+              width: calc(100% - 75px);
+              display: inline-block;
+              white-space: nowrap;
+            }
+        
+            .search-type {
+              color: #585655;
+            }
+        }
+    }
+
+    @import '../headers/categories';
+    #categories ul li a .counter img {
+        margin-bottom: 0px;
+    }
+
+    #categories ul li a span{
+        color:#414143;
+        font-size:10pt
+    }
+    
+    #categories ul li a .counter span{
+        color:#C5C3C8;
+        font-size:8pt
+    }
+}
+
+
+@media (max-width: 767px){
+    #slideshow .owl-carousel .owl-item img{
+        height:200px;
+    }
+
+    #selection{
+        .owl-carousel .product div.category-name{
+            font-size:8pt;
+            left:0px;
+            right:0px;
+            bottom:-35px;
+        }
+            
+        .owl-carousel div.description a.product-name{
+            font-size:8pt;
+        }
+            
+        .owl-carousel div.description .product-description{
+            font-size:8pt;
+        }
+            
+        .owl-carousel .product{
+            padding:50px 20px !important;
+            width:100%
+        }
+            
     }
 }

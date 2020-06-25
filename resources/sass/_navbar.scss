@@ -1,0 +1,121 @@
+
+.navbar-light {
+    padding: 36px 0 0 0;
+
+    .navbar-brand {
+        position: relative;
+        margin-left: 40px;
+        margin-right: 110px;
+        padding-top: 0;
+        padding-bottom: 0;
+
+        div {
+            height: 68px;
+            display: inline-block;
+
+            @media only screen and (max-width: 1199px) {
+                height: 55px;
+            }
+        }
+
+        svg.picto {
+            padding-bottom: 10px;
+        }
+
+        &.active {
+            div {
+                border-bottom: solid 5px #27aace;
+            }
+
+            svg.picto {
+                fill: #27aace;
+            }
+
+            svg.chevron {
+                fill: #27aace;
+                display: block;
+                position: absolute;
+                top: 30px;
+                right: -60px;
+
+                &.chevron {
+                    transform: rotate(0.5turn);
+                }
+            }
+        }
+    }
+
+    &.mobile {
+        padding: 0 5px 0 5px;
+        border-top: solid 1px #e4e3e5;
+
+        &.homepage-menu, &.account-menu {
+            padding-bottom: 5px;
+
+            a.nav-link {
+                text-transform: uppercase;
+                font-weight: 700;
+                font-size: 10px;
+                height: 55px;
+
+                &.active {
+                    border-bottom: none;
+                }
+            }
+
+            svg.picto {
+                padding-bottom: 0;
+            }
+        }
+
+        > div {
+            width: 100%;
+        }
+
+        .navbar-brand {
+            margin: 0;
+        }
+
+        a.nav-link {
+            font-size: 11px;
+            color: #b3b0b6;
+            text-align: center;
+            padding: 5px;
+            height: 60px;
+
+            svg {
+                fill: #b3b0b6;
+
+                g,path{
+                    fill: #b3b0b6;
+                }
+
+                text{
+                    display:none;
+                }
+
+                &.home {
+                    margin-top: -6px;
+                    padding-bottom: 0;
+                }
+
+                &.locate {
+                    margin-top: -6px;
+                    padding-top: 5px;
+                }
+            }
+
+            &.active {
+                color: $primary;
+                border-bottom: solid 2px #27aace;
+
+                svg {
+                    fill: #27aace;
+                    g,path{
+                        fill: #27aace;
+                    }
+                }
+            }
+        }
+    }
+}

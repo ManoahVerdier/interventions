@@ -17,7 +17,7 @@ id="register-page" class="h-100"
 @section('content')
 <div class="container-fluid h-100">
     <div class="row h-100">
-        <div class="col-md-6 pr-5 pt-5">
+        <div class="col-md-6 pr-5 pt-5 d-none d-md-block">
             {{-- Login --}}
             <a href="{{ route('login') }}" class="login-link float-right d-flex align-items-center">
                 <img src="{{ asset('img/layout/round.png') }}">
@@ -31,7 +31,7 @@ id="register-page" class="h-100"
             </a>
         </div>
 
-        <div class="col-md-6 pl-5 pt-5" style="background-color: #EFEFEF">
+        <div class="col-md-6 pl-md-5 pt-4 pt-md-5 pb-3 pb-md-0" style="background-color: #EFEFEF">
             {{-- Register --}}
             <form method="POST" action="{{ route('register') }}" class="register-form">
                 @csrf

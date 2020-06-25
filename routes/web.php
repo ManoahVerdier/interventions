@@ -26,7 +26,7 @@ Route::get('/product/{id}/{name}', 'SiteController@product')->name('product');
 Route::get('/category/{id}/brands', 'SiteController@searchBrands')->name('category.brands');
 Route::get('/category/{id}/{name}', 'SiteController@category')->name('category');
 Route::get('/category/{categoryId}/brand/{brandId}', 'SiteController@categoryBrand')->name('category.brand');
-Route::get('/favorites', 'SiteController@favorites')->name('favorites');
+Route::get('/favorites', 'SiteController@favorites')->name('favorites')->middleware('auth');
 Route::get('/favorites/{id}', 'SiteController@toggleFavorite')->name('favorites.toggle')->middleware('auth');
 Route::get('/cart', 'SiteController@cart')->name('cart')->middleware('auth');
 Route::post('/cart', 'SiteController@addToCart')->name('cart.add')->middleware('auth');
@@ -35,3 +35,5 @@ Route::post('/cart/delete', 'SiteController@deleteFromCart')->name('cart.delete'
 Route::post('/cart/validate', 'SiteController@validateCart')->name('cart.validate')->middleware('auth');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/activation', 'SiteController@activation')->name('activation');
+Route::get('/profile', 'SiteController@profile')->name('profile')->middleware('auth');
+Route::post('/profile', 'SiteController@profile')->name('profile')->middleware('auth');

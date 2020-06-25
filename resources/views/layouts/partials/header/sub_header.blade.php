@@ -1,7 +1,7 @@
 <nav class="sub-header">
     <div class="container">
         <div class="row">
-            <div class="col-9 offset-2">
+            <div class="col-11 col-md-9 offset-1 offset-md-2">
                 @if ($categories->count() > 0)
                 <span class="category-pagination">
                     <span class="active">1</span>

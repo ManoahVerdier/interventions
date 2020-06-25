@@ -2,7 +2,7 @@ header.primary-bg {
     @import 'search';
 
     padding-top: 20px;
-
+    
     #title {
         color: white;
         line-height: 1rem;
@@ -19,6 +19,23 @@ header.primary-bg {
         }
     }
 
+    @media(max-width:767px){
+        padding-top:10px;
+        #title{
+            padding-top:3px;
+            span {
+                font-weight: 500;
+            }
+        }
+
+        #order-btn{
+            position:fixed;
+            bottom:80px;
+            width:80%;
+            left:10%;
+        }
+    }
+
     .menu {
         color: #a9ddeb;
 
@@ -28,6 +45,13 @@ header.primary-bg {
             &:hover {
                 color: #ffffff;
             }
+        }
+    }
+
+    #search-mobile{
+        fill:white;
+        g{
+            fill:white;
         }
     }
 }

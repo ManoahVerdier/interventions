@@ -27,7 +27,7 @@
 
                 @guest
                 <a href="{{ route('login') }}">
-                    <span class="login mr-2 d-none d-sm-block-inline">Connectez-vous</span>
+                    <span class="login mr-2 d-sm-block-inline">Connectez-vous</span>
                     <i class="fas fa-user-alt fa-lg"></i>
                 </a>
                 @endguest

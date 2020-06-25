@@ -1,14 +1,18 @@
-#login-page, #register-page, #retrieve-password-page, #reset-password-page {
+#login-page, #register-page, #retrieve-password-page, #reset-password-page, #profile-page {
     @import '../headers/blue';
 }
 
-#login-page, #register-page, #retrieve-password-page, #reset-password-page {
+#login-page, #register-page, #retrieve-password-page, #reset-password-page, #profile-page {
     .register-link, .login-link {
         padding: 0.7rem;
         border: solid 2px #E9E6EB;
         border-radius: 1.4rem;
         width: 60%;
         line-height: .9;
+
+        @media(max-width:767px){
+            width:100%;
+        }
 
         &:hover {
             text-decoration: none;
@@ -34,7 +38,7 @@
         }
     }
 
-    .login-form, .register-form, .retrieve-password-form, .reset-password-form {
+    .login-form, .register-form, .retrieve-password-form, .reset-password-form, .profile-form {
         background-color: #ffffff;
         padding: 0.7rem;
         border-radius: 1.4rem;
@@ -43,6 +47,10 @@
         -webkit-box-shadow: 4px 4px 2px 0px rgba(233,233,233,1);
         -moz-box-shadow: 4px 4px 2px 0px rgba(233,233,233,1);
         box-shadow: 4px 4px 2px 0px rgba(233,233,233,1);
+
+        @media(max-width:767px){
+            width:100%;
+        }
 
         span {
             text-transform: uppercase;
@@ -101,6 +109,14 @@
         }
     }
 
+    .profile-form{
+        margin-left:20%;
+        @media(max-width:767px){
+            margin-left:2%;
+            width:96%;
+        }
+    }
+
     .register-form, .retrieve-password-form {
         .form-group {
             label {
@@ -109,4 +125,8 @@
             }
         }
     }
+}
+
+#profile-page{
+    background:#F0F0F0;
 }

@@ -46,7 +46,8 @@ id="cart-page"
                 'price' => $product->amountHTAfterDiscount * $line->quantity,
                 'discount' => $product->discount,
                 'isFavorite' => $product->isUserFavorite,
-                'remove' => true
+                'remove' => true,
+                'isCartPage'=>true,
             ])
         @empty
             <div class="text-danger text-center">{{ __('site.cart.empty') }}</div>
@@ -58,6 +59,9 @@ id="cart-page"
 {{-- Footer --}}
 @section('footer')
     @include('layouts.partials.footer.main', ['footerClass' => 'grey'])
-
+    <div class="d-md-none">
+        {{-- Menu bottom --}}
+        @include('layouts.partials.footer.mobile')
+    </div>
     @section('footer-class', 'grey')
 @endsection
