@@ -31,7 +31,7 @@ id="retrieve-password-page" class="h-100"
             </a>
         </div>
 
-        <div class="col-md-6 pl-5 pt-5" style="background-color: #EFEFEF">
+        <div class="col-md-6 pl-3 pl-md-5 pt-5" style="background-color: #EFEFEF">
             {{-- Retrieve password --}}
             <form method="POST" action="{{ route('password.email') }}" class="retrieve-password-form">
                 @csrf
