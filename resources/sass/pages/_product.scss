@@ -52,6 +52,14 @@
             &:hover {
                 text-decoration: none;
             }
+
+            @media(max-width:767px){
+                &.category{
+                    display:inline-block;
+                    height:100%;
+                    width:90%;
+                }
+            }
         }
 
         .separator {
@@ -76,6 +84,10 @@
 
             .image-wrap{
                 height:220px;
+
+                @media (min-width:600px) and (max-width:750px){
+                    height:auto;
+                }
             }
         }
 
@@ -442,5 +454,9 @@
                 }
             }
         }
+    }
+
+    #category-page #product-list .product{
+        height: auto !important;
     }
 }
