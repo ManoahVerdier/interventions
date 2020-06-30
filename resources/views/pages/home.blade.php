@@ -71,7 +71,30 @@ id="home-page"
             <img width="40px" height="28px" src="{{ asset('img/homepage/delivery.png') }}">
         </div>
     </div>
-    <img class='d-none d-md-flex' src="{{ asset('img/homepage/reasurrance.png') }}">
+    <div class='d-none d-md-block container'>
+        <div class="row py-4 d-flex">
+            <div class="col-2  valign-middle text-center mx-auto">
+                <img class="pt-1 mx-auto" width="60px" height="48px" src="{{ asset('img/homepage/headset.png') }}">
+            </div>
+            <div class="col-2 py-3 px-0 text-right valign-middle">
+                <div class="first_line line">un service client</div>
+                <div class="third_line line">09 67 89 53 54</div>
+            </div>
+            <div class="col-2 px-0 col_left valign-middle">
+                <div class="second_line line">7j/7</div>
+            </div>
+            <div class="col-2 px-0 col_right valign-middle">
+                <div class="second_line line">24/48h*</div>
+            </div>
+            <div class="col-2 py-3 px-0  valign-middle">
+                <div class="first_line line">une livraison en</div>
+                <div class="third_line line">voir disponibilités*</div>
+            </div>
+            <div class="col-2 valign-middle text-center">
+                <img class=" mx-auto" width="60px" height="42px" src="{{ asset('img/homepage/delivery.png') }}">
+            </div>
+        </div>
+    </div>
 </section>
 
 {{-- Selection --}}
@@ -82,7 +105,7 @@ id="home-page"
         <div class="row">
             <div class="col-md-12">
                 <h2>
-                    <img src="{{ asset('img/layout/chevron-bottom.png') }}">
+                    <img src="{{ asset('img/layout/logo-prodice-lite-dark.png') }}">
                     <span>Nos partenaires</span>
                     <small>fournisseurs</small>
                 </h2>
