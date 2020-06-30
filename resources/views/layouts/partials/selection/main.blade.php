@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-10">
                 <h2>
-                    <img src="{{ asset('img/layout/chevron-bottom.png') }}">
+                    <img src="{{ asset('img/layout/logo-prodice-lite-dark.png') }}">
                     <span>Notre sélection</span>
                     <small class="primary-text">du moment</small>
                 </h2>

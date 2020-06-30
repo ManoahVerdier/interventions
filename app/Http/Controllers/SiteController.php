@@ -41,9 +41,10 @@ class SiteController extends Controller
         }
 
         $categories = Category::getRoots()->get();
+        $brands = Brand::get();
         $productsCount = Product::count();
 
-        return view('pages.home', compact('selectionProducts','categories','productsCount'));
+        return view('pages.home', compact('selectionProducts','categories','productsCount','brands'));
     }
 
     /**

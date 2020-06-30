@@ -14,8 +14,8 @@
         </a>
 
         {{-- Menu --}}
-        <div class="col-5 col-lg-3 menu">
-            <div class="h-100 valign-middle justify-content-around">
+        <div class="col-5 col-lg-4 menu">
+            <div class="h-100 valign-middle @auth justify-content-around @endauth @guest text-right @endguest">
                 @auth
                 <a href="{{ route('favorites') }}" class="favorite"><i class="fas fa-heart fa-lg"></i></a>
 
@@ -26,7 +26,7 @@
                 @endauth
 
                 @guest
-                <a href="{{ route('login') }}">
+                <a href="{{ route('login') }}" class="ml-auto">
                     <span class="login mr-2 d-sm-block-inline">Connectez-vous</span>
                     <i class="fas fa-user-alt fa-lg"></i>
                 </a>
