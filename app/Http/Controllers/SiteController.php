@@ -202,7 +202,9 @@ class SiteController extends Controller
         $products = [];
         if ($favorites) {
             foreach ($favorites as $favorite) {
-                $products[] = $favorite->product;
+                if (!empty($favorite->product)) {
+                    $products[] = $favorite->product;
+                }
             }
         }
 
@@ -404,9 +406,9 @@ class SiteController extends Controller
         ];
     }
 
-    public function profile(){  
+    public function profile(){
         $user = auth()->user();
-        
+
 
         if(!empty($_POST)){
             $this->validate(request(), [
@@ -423,7 +425,7 @@ class SiteController extends Controller
             $user->email = request('email');
             $user->password = Hash::make(request('password'));
             $user->phone = request('phone');
-                     
+
 
             $user->save();
         }

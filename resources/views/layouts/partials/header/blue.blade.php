@@ -8,7 +8,7 @@
 
             {{-- Return --}}
             <div class="col-2 col-md-1 d-flex align-items-center justify-content-center">
-                <a href="{{ url()->previous() }}"><img src="{{ asset('img/layout/chevron-return.png') }}" class="img-fluid"></a>
+                <a href="javascript:history.back()"><img src="{{ asset('img/layout/chevron-return.png') }}" class="img-fluid"></a>
             </div>
 
             {{-- Title --}}

@@ -68,7 +68,7 @@ id="favorites-page"
             @include('layouts.partials.product.line', [
                 'image' => $product->image ?? asset('img/product/image_not_available.png'),
                 'category_icon' => $product->category->pictogram ?? null,
-                'category_name' => $product->category->name,
+                'category_name' => $product->category->name ?? null,
                 'name' => $product->name,
                 'reference' => $product->reference,
                 'description' => $product->description,
