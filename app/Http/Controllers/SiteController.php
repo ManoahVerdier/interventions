@@ -40,11 +40,11 @@ class SiteController extends Controller
             $selectionProducts = $selectionProducts->random(10);
         }
 
-        $categories = Category::getRoots()->get();
-        $brands = Brand::get();
+        $categories_footer = Category::getRoots()->get();
+        $brands_footer = Brand::get();
         $productsCount = Product::count();
 
-        return view('pages.home', compact('selectionProducts','categories','productsCount','brands'));
+        return view('pages.home', compact('selectionProducts','productsCount','brands_footer','categories_footer'));
     }
 
     /**
@@ -66,9 +66,13 @@ class SiteController extends Controller
     {
         $fromMenu = request()->get('fromMenu') ?? true;
         $categories = Category::getRoots()->get();
+        
+        $categories_footer = Category::getRoots()->get();
+        $brands_footer = Brand::get();
+
         $productsCount = Product::count();
 
-        return view('pages.search', compact('categories', 'productsCount','fromMenu'));
+        return view('pages.search', compact('categories', 'productsCount','fromMenu','brands_footer','categories_footer'));
     }
 
     /**
@@ -81,12 +85,15 @@ class SiteController extends Controller
         $category = Category::findOrFail($id);
         $brands = $category->brands; // Brands with products linked to category or descendants
 
+        $categories_footer = Category::getRoots()->get();
+        $brands_footer = Brand::get();
+
         $productsCount = 0;
         foreach ($brands as $brand) {
             $productsCount += $brand->productsCountForCategory($category);
         }
 
-        return view('pages.search_brands', compact('category', 'brands', 'productsCount'));
+        return view('pages.search_brands', compact('category', 'brands', 'productsCount','brands_footer','categories_footer'));
     }
 
     public function searchResults()
@@ -96,6 +103,9 @@ class SiteController extends Controller
         $brandTable = (new Brand)->getTable();
         $productTable = (new Product)->getTable();
 
+        $categories_footer = Category::getRoots()->get();
+        $brands_footer = Brand::get();
+
         $products = Product::selectRaw("$productTable.*")
                 ->join($brandTable, "$productTable.brand_id", '=', "$brandTable.id")
                 ->where("$productTable.name", 'like', "%$q%")
@@ -103,7 +113,7 @@ class SiteController extends Controller
                 ->groupBy("$productTable.id")
                 ->get();
 
-        return view('pages.search_results', compact('products', 'q'));
+        return view('pages.search_results', compact('products', 'q','brands_footer','categories_footer'));
     }
 
     /**
@@ -117,12 +127,15 @@ class SiteController extends Controller
         $category = $product->category;
         $categories = $category->children()->get();
 
+        $categories_footer = Category::getRoots()->get();
+        $brands_footer = Brand::get();
+
         $selectionProducts = Product::all();
         if ($selectionProducts->count() > 10) {
             $selectionProducts = $selectionProducts->random(10);
         }
 
-        return view('pages.product', compact('product', 'category', 'categories', 'selectionProducts'));
+        return view('pages.product', compact('product', 'category', 'categories', 'selectionProducts','brands_footer','categories_footer'));
     }
 
     /**
@@ -135,10 +148,13 @@ class SiteController extends Controller
         $category = Category::findOrFail($id);
         $categories = $category->children()->get();
 
+        $categories_footer = Category::getRoots()->get();
+        $brands_footer = Brand::get();
+
         $descendantsCategoriesIds = $category->findDescendants()->pluck('id');
         $products = Product::whereIn('category_id', $descendantsCategoriesIds)->get();
 
-        return view('pages.category', compact('category', 'categories', 'products'));
+        return view('pages.category', compact('category', 'categories', 'products','brands_footer','categories_footer'));
     }
 
     /**
@@ -150,6 +166,9 @@ class SiteController extends Controller
     {
         $category = Category::findOrFail($categoryId);
         $brand = Brand::findOrFail($brandId);
+
+        $categories_footer = Category::getRoots()->get();
+        $brands_footer = Brand::get();
 
         $descendantsCategoriesIds = $category->findDescendants()->pluck('id');
         $products = Product::where('brand_id', $brandId)
@@ -164,7 +183,7 @@ class SiteController extends Controller
             }
         }
 
-        return view('pages.category', compact('category', 'brand', 'categories', 'products'));
+        return view('pages.category', compact('category', 'brand', 'categories', 'products','brands_footer','categories_footer'));
     }
 
     /**
@@ -177,6 +196,9 @@ class SiteController extends Controller
 
         $favorites = auth()->user()->favorites;
 
+        $categories_footer = Category::getRoots()->get();
+        $brands_footer = Brand::get();
+
         $products = [];
         if ($favorites) {
             foreach ($favorites as $favorite) {
@@ -184,7 +206,7 @@ class SiteController extends Controller
             }
         }
 
-        return view('pages.favorites', compact('products'));
+        return view('pages.favorites', compact('products','brands_footer','categories_footer'));
     }
 
     /**
@@ -224,12 +246,15 @@ class SiteController extends Controller
     {
         $cartLines = auth()->user()->carts;
 
+        $categories_footer = Category::getRoots()->get();
+        $brands_footer = Brand::get();
+
         $cartTotals = $this->getCartTotals();
 
         $totalPrice = $cartTotals['price'];
         $totalQuantity = $cartTotals['quantity'];
 
-        return view('pages.cart', compact('cartLines', 'totalPrice', 'totalQuantity'));
+        return view('pages.cart', compact('cartLines', 'totalPrice', 'totalQuantity','brands_footer','categories_footer'));
     }
 
     /**
@@ -247,6 +272,7 @@ class SiteController extends Controller
             'user_id' => auth()->id(),
         ]);
 
+        
         // Le code suivant ermet de mettre à jour la quantité si le produit existe déjà dans le panier
         $cart->quantity = (int) $cart->quantity + $quantity;
         $cart->save();

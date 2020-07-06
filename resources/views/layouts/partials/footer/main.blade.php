@@ -6,13 +6,13 @@
             </div>
             <div class="col-md-4 valign-middle">
                 <p class="w-100 text-center mb-2 font-weight-normal">Catégories</p>
-                @foreach($categories as $c)
+                @foreach($categories_footer as $c)
                 <a href="" class='w-100 d-inline-block mb-1 text-center'>{{$c->name}}</a>
                 @endforeach
             </div>
             <div class="col-md-4  valign-middle">
                 <p class="w-100 text-center mb-2">Marques</p>
-                @foreach($brands as $b)
+                @foreach($brands_footer as $b)
                 <a href="" class='w-100 d-inline-block mb-1 text-center'>{{$b->name}}</a>
                 @endforeach
             </div>
