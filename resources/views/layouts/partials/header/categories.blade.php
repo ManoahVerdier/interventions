@@ -6,6 +6,10 @@
                     @foreach($categories as $category)
                     {{-- @continue($category->products()->count() === 0 && $category->children() === 0) --}}
                     <?php
+                        $nb = $category->products->count();;
+                        foreach($category->children() as $child){
+                            $nb+= $child->products->count();
+                        }
                         if (!empty($brand)) {
                             $route = route('category.brand', ['categoryId' => $category->getKey(), 'brandId' => $brand->getKey()]);
                         } elseif (!empty($linkToBrands)) {
@@ -18,7 +22,7 @@
                         <a href="{{ $route }}">
                             <img src="{{ asset('img/layout/category-icon.png') }}"><span>{{ $category->name }}</span>
                             <div class="counter">
-                                <span>{{ $category->products->count() }}</span>
+                                <span>{{ $nb }}</span>
                                 <img src="{{ asset('img/layout/chevron-right-blue.png') }}">
                             </div>
                         </a>
