@@ -26,6 +26,7 @@
                             'category_icon' => $product->category->pictogram ?? null,
                             'category_name' => $product->category->name,
                             'isFavorite' => $product->isUserFavorite,
+                            'brandName' => $product->brand->name,
                         ])
 
                         @include('layouts.partials.product.description', [

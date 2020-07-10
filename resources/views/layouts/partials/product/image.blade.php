@@ -16,6 +16,6 @@
 
 
     <div class="category-name">
-        {{ $category_name }}
+        {{ $brandName }}
     </div>
 </div>
