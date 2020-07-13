@@ -7,8 +7,7 @@
                     {{-- @continue($category->products()->count() === 0 && $category->children() === 0) --}}
                     <?php
                         $nb = $category->products->count();;
-                        foreach($category->children() as $child){
-                            dd($child);
+                        foreach($category->children()->get() as $child){
                             $nb+= $child->products->count();
                         }
                         if (!empty($brand)) {
