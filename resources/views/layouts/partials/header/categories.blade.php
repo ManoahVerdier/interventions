@@ -6,7 +6,8 @@
                     @foreach($categories as $category)
                     {{-- @continue($category->products()->count() === 0 && $category->children() === 0) --}}
                     <?php
-                        $nb = $category->products->count();;
+                        $nb = $category->products->count();
+                        dd($category->children());
                         foreach($category->children() as $child){
                             dd($child);
                             $nb+= $child->products->count();
