@@ -19089,7 +19089,7 @@ a.text-dark:focus {
   #cart-page #product-list .product div.category-name,
   #search-results-page #product-detail .product div.category-name,
   #search-results-page #product-list .product div.category-name {
-    bottom: -5px;
+    bottom: 5px;
     min-height: 40px;
   }
 }
