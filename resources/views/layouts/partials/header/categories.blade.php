@@ -8,6 +8,7 @@
                     <?php
                         $nb = $category->products->count();;
                         foreach($category->children() as $child){
+                            dd($child);
                             $nb+= $child->products->count();
                         }
                         if (!empty($brand)) {
