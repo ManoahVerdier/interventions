@@ -6,16 +6,20 @@
                     @foreach($categories as $category)
                     {{-- @continue($category->products()->count() === 0 && $category->children() === 0) --}}
                     <?php
-                        $nb = $category->products->count();;
-                        foreach($category->children()->get() as $child){
-                            $nb+= $child->products->count();
-                        }
-                        if (!empty($brand)) {
-                            $route = route('category.brand', ['categoryId' => $category->getKey(), 'brandId' => $brand->getKey()]);
-                        } elseif (!empty($linkToBrands)) {
-                            $route = route('category.brands', ['id' => $category->getKey()]);
-                        } else {
-                            $route = route('category', ['id' => $category->getKey(), 'name' => $category->name]);
+                        $nb=0;
+                        if($category??false)
+                        {
+                            $nb = $category->products->count();;
+                            foreach($category->children()->get() as $child){
+                                $nb+= $child->products->count();
+                            }
+                            if (!empty($brand)) {
+                                $route = route('category.brand', ['categoryId' => $category->getKey(), 'brandId' => $brand->getKey()]);
+                            } elseif (!empty($linkToBrands)) {
+                                $route = route('category.brands', ['id' => $category->getKey()]);
+                            } else {
+                                $route = route('category', ['id' => $category->getKey(), 'name' => $category->name]);
+                            }
                         }
                     ?>
                     <li>
