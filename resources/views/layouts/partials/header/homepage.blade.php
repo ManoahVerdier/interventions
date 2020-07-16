@@ -40,4 +40,7 @@
             </div>
         </div> --}}
     </div>
+    <div class="row d-none d-md-flex mt-3">
+        <div class="col-9 offset-3 border-top border-light pb-1"></div>
+    </div>
 </header>
