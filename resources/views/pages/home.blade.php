@@ -34,15 +34,37 @@ id="home-page"
             </div>
         </a>
 
-        <div class="owl-carousel owl-theme mt-4" data-loop="true" data-dots="true" data-sm="1" data-md="1" data-autoplay="true" data-margin="30">
+        <div class="owl-carousel owl-theme mt-4" data-loop="true" data-dots="false" data-nav="true" data-sm="1" data-md="1" data-autoplay="true" data-margin="30">
             <div>
                 <img src="{{ asset('img/homepage/caroussel/slideshow-1.png') }}">
             </div>
             <div>
-                <img src="{{ asset('img/homepage/caroussel/slideshow-2.png') }}">
+                <img src="{{ asset('img/homepage/caroussel/slideshow-1.png') }}">
             </div>
             <div>
-                <img src="{{ asset('img/homepage/caroussel/slideshow-3.png') }}">
+                <img src="{{ asset('img/homepage/caroussel/slideshow-1.png') }}">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="emphase">
+    <div class="container pb-4">
+        <div class="row">
+            <div class="col-12  px-5">
+                <p class="h3 mb-0">PRODICE, votre service de produits d’entretien</p>
+                <div class="d-inline-block position-relative" id="dash"></div>
+            </div>
+            <div class="col-12  px-5">
+                <p class="emphase-text ">
+                    Tous les produits d’entretien pour vos appareils de cuisines professionnelles.
+                    Découvrez nos gammes de produits adaptés à tous vos équipements : 
+                    Four, Lave-vaisselle, Machine à capot, lave-verres...
+                </p>
+                <p class="emphase-text">
+                    Prenez soin de vos équipements et prolongez leur durée de vie avec les
+                    produits de nettoyage, rinçage & anticalcaire dédiés. 
+                </p>
             </div>
         </div>
     </div>
@@ -54,44 +76,60 @@ id="home-page"
 @endif
 <section id="reasurrance" class="d-flex justify-content-center valign-middle">
     <div class="row py-4 d-flex d-md-none">
-        <div class="col-2 offset-1 p-3">
-            <img class="pt-1" width="40px" height="32px" src="{{ asset('img/homepage/headset.png') }}">
-        </div>
-        <div class="col-3 px-0 col_left">
-            <div class="first_line line">un service client</div>
-            <div class="second_line line">5j/7</div>
-            <div class="third_line line">09 67 89 53 54</div>
-        </div>
-        <div class="col-3 px-0 col_right">
-            <div class="first_line line">une livraison en</div>
-            <div class="second_line line">24/48h*</div>
-            <div class="third_line line">voir disponibilités*</div>
-        </div>
-        <div class="col-2 p-3 pt-4">
-            <img width="40px" height="28px" src="{{ asset('img/homepage/delivery.png') }}">
-        </div>
+            <div class="col-4  valign-middle text-center mx-auto">
+                <img class="pt-1 mx-auto" width="48px" height="48px" src="{{ asset('img/homepage/question.png') }}">
+            </div>
+            <div class="col-8 py-3 px-0 text-left valign-top">
+                <div class="first_line line mb-2">Service client</div>
+                <div class="second_line line">  
+                    <span class="w-100 d-inline-block">09 67 89 53 54</span>
+                    <a class="w-100 d-inline-block" href="mailto:e-commerce@prodice.net">e-commerce@prodice.net</a>
+                </div>
+            </div>
+            <div class="col-4  valign-middle text-center mx-auto">
+                <img class="pt-1 mx-auto" width="48px" height="48px" src="{{ asset('img/homepage/truck.png') }}">
+            </div>
+            <div class="col-8 py-3 px-0 text-left valign-top">
+                <div class="first_line line mb-1">Livraison 48 H</div>
+                <div class="second_line line">& gratuite dès 500€*</div>
+                <div class="second_line line"></div>
+            </div>
+            <div class="col-4  valign-middle text-center mx-auto">
+                <img class="pt-1 mx-auto" width="48px" height="48px" src="{{ asset('img/homepage/shield.png') }}">
+            </div>
+            <div class="col-8 py-3 px-0 text-left valign-top">
+                <div class="first_line line mb-1">Paiement sécurisé</div>
+                <div class="second_line line">Devis rapides</div>
+                <div class="second_line line"></div>
+            </div>
     </div>
     <div class='d-none d-md-block container'>
         <div class="row py-4 d-flex">
-            <div class="col-2  valign-middle text-center mx-auto">
-                <img class="pt-1 mx-auto" width="60px" height="48px" src="{{ asset('img/homepage/headset.png') }}">
+            <div class="col-1  valign-middle text-center mx-auto">
+                <img class="pt-1 mx-auto" width="60px" height="60px" src="{{ asset('img/homepage/question.png') }}">
             </div>
-            <div class="col-2 py-3 px-0 text-right valign-middle">
-                <div class="first_line line">un service client</div>
-                <div class="third_line line">09 67 89 53 54</div>
+            <div class="col-3 py-3 px-0 text-left valign-top">
+                <div class="first_line line mb-2">Service client</div>
+                <div class="second_line line">  
+                    <span class="w-100 d-inline-block">09 67 89 53 54</span>
+                    <a class="w-100 d-inline-block" href="mailto:e-commerce@prodice.net">e-commerce@prodice.net</a>
+                </div>
             </div>
-            <div class="col-2 px-0 col_left valign-middle">
-                <div class="second_line line">7j/7</div>
+            <div class="col-1  valign-middle text-center mx-auto">
+                <img class="pt-1 mx-auto" width="60px" height="60px" src="{{ asset('img/homepage/truck.png') }}">
             </div>
-            <div class="col-2 px-0 col_right valign-middle">
-                <div class="second_line line">24/48h*</div>
+            <div class="col-3 py-3 px-0 text-left valign-top">
+                <div class="first_line line mb-1">Livraison 48 H</div>
+                <div class="second_line line">& gratuite dès 500€*</div>
+                <div class="second_line line"></div>
             </div>
-            <div class="col-2 py-3 px-0  valign-middle">
-                <div class="first_line line">une livraison en</div>
-                <div class="third_line line">voir disponibilités*</div>
+            <div class="col-1  valign-middle text-center mx-auto">
+                <img class="pt-1 mx-auto" width="60px" height="60px" src="{{ asset('img/homepage/shield.png') }}">
             </div>
-            <div class="col-2 valign-middle text-center">
-                <img class=" mx-auto" width="60px" height="42px" src="{{ asset('img/homepage/delivery.png') }}">
+            <div class="col-3 py-3 px-0 text-left valign-top">
+                <div class="first_line line mb-1">Paiement sécurisé</div>
+                <div class="second_line line">Devis rapides</div>
+                <div class="second_line line"></div>
             </div>
         </div>
     </div>

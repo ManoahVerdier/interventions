@@ -17057,6 +17057,10 @@ a.text-dark:focus {
   background-color: red;
 }
 
+.border-primary {
+  border-color: #27aace;
+}
+
 .navbar-light {
   padding: 36px 0 0 0;
 }
@@ -18074,14 +18078,40 @@ a.text-dark:focus {
   top: 270px;
 }
 
+#home-page #slideshow img {
+  border-radius: 15px;
+}
+
+#home-page #emphase {
+  background-color: #f3f3f3;
+}
+
+#home-page #emphase #dash {
+  height: 7px;
+  width: 50px;
+  border-radius: 2px;
+  background-color: #27AACE;
+  top: -7px;
+}
+
+#home-page #emphase .emphase-text {
+  font-size: 1.3rem;
+}
+
 #home-page #reasurrance {
   background-color: #414042;
   height: 134px;
 }
 
+@media (max-width: 767px) {
+  #home-page #reasurrance {
+    height: 350px;
+  }
+}
+
 #home-page #reasurrance .first_line {
   color: white;
-  font-size: 18px;
+  font-size: 22px;
 }
 
 #home-page #reasurrance .line {
@@ -18091,17 +18121,10 @@ a.text-dark:focus {
 }
 
 #home-page #reasurrance .second_line {
-  color: white;
-  font-size: 24px;
-  line-height: 24px;
-  vertical-align: top;
-  font-weight: bold;
-}
-
-#home-page #reasurrance .third_line {
   color: #27ABCD;
   line-height: 18px;
   font-weight: 500;
+  font-size: 18px;
 }
 
 #home-page #reasurrance .col_left .line {
@@ -18128,13 +18151,6 @@ a.text-dark:focus {
   #home-page #reasurrance .line {
     width: 100%;
     display: inline-block;
-  }
-
-  #home-page #reasurrance .second_line {
-    color: white;
-    font-size: 24px;
-    line-height: 24px;
-    vertical-align: top;
   }
 
   #home-page #reasurrance .third_line {
@@ -18170,6 +18186,13 @@ a.text-dark:focus {
 
 #home-page #selection {
   padding: 1.5rem 0;
+}
+
+#home-page #selection #showmore {
+  font-weight: 500;
+  border-width: 2px;
+  color: black;
+  border-color: #a0a0a0;
 }
 
 #home-page #selection .owl-carousel {
@@ -20144,7 +20167,7 @@ footer .copyright {
 
 footer .email a {
   font-weight: 500;
-  font-size: 11px;
+  font-size: 16px;
 }
 
 footer.grey {
@@ -20295,6 +20318,31 @@ a:visited {
   font-weight: 500;
   font-size: 17px;
   float: right;
+}
+
+.owl-carousel .owl-prev {
+  width: 15px;
+  height: 100px;
+  position: absolute;
+  top: calc(50% - 50px);
+  margin-left: -20px;
+  display: block !important;
+  border: 0px solid black;
+}
+
+.owl-carousel .owl-next {
+  width: 15px;
+  height: 100px;
+  position: absolute;
+  top: calc(50% - 50px);
+  right: 5px;
+  display: block !important;
+  border: 0px solid black;
+}
+
+.owl-carousel .owl-prev span,
+.owl-carousel .owl-next span {
+  font-size: 2rem;
 }
 
 .owl-theme .owl-nav.disabled + .owl-dots {

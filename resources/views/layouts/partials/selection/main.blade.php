@@ -10,7 +10,7 @@
                 </h2>
             </div>
             <div class="col-2">
-                {{-- <button type="button" class="btn btn-outline-secondary float-right">Voir +</button> --}}
+                <button id="showmore" type="button" class="d-none d-md-block btn btn-outline-secondary float-right p-3">Voir <span class="ml-3">+</span></button> 
             </div>
         </div>
 

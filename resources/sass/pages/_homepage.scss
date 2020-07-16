@@ -30,15 +30,39 @@
             left: 30px;
             top: 270px;
         }
+
+        img{
+            border-radius:15px;
+        }
+    }
+
+    #emphase{
+        background-color:#f3f3f3;
+
+        #dash{
+            height:7px;
+            width:50px;
+            border-radius:2px;
+            background-color:#27AACE;
+            top:-7px;
+        }
+
+        .emphase-text{
+            font-size:1.3rem;
+        }
     }
 
     #reasurrance {
         background-color: #414042;
         height: 134px;
 
+        @media (max-width:767px){
+            height:350px;
+        }
+
         .first_line{
             color:white;
-            font-size:18px
+            font-size:22px
         }
             
         .line{
@@ -48,19 +72,11 @@
         }
             
         .second_line{
-            color:white;
-            font-size:24px;
-            line-height:24px;
-            vertical-align:top;
-            font-weight:bold;
-        }
-            
-        .third_line{
             color:#27ABCD;
             line-height:18px;
             font-weight:500;
+            font-size:18px;
         }
-            
             
         .col_left{
             .line{
@@ -93,13 +109,6 @@
             .line{
                 width:100%;
                 display:inline-block;
-            }
-                
-            .second_line{
-                color:white;
-                font-size:24px;
-                line-height:24px;
-                vertical-align:top
             }
                 
             .third_line{
@@ -142,6 +151,13 @@
     #selection {
         padding: 1.5rem 0;
 
+        #showmore{
+            font-weight:500;
+            border-width:2px;
+            color:black;
+            border-color:#a0a0a0
+        }
+            
         .owl-carousel {
             margin-top: 20px;
         }

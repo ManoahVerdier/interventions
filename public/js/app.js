@@ -48102,6 +48102,7 @@ $('.owl-carousel').each(function (index, el) {
     autoplayTimeout: $(el).data('autoplay-timeout') ? $(el).data('autoplay-timeout') : 5000,
     autoplayHoverPause: $(el).data('autoplay-hover-pause') === false ? false : true,
     dots: $(el).data('dots') === false ? false : true,
+    nav: $(el).data('nav') === false ? false : true,
     responsive: {
       0: {
         items: $(el).data('xs') ? $(el).data('xs') : 1,
