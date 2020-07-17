@@ -19,14 +19,6 @@
                     @endforeach
                 </ul>
             </div>
-            <div class="d-none col-md-4  valign-top">
-                <p class="w-100 text-left mb-2">POUR LES PROFESSIONNELS</p>
-                <ul>
-                    @foreach($brands_footer as $b)
-                        <li><a href="" class='mb-0 w-100 d-inline-block mb-1 text-left'>{{$b->name}}</a></li>
-                    @endforeach
-                </ul>
-            </div>
             <div class="mt-3 mt-md-1 col-md-3 valign-top text-left">
                 <p class="w-100">
                     <span class="font-weight-bold">PRODICE</span><br>
