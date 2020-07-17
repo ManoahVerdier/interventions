@@ -55,7 +55,8 @@ class SiteController extends Controller
      */
     public function activation()
     {
-        return view('pages.activation');
+        $categories_footer = Category::getRoots()->get();
+        return view('pages.activation',compact('categories_footer'));
     }
 
     /**
