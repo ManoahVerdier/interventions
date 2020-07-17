@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Brand;
 use App\Cart;
 use App\Category;
+use App\CodePromo;
 use App\Favorite;
 use App\Notifications\NewOrder;
 use App\Notifications\OrderConfirmation;
@@ -307,6 +308,15 @@ class SiteController extends Controller
         return $cartTotals;
     }
 
+    public function discountCart(){
+        $code = request('code');
+        $discount = CodePromo::where('code',$code)->where('expiration_date','>=',date('Y-m-d'))->first();
+        
+        $cartTotals = $this->getCartTotals($discount);
+
+        return $cartTotals;
+    }
+
     /**
      * Supprime un produit du panier.
      *
@@ -388,7 +398,7 @@ class SiteController extends Controller
         return $order;
     }
 
-    protected function getCartTotals()
+    protected function getCartTotals($discount=null)
     {
         $cartLines = auth()->user()->carts;
 
@@ -402,9 +412,27 @@ class SiteController extends Controller
             }
         }
 
+        if($discount){
+            $savings=0;
+            if($discount->minAmount<$totalPrice){
+                if($discount->type=="type.percent"){
+                    $savings = ($totalPrice*$discount->value/100);
+                }
+                else{
+                    $savings = $discount->value;
+                }
+            
+                return [
+                    'price' => $totalPrice,
+                    'quantity' => $totalQuantity,
+                    'savings' => $savings
+                ];
+            }    
+        }
+
         return [
             'price' => $totalPrice,
-            'quantity' => $totalQuantity
+            'quantity' => $totalQuantity,'discount'=>$discount
         ];
     }
 

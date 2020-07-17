@@ -101,6 +101,46 @@ $('select[name="quantity"]').on('change', (event) => {
     }
 });
 
+// Change price according to quantity
+$('button#discount').on('click', (event) => {
+    // Récupère les éléments
+    let code = $("#discount_code").val();
+
+    let url = $('meta[name="cart-discount-url"]').attr('content');
+
+    // Crée le champ data
+    let data = {
+        code: code,
+        _token: $('meta[name="csrf-token"]').attr('content')
+    };
+
+    $.post(url, data).then(response => {
+        if (response) {
+            console.log(response);
+            if(response.discount==null && !response.savings){
+                console.log('test');
+                $('#error_code strong').text("Code inconnu ou expiré").css('display','block');
+                $('#error_code').css('display','block');
+                $('#cart-summary-bottom #sub-total').addClass('d-none');
+                $('#cart-summary-bottom #savings').addClass('d-none');
+                $('#cart-summary .amount .value').html(new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(response.price));
+                $('#cart-summary-bottom #total .amount .value').html(new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(response.price));
+            }
+            else{
+                // Met à jour le prix total du panier
+                $('#cart-summary .amount .value').html(new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(response.price-response.savings));
+                $('#cart-summary-bottom #total .amount .value').html(new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(response.price-response.savings));
+                $('#cart-summary-bottom #savings .amount .value').html(new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(response.savings));
+                $('#cart-summary-bottom #sub-total').removeClass('d-none');
+                $('#cart-summary-bottom #savings').removeClass('d-none');
+                $('#discount').addClass('disable');
+                $('#error_code strong').text("");
+            }
+            
+        }
+    });
+});
+
 // Toggle favorite
 $('a.toggle-favorite').on('click', (event) => {
     event.preventDefault();

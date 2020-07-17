@@ -48180,6 +48180,56 @@ $('select[name="quantity"]').on('change', function (event) {
     $('span.value', formEl).html(totalPriceFormatted);
     $('span.striked-value', formEl).html(totalStrikedPriceFormatted);
   }
+}); // Change price according to quantity
+
+$('button#discount').on('click', function (event) {
+  // Récupère les éléments
+  var code = $("#discount_code").val();
+  var url = $('meta[name="cart-discount-url"]').attr('content'); // Crée le champ data
+
+  var data = {
+    code: code,
+    _token: $('meta[name="csrf-token"]').attr('content')
+  };
+  $.post(url, data).then(function (response) {
+    if (response) {
+      console.log(response);
+
+      if (response.discount == null && !response.savings) {
+        console.log('test');
+        $('#error_code strong').text("Code inconnu ou expiré").css('display', 'block');
+        $('#error_code').css('display', 'block');
+        $('#cart-summary-bottom #sub-total').addClass('d-none');
+        $('#cart-summary-bottom #savings').addClass('d-none');
+        $('#cart-summary .amount .value').html(new Intl.NumberFormat('fr-FR', {
+          style: 'currency',
+          currency: 'EUR'
+        }).format(response.price));
+        $('#cart-summary-bottom #total .amount .value').html(new Intl.NumberFormat('fr-FR', {
+          style: 'currency',
+          currency: 'EUR'
+        }).format(response.price));
+      } else {
+        // Met à jour le prix total du panier
+        $('#cart-summary .amount .value').html(new Intl.NumberFormat('fr-FR', {
+          style: 'currency',
+          currency: 'EUR'
+        }).format(response.price - response.savings));
+        $('#cart-summary-bottom #total .amount .value').html(new Intl.NumberFormat('fr-FR', {
+          style: 'currency',
+          currency: 'EUR'
+        }).format(response.price - response.savings));
+        $('#cart-summary-bottom #savings .amount .value').html(new Intl.NumberFormat('fr-FR', {
+          style: 'currency',
+          currency: 'EUR'
+        }).format(response.savings));
+        $('#cart-summary-bottom #sub-total').removeClass('d-none');
+        $('#cart-summary-bottom #savings').removeClass('d-none');
+        $('#discount').addClass('disable');
+        $('#error_code strong').text("");
+      }
+    }
+  });
 }); // Toggle favorite
 
 $('a.toggle-favorite').on('click', function (event) {
@@ -48355,6 +48405,23 @@ var Cart = /*#__PURE__*/function () {
       var _this = this;
 
       $('#order-btn').on('click', function (event) {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
+          title: 'Confirmation',
+          text: "Êtes-vous sûr de vouloir passer votre commande ?",
+          // icon: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#38c172',
+          cancelButtonColor: '#e3342f',
+          confirmButtonText: 'Commander',
+          cancelButtonText: 'Annuler'
+        }).then(function (result) {
+          if (result.value) {
+            // Effectue la commande
+            _this.makeOrder();
+          }
+        });
+      });
+      $('#order-btn-bottom').on('click', function (event) {
         sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
           title: 'Confirmation',
           text: "Êtes-vous sûr de vouloir passer votre commande ?",
