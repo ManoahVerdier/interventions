@@ -26,7 +26,7 @@
                     www.odice.info<br>
                 </p>
                 <span class="email w-100 d-inline-block"><a href="mailto:e-commerce@prodice.net" class="primary-text">e-commerce@prodice.net</a></span>
-                <span class="email w-100 d-inline-block"><a href="tel:0967895354" class="primary-text">09 67 89 53 54</a></span>
+                <span class="email w-100 d-inline-block"><a href="tel:0786101346" class="primary-text">07 86 10 13 46</a></span>
             </div>
         </div>
     </div>
