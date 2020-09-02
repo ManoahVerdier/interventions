@@ -88,24 +88,15 @@
 
         .product-line {
             margin-bottom: 30px;
-
-            .image-wrap{
-                height:220px;
-
-                @media (min-width:600px) and (max-width:750px){
-                    height:auto;
-                }
-            }
         }
 
         .product {
             position: relative;
             background-color: #f3f3f3;
             border-radius: 20px;
-            padding: 60px 30px;
+            padding: 30px 30px;
             margin: 5px;
             width: 100%;
-            height: 85%;
             text-align: center;
 
             @media (max-width:767px){
@@ -228,14 +219,12 @@
         }
 
         .description {
-            margin-top: 50px;
             padding-left: 30px;
             padding-right: 20px;
             line-height: 1rem;
             font-size: 12px;
 
             @media(max-width:767px){
-                margin-top:40px;
                 padding-left:20px;
             }
 

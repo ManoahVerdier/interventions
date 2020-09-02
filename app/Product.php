@@ -56,10 +56,6 @@ class Product extends Model implements Searchable
         return $this->hasMany(Favorite::class);
     }
 
-    public function carts()
-    {
-        return $this->hasMany(Cart::class);
-    }
 
     public function getAmountHTAfterDiscountAttribute()
     {

@@ -7,7 +7,6 @@
 
         <div class="col-7 col-md-4  px-0 px-md-3">
             @include('layouts.partials.product.description')
-            @include('layouts.partials.product.add_to_cart_mobile')
         </div>
     </div>
     @else 
@@ -20,9 +19,6 @@
             @include('layouts.partials.product.description')
         </div>
 
-        <div class="col-md-3  px-0 px-md-3">
-            @include('layouts.partials.product.add_to_cart')
-        </div>
     </div>
     @endif
 @else
@@ -35,8 +31,5 @@
         @include('layouts.partials.product.description')
     </div>
 
-    <div class="col-md-3 b-bordered">
-        @include('layouts.partials.product.add_to_cart')
-    </div>
 </div>
 @endif

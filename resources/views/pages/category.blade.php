@@ -14,7 +14,6 @@ id="category-page"
         'subtitle' => trans_choice('site.category.products', $productsCount, ['value' => $productsCount]),
         'withSearch' => true,
     ])
-    @include('layouts.partials.header.sub_header')
 
     @if ($categories->count() > 0)
         @include('layouts.partials.header.categories', ['hide' => true])
@@ -51,9 +50,5 @@ id="category-page"
 {{-- Footer --}}
 @section('footer')
     @include('layouts.partials.footer.main', ['footerClass' => 'grey'])
-    <div class="d-md-none">
-        {{-- Menu bottom --}}
-        @include('layouts.partials.footer.mobile')
-    </div>
     @section('footer-class', 'grey')
 @endsection

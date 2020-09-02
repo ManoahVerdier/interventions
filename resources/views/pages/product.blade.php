@@ -8,12 +8,16 @@ id="product-page"
 
 {{-- Header --}}
 @section('header')
-    @include('layouts.partials.header.homepage')
+    @include('layouts.partials.header.blue', [
+        'title' => '',
+        'withBack' => false,
+        'withSearch' => false
+    ])
 @endsection
 
 {{-- Content --}}
 @section('content')
-<section id="intervention" class="px-3 py-5">
+<section id="intervention" class="px-3 pb-5 pt-1">
     <div class="container">
         <form class="row" method="POST">
             <div class="col-12 text-white mb-4">
@@ -36,7 +40,7 @@ id="product-page"
             </div>
             <div class="form-group col-12 text-white">
                 <label for="image">Joindre une image</label>
-                <input class="form-control" type="file" name="image" id="image">
+                <input class="form-control" type="file" name="image" id="image" accept="image/*;capture=camera">
             </div>
             <div class="form-group col-12 mt-4">
                 <input class="form-control btn btn-secondary" type="submit" value="Envoyer">
@@ -44,43 +48,7 @@ id="product-page"
         </form>
     </div>
 </section>
-{{--
-<section id="product-detail">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-5 offset-md-2">
-                @include('layouts.partials.product.image_big', [
-                    'discount' => $product->discount,
-                    'image' => $product->image ?? asset('img/product/image_not_available.png'),
-                    'category_icon' => $product->category->pictogram ?? null,
-                    'category_name' => $product->category->name,
-                    'isFavorite' => $product->isUserFavorite,
-                    'withAddToCart' => true,
-                    'price' => $product->amountHTAfterDiscount,
-                ])
-            </div>
 
-            <div class="col-md-5">
-                @include('layouts.partials.product.description', [
-                    'reference' => $product->reference,
-                    'name' => $product->name,
-                    'short_description' => $product->short_description,
-                    'description' => $product->description,
-                    'quantity' => $product->quantity,
-                    'withPrice' => false,
-                    'withBrand' => true,
-                    'withAddToCart' => true,
-                    'withDescription' => true,
-                    'price' => $product->amountHTAfterDiscount,
-                    'brandImage' => $product->brand->logo ?? null,
-                    'brandName' => $product->brand->name ?? null,
-                    'isProductPage' => true,
-                ])
-            </div>
-        </div>
-    </div>
-</section>
---}}
 @endsection
 
 {{-- Footer --}}

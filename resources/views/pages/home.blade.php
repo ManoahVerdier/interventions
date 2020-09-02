@@ -36,10 +36,8 @@ id="home-page"
             {{--
             <img src="{{ asset('img/homepage/caroussel/slideshow-1.png') }}" class="col-12 mt-3">
             --}}
-            @if($agent->isMobile())
-                {{-- Categories --}}
-                @include('layouts.partials.header.categories', ['linkToBrands' => true])
-            @endif
+            {{-- Categories --}}
+            @include('layouts.partials.header.categories', ['linkToBrands' => true])
     </section>
 
 @endsection

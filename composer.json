@@ -16,10 +16,10 @@
         "laravelcollective/html": "^5.7",
         "nothingworks/blade-svg": "^0.3.4",
         "silviolleite/laravelpwa": "^2.0",
-        "uccello/module-designer": "^1.1",
-        "uccello/uccello": "^1.0"
+        "uccello/module-designer": "^1.1"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.4",
         "beyondcode/laravel-dump-server": "^1.0",
         "filp/whoops": "^2.0",
         "fzaninotto/faker": "^1.4",

@@ -1,7 +1,7 @@
 <div id="categories" @if ($hide ?? false)style="display: none;"@endif>
     <div class="container">
         <div class="row">
-            <div class="col-md-6 offset-md-2">
+            <div class="col-md-6 offset-md-3 mt-md-4">
                 <ul>
                     @foreach($categories as $category)
                     {{-- @continue($category->products()->count() === 0 && $category->children() === 0) --}}

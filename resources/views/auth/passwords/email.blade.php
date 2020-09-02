@@ -23,7 +23,6 @@ id="retrieve-password-page" class="h-100"
                 <img src="{{ asset('img/layout/round.png') }}">
                 <div class="ml-3 flex-fill">
                     <span>Connexion</span><br>
-                    <small>Déjà client(e) ?</small>
                 </div>
                 <div class="mr-3">
                     <img src="{{ asset('img/layout/chevron-right.png') }}">

@@ -6,7 +6,7 @@
         </div>
 
         {{-- Search bar --}}
-        <a id="search" href="{{ route('product.search') }}" class="col-lg-5 d-none d-lg-block valign-middle">
+        <a id="search" href="{{ route('product.search') }}" class="col-lg-6 d-none d-lg-block valign-middle">
             <div class="searchbar">
                 <i class="fas fa-search fa-lg"></i>
                 <span>Vous recherchez : <span class="search-type">un produit, une marque ?</span></span>

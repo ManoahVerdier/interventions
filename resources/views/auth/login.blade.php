@@ -9,7 +9,7 @@ id="login-page" class="h-100"
 {{-- Header --}}
 @section('header')
     @include('layouts.partials.header.blue', [
-        'title' => 'Mon compte',
+        'title' => 'Connexion',
     ])
 @endsection
 
@@ -17,21 +17,8 @@ id="login-page" class="h-100"
 @section('content')
 <div class="container-fluid h-100">
     <div class="row h-100">
-        <div class="col-md-6 pr-md-5 pt-md-5 pt-4 pb-3 pb-md-0">
-            {{-- Register --}}
-            <a href="{{ route('register') }}" class="register-link float-right d-flex align-items-center">
-                <img src="{{ asset('img/layout/round.png') }}">
-                <div class="ml-3 flex-fill">
-                    <span>Créer un compte</span><br>
-                    <small>Nouveau chez Prodice ?</small>
-                </div>
-                <div class="mr-3">
-                    <img src="{{ asset('img/layout/chevron-right.png') }}">
-                </div>
-            </a>
-        </div>
 
-        <div class="col-md-6 pl-md-5 pt-5 pb-sm-5" style="background-color: #EFEFEF">
+        <div class="col-md-12 pl-md-5 pt-5 pb-sm-5" style="background-color: #EFEFEF">
             {{-- Login --}}
             <form method="POST" action="{{ route('login') }}" class="login-form">
                 @csrf
@@ -40,7 +27,6 @@ id="login-page" class="h-100"
 
                     <div class="ml-3 flex-fill">
                         <span>Connexion</span><br>
-                        <small>Déjà client(e) ?</small>
                     </div>
 
                     <div class="mr-3">
@@ -103,10 +89,6 @@ id="login-page" class="h-100"
                         </button>
 
 
-                    </div>
-
-                    <div class="pb-3">
-                        <span class="cgv">Lorsque vous vous inscrivez, vous acceptez les <a href="">conditions générales de ventes</a> de Prodice.</span>
                     </div>
                 </div>
             </form>

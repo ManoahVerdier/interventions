@@ -48,9 +48,5 @@ id="search-results-page"
 {{-- Footer --}}
 @section('footer')
     @include('layouts.partials.footer.main', ['footerClass' => 'grey'])
-    <div class="d-md-none">
-        {{-- Menu bottom --}}
-        @include('layouts.partials.footer.mobile')
-    </div>
     @section('footer-class', 'grey')
 @endsection
