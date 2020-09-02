@@ -5,23 +5,46 @@
 @section('body-attr')
 id="product-page"
 @endsection
-@if(!$agent->isMobile())
-    {{-- Header --}}
-    @section('header')
-        @php($productsCount = $product->category->products->count())
-        @include('layouts.partials.header.blue', [
-            'title' => $product->category->name,
-            'subtitle' => trans_choice('site.category.products', $productsCount, ['value' => $productsCount]),
-        ])
-        @include('layouts.partials.header.sub_header')
 
-        @if ($categories->count() > 0)
-            @include('layouts.partials.header.categories', ['hide' => true])
-        @endif
-    @endsection
-@endif
+{{-- Header --}}
+@section('header')
+    @include('layouts.partials.header.homepage')
+@endsection
+
 {{-- Content --}}
 @section('content')
+<section id="intervention" class="px-3 py-5">
+    <div class="container">
+        <form class="row" method="POST">
+            <div class="col-12 text-white mb-4">
+                <h1 class="h4 text-center">Demande d'intervention</h1>
+                <h2 class="h6 text-center">{{$product->name}}</h2>
+            </div>
+            <div class="form-group col-12 text-white">
+                <label for="description">Description</label>
+                <textarea class="form-control" name="description" id="description">Description du problème...</textarea>
+                <small id="descHelp" class="form-text text-white">Merci de décrire aussi précisement que possible le problème rencontré</small>
+            </div>
+            <div class="form-group col-12 text-white">
+                <label for="gravite">Gravité</label>
+                <select class="form-control" name="gravite">
+                    <option>Gravité...</option>
+                    <option value="Fonctionnel">Fonctionnel</option>
+                    <option value="Bloquant">Bloquant</option>
+                    <option value="Urgent">Urgent</option>
+                </select>
+            </div>
+            <div class="form-group col-12 text-white">
+                <label for="image">Joindre une image</label>
+                <input class="form-control" type="file" name="image" id="image">
+            </div>
+            <div class="form-group col-12 mt-4">
+                <input class="form-control btn btn-secondary" type="submit" value="Envoyer">
+            </div>
+        </form>
+    </div>
+</section>
+{{--
 <section id="product-detail">
     <div class="container">
         <div class="row">
@@ -57,18 +80,12 @@ id="product-page"
         </div>
     </div>
 </section>
-
-{{-- Selection --}}
-@include('layouts.partials.selection.main')
+--}}
 @endsection
 
 {{-- Footer --}}
 @section('footer')
     @include('layouts.partials.footer.main', ['footerClass' => 'grey'])
-    <div class="d-md-none">
-        {{-- Menu bottom --}}
-        @include('layouts.partials.footer.mobile')
-    </div>
     @section('footer-class')
     grey
     @endsection

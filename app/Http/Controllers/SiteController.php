@@ -16,6 +16,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Uccello\Core\Models\Domain;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class SiteController extends Controller
 {
@@ -45,7 +46,6 @@ class SiteController extends Controller
         $brands_footer = Brand::get();
         $productsCount = Product::count();
         $categories = Category::getRoots()->get();
-
         return view('pages.home', compact('categories','selectionProducts','productsCount','brands_footer','categories_footer'));
     }
 
@@ -148,6 +148,7 @@ class SiteController extends Controller
      */
     public function category($id)
     {
+        DB::enableQueryLog();
         $category = Category::findOrFail($id);
         $categories = $category->children()->get();
 
@@ -155,8 +156,8 @@ class SiteController extends Controller
         $brands_footer = Brand::get();
 
         $descendantsCategoriesIds = $category->findDescendants()->pluck('id');
-        $products = Product::whereIn('category_id', $descendantsCategoriesIds)->get();
-
+        $products = Product::whereIn('category_id', [$id])->get();
+        
         return view('pages.category', compact('category', 'categories', 'products','brands_footer','categories_footer'));
     }
 

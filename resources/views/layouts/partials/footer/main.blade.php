@@ -1,32 +1,15 @@
 <footer class="@if(!empty($footerClass)) {{ $footerClass }} @endif">
     <div class="container">
-        <div class="row height-100">
-            <div class="mt-3 mt-md-1 col-md-5 valign-top">
-                <p class="w-100 mb-0 font-weight-bold">A PROPOS DE PRODICE</p>
-                <p class="w-100">Prodice est un service de vente de produits
-                d’entretien pour tous les équipements
-                professionnels de grandes cuisines.
-                Rattaché à ODICE GROUPE, nous proposons
-                des solutions dédiées pour les cuisines
-                professionnelles depuis 40 ans</p>
-                <span class="w-100 copyright"><i class="far fa-copyright"></i> ODICE GROUPE</span>
+        <div class="row py-4 d-flex">
+            <div class="col-4  valign-middle text-center mx-auto">
+                <img class="pt-1 mx-auto" width="48px" height="48px" src="{{ asset('img/homepage/question.png') }}">
             </div>
-            <div class="mt-3 mt-md-1 col-md-4 valign-top">
-                <p class="w-100 text-left mb-2 font-weight-bold">POUR LES PROFESSIONNELS</p>
-                <ul>
-                    @foreach($categories_footer as $c)
-                        <li><a href="/category/{{$c->id}}/brands" class='w-100 d-inline-block mb-0 text-left'>{{$c->name}}</a></li>
-                    @endforeach
-                </ul>
-            </div>
-            <div class="mt-3 mt-md-1 col-md-3 valign-top text-left">
-                <p class="w-100">
-                    <span class="font-weight-bold">PRODICE</span><br>
-                    GROUPE ODICE<br>
-                    www.odice.info<br>
-                </p>
-                <span class="email w-100 d-inline-block"><a href="mailto:e-commerce@prodice.net" class="primary-text">e-commerce@prodice.net</a></span>
-                <span class="email w-100 d-inline-block"><a href="tel:0786101346" class="primary-text">07 86 10 13 46</a></span>
+            <div class="col-8 py-3 px-0 text-left valign-top">
+                <div class="first_line line mb-2">Service client</div>
+                <div class="second_line line">  
+                    <span class="w-100 d-inline-block">07 86 10 13 46</span>
+                    <a class="w-100 d-inline-block" href="mailto:e-commerce@prodice.net">e-commerce@prodice.net</a>
+                </div>
             </div>
         </div>
     </div>

@@ -26,21 +26,74 @@ header {
   padding: 10px 0;
 }
 
+
 footer {
-  padding: 20px;
+  background-color: #414042;
 
-  .copyright {
-    font-weight: bold;
-    font-size: 13px;
+  .first_line{
+    color:white;
+    font-size:22px
+  }
+      
+  .line{
+    width:100%;
+    display:inline-block;
+    line-height:18px;
+  }
+      
+  .second_line{
+    color:#27ABCD;
+    line-height:18px;
+    font-weight:500;
+    font-size:18px;
+  }
+      
+  .col_left{
+    .line{
+      text-align:center;
+      padding-right:7px;
+    }
+
+    .second_line{
+      border-right:2px solid white;
+      text-align:center;
+    }
   }
 
-  .email a {
-    font-weight: 500;
-    font-size: 16px;
-  }
+  @media (max-width:767px){
+    .first_line{
+      color:white;
+      font-size:12px
+    }
+          
+    .line{
+      width:100%;
+      display:inline-block;
+    }
+          
+    .third_line{
+      margin-top:5px;
+      color:#27ABCD;
+      line-height:20px;
+      vertical-align:text-top
+    }
+          
+          
+    .col_left{ 
+      .line{
+        text-align:right;
+        padding-right:7px;
+      }
 
-  &.grey {
-    background-color: #ececec;
+      .third_line{
+        font-size:.85rem;
+        font-weight:500
+      }
+
+      .second_line{
+        border-right:2px solid white
+      }
+    }
   }
 }
 

@@ -1,8 +1,8 @@
 <header class="container">
     <div class="row h-100">
         {{-- Logo --}}
-        <div id="logo" class="col-7 col-lg-3 valign-middle">
-            <a href="/"><img src="{{ asset('img/layout/logo-prodice.png') }}" class="img-fluid"></a>
+        <div id="logo" class="col-12 col-lg-3 valign-middle text-center">
+            <a href="/" class="w-100"><img src="{{ asset('img/layout/logo-prodice.png') }}" class="ml-0 img-fluid"></a>
         </div>
 
         {{-- Search bar --}}
@@ -12,33 +12,6 @@
                 <span>Vous recherchez : <span class="search-type">un produit, une marque ?</span></span>
             </div>
         </a>
-
-        {{-- Menu --}}
-        <div class="col-5 col-lg-4 menu">
-            <div class="h-100 valign-middle @auth justify-content-around @endauth @guest text-right @endguest">
-                @auth
-                <a href="{{ route('favorites') }}" class="favorite"><i class="fas fa-heart fa-lg"></i></a>
-
-                <a href="{{ route('cart') }}"><i class="fas fa-shopping-cart fa-lg"></i></a>
-
-
-                    <a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt fa-lg"></i></a>
-                @endauth
-
-                @guest
-                <a href="{{ route('login') }}" class="ml-auto">
-                    <span class="login mr-2 d-sm-block-inline">Connectez-vous</span>
-                    <i class="fas fa-user-alt fa-lg"></i>
-                </a>
-                @endguest
-            </div>
-        </div>
-
-        {{-- <div class="col-md-3 menu">
-            <div class="h-100 valign-middle">
-
-            </div>
-        </div> --}}
     </div>
     <div class="row d-none d-md-flex mt-3">
         <div class="col-9 offset-3 border-top border-light pb-1"></div>

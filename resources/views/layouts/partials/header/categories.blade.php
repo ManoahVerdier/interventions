@@ -13,13 +13,9 @@
                             foreach($category->children()->get() as $child){
                                 $nb+= $child->products->count();
                             }
-                            if (!empty($brand)) {
-                                $route = route('category.brand', ['categoryId' => $category->getKey(), 'brandId' => $brand->getKey()]);
-                            } elseif (!empty($linkToBrands)) {
-                                $route = route('category.brands', ['id' => $category->getKey()]);
-                            } else {
-                                $route = route('category', ['id' => $category->getKey(), 'name' => $category->name]);
-                            }
+                            
+                            $route = route('category', ['id' => $category->getKey(), 'name' => $category->name]);
+                            
                         }
                     ?>
                     <li>

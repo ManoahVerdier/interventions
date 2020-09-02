@@ -1,7 +1,14 @@
 #product-page, #category-page, #favorites-page, #cart-page, #search-results-page {
     @import '../headers/blue';
     @import '../headers/categories';
+    #intervention {
+        background-image: url("/img/layout/slideshow-bg.png");
+        background-repeat: repeat;
 
+        .form-control{
+            height:calc(1.5em + .75rem + 7px);
+        }
+    }
     nav.sub-header {
         padding-top: 20px;
         border-bottom: solid 1px #c7c5c9;
