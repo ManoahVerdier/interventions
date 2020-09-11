@@ -42,7 +42,6 @@ id="login-page" class="h-100"
                         <div class="flex-fill form-group mb-2">
                             <label for="password" class="mb-2">Je choisi ma société</label>
                             <select name="societe" class="form-control{{ $errors->has('societe') ? ' is-invalid' : '' }}" required autofocus>
-                                <option {{ old('societe') === 'AHRIES' ? 'selected' : '' }} value="AHRIES">AHRIES</option>
                                 <option {{ old('societe') === 'MARTINON' ? 'selected' : '' }} value="interventions">MARTINON</option>
                             </select>
                             @if ($errors->has('societe'))
