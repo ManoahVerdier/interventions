@@ -11,7 +11,7 @@ id="search-page"
 @section('header')
     @include('layouts.partials.header.blue', [
         'title' => 'Ma recherche',
-        'subtitle' => trans_choice('site.category.products', $productsCount, ['value' => $productsCount]),
+        'subtitle' => trans_choice('site.category.products', $materialsCount, ['value' => $materialsCount]),
         'withSearch' => true,
         'punchLine' => $fromMenu?'Quel produit<br>recherchez-vous ?':null
     ])

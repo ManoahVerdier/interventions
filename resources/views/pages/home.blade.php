@@ -17,7 +17,7 @@ id="home-page"
         <div class="container">
             <div class="row">
                 <div class="col-md-5 col-8 offset-1 offset-md-3">
-                    <span class="message">Bonjour, c'est la grande forme aujourd'hui ?</span>
+                    <span class="message">Bonjour, comment puis-je vous aider ?</span>
                 </div>
                 <div class="col-md-1 col-2">
                     <i class="far fa-smile-wink fa-2x mt-2"></i>

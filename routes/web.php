@@ -1,4 +1,9 @@
 <?php
+/**
+ * Web routes
+ */
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +19,22 @@
 Auth::routes();
 
 Route::get('/', 'SiteController@index')->name('home')->middleware('auth');
-Route::get('/product/search', 'SiteController@search')->name('product.search')->middleware('auth');
-Route::get('/product/search/results', 'SiteController@searchResults')->name('product.search.results')->middleware('auth');
-Route::get('/product/{id}/{name}', 'SiteController@product')->name('product')->middleware('auth');
-Route::get('/category/{id}/brands', 'SiteController@searchBrands')->name('category.brands')->middleware('auth');
-Route::get('/category/{id}/{name}', 'SiteController@category')->name('category')->middleware('auth');
-//Route::get('/category/{categoryId}/brand/{brandId}', 'SiteController@categoryBrand')->name('category.brand');
+Route::get('/product/search', 'SiteController@search')
+    ->name('product.search')
+    ->middleware('auth');
+Route::get('/product/search/results', 'SiteController@searchResults')
+    ->name('material.search.results')
+    ->middleware('auth');
+Route::get('/material/{id}/{name}', 'SiteController@material')
+    ->name('material')
+    ->middleware('auth');
+Route::post('/material/{id}/{name}', 'SiteController@materialPost')
+    ->name('material')
+    ->middleware('auth');
+Route::get('/product_range/{id}/brands', 'SiteController@searchBrands')
+    ->name('product_range.brands')
+    ->middleware('auth');
+Route::get('/product_range/{id}/{name}', 'SiteController@productRange')
+    ->name('product_range')
+    ->middleware('auth');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');

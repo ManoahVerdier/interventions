@@ -1,6 +1,6 @@
 <div class="product">
     @if ($discount ?? false)<span class="discount">-{{ $discount }}%</span>@endif
-    <a href="{{ route('product', ['id' => $product->getKey(), 'name' => $product->name]) }}">
+    <a href="{{ route('material', ['id' => $material->getKey(), 'name' => $material->label]) }}">
         <img src="{{ $image }}" class="img-responsive">
     </a>
 

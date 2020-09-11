@@ -10,12 +10,12 @@ use App\Notifications\NewOrder;
 use App\Notifications\OrderConfirmation;
 use App\Order;
 use App\OrderLine;
+use App\Material;
 use App\Product;
+use App\ProductRange;
 use App\User;
 use Illuminate\Http\Request;
-use Uccello\Core\Models\Domain;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class SiteController extends Controller
 {
@@ -36,27 +36,13 @@ class SiteController extends Controller
      */
     public function index()
     {
-        $selectionProducts = Product::all();
-        if ($selectionProducts->count() > 10) {
-            $selectionProducts = $selectionProducts->random(10);
-        }
+        $materials = auth()->user()->materials()->with('productRanges')->get();
+        $product_ranges = $materials
+            ->pluck('productRanges')
+            ->unique()
+            ->filter();
 
-        $categories_footer = Category::getRoots()->get();
-        $brands_footer = Brand::get();
-        $productsCount = Product::count();
-        $categories = Category::getRoots()->get();
-        return view('pages.home', compact('categories','selectionProducts','productsCount','brands_footer','categories_footer'));
-    }
-
-    /**
-     * Affiche la page d'activation de compte.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function activation()
-    {
-        $categories_footer = Category::getRoots()->get();
-        return view('pages.activation',compact('categories_footer'));
+        return view('pages.home', compact('product_ranges'));
     }
 
     /**
@@ -67,77 +53,147 @@ class SiteController extends Controller
     public function search($fromMenu=true)
     {
         $fromMenu = request()->get('fromMenu') ?? true;
-        $categories = Category::getRoots()->get();
+        $materials = auth()
+            ->user()
+            ->materials()
+            ->whereNotNull("product_range_id")
+            ->with('productRanges')
+            ->get();
+        $product_ranges = $materials
+            ->pluck('productRanges')
+            ->unique()
+            ->filter();
         
-        $categories_footer = Category::getRoots()->get();
-        $brands_footer = Brand::get();
 
-        $productsCount = Product::count();
+        $materialsCount = $materials->count();
 
-        return view('pages.search', compact('categories', 'productsCount','fromMenu','brands_footer','categories_footer'));
+        return view(
+            'pages.search', 
+            compact(
+                'product_ranges',
+                'fromMenu',
+                'materialsCount'
+            )
+        );
     }
 
     /**
-     * Affiche les marques liées à la catégorie sélectionnée ou ses sous-catégories.
+     * Affiche les résultats de la recherche
+     * Sur la base du label ou du model
      *
      * @return \Illuminite\Http\Response
      */
-    public function searchBrands($id)
-    {
-        $category = Category::findOrFail($id);
-        $brands = $category->brands; // Brands with products linked to category or descendants
-
-        $categories_footer = Category::getRoots()->get();
-        $brands_footer = Brand::get();
-
-        $productsCount = 0;
-        foreach ($brands as $brand) {
-            $productsCount += $brand->productsCountForCategory($category);
-        }
-
-        return view('pages.search_brands', compact('category', 'brands', 'productsCount','brands_footer','categories_footer'));
-    }
-
     public function searchResults()
     {
         $q = request('q');
 
-        $brandTable = (new Brand)->getTable();
-        $productTable = (new Product)->getTable();
+        $materials = auth()
+            ->user()
+            ->materials()
+            ->where("label", 'like', "%$q%")
+            ->orWhere("model", 'like', "%$q%")
+            ->groupBy("id")
+            ->with('productRanges')
+            ->get();
 
-        $categories_footer = Category::getRoots()->get();
-        $brands_footer = Brand::get();
+        $materialsCount = $materials->count();
 
-        $products = Product::selectRaw("$productTable.*")
-                ->join($brandTable, "$productTable.brand_id", '=', "$brandTable.id")
-                ->where("$productTable.name", 'like', "%$q%")
-                ->orWhere("$brandTable.name", 'like', "%$q%")
-                ->groupBy("$productTable.id")
-                ->get();
-
-        return view('pages.search_results', compact('products', 'q','brands_footer','categories_footer'));
+        return view(
+            'pages.search_results', 
+            compact(
+                'materials', 
+                'q',
+                'materialsCount'
+            )
+        );
     }
 
     /**
-     * Affiche la fiche d'un produit ainsi que les sous-catégories de la catégorie à laquelle il est lié.
+     * Affiche le formulaire de demande d'intervention pour un matériel
      *
      * @return \Illuminite\Http\Response
      */
-    public function product($id)
+    public function material($id)
     {
-        $product = Product::findOrFail($id);
-        $category = $product->category;
-        $categories = $category->children()->get();
+        $material = $materials = auth()
+            ->user()
+            ->materials()
+            ->findOrFail($id);
 
-        $categories_footer = Category::getRoots()->get();
-        $brands_footer = Brand::get();
+        return view(
+            'pages.material', 
+            compact(
+                'material', 
+            )
+        );
+    }
 
-        $selectionProducts = Product::all();
-        if ($selectionProducts->count() > 10) {
-            $selectionProducts = $selectionProducts->random(10);
+    /**
+     * Traitement du formulaire de demande d'intervention POST 
+     * 
+     * @param Request $request le formulaire posté
+     * 
+     * @return void
+     */
+    public function materialPost(Request $request)
+    {    
+        //dd($request->all());
+        $request->validate(
+            [
+                'description' => 'required',
+                'gravite' => 'required',
+                'material_id'=>'required',
+                'image'=>'required|file'
+            ],
+            [
+                'required'=>"Le champ :attribute est requis"
+            ]
+        );
+
+        $material = Material::find($request->get('material_id'));
+        if($filePath = $this->upload($request->file('image'))) {
+            Mail::send(
+                'mail.demande_intervention',
+                array(
+                    'description' => $request->get('description'),
+                    'gravite' => $request->get('gravite'),
+                    'material' => $material,
+                    'image' => $filePath,
+                    'username' => auth()->user()->name,
+                    'client' => auth()->user()->domain->name
+                ), function ($message) {
+                    $message->from('sav@gmail.com');
+                    $message
+                        ->to('verdier.developpement@gmail.com', 'Admin')
+                        ->subject('Demande intervention');
+                }
+            );
+            $message = "Demande envoyée !";
+            $msg_type="Success";
+        } else {
+            $message = "Fichier invalide";
+            $msg_type="Error";
         }
+        return view('pages.material', compact('material', 'message', 'msg_type'));
+    }
 
-        return view('pages.product', compact('product', 'category', 'categories', 'selectionProducts','brands_footer','categories_footer'));
+    /**
+     * Stocke un fichier soumis dans un formulaire
+     *
+     * @param file $file le fichier traité
+     * 
+     * @return void
+     */
+    protected function upload($file)
+    {
+        if (!is_null($file) && isset($file) && $file->isValid()) {
+            $fileName = (new \DateTime())
+                ->format('d.m.Y-hsi').'.'.$file->guessExtension();
+            $file->move(storage_path() . '/app/public/uploads', $fileName);
+            return '/storage/uploads/' . $fileName;
+        } else {
+            return false;
+        }        
     }
 
     /**
@@ -145,128 +201,25 @@ class SiteController extends Controller
      *
      * @return \Illuminite\Http\Response
      */
-    public function category($id)
+    public function productRange($id)
     {
-        DB::enableQueryLog();
-        $category = Category::findOrFail($id);
-        $categories = $category->children()->get();
-
-        $categories_footer = Category::getRoots()->get();
-        $brands_footer = Brand::get();
-
-        $descendantsCategoriesIds = $category->findDescendants()->pluck('id');
-        $products = Product::whereIn('category_id', [$id])->get();
+        $product_range = ProductRange::findOrFail($id);
         
-        return view('pages.category', compact('category', 'categories', 'products','brands_footer','categories_footer'));
-    }
+        $product_ranges = $product_range->children()->get();
 
-    /**
-     * Affiche les produits liées une marque ansi qu'à la catégorie sélectionnée ou ses sous-catégories.
-     *
-     * @return \Illuminite\Http\Response
-     */
-    public function categoryBrand(int $categoryId, int $brandId)
-    {
-        $category = Category::findOrFail($categoryId);
-        $brand = Brand::findOrFail($brandId);
-
-        $categories_footer = Category::getRoots()->get();
-        $brands_footer = Brand::get();
-
-        $descendantsCategoriesIds = $category->findDescendants()->pluck('id');
-        $products = Product::where('brand_id', $brandId)
-            ->whereIn('category_id', $descendantsCategoriesIds)
+        $materials = auth()
+            ->user()
+            ->materials()
+            ->whereIn('product_range_id', [$id])
             ->get();
-
-        $categories = collect();
-        foreach ($products as $product) {
-            $productCategory = $product->category;
-            if ($productCategory->getKey() !== $categoryId && !$categories->contains($productCategory)) {
-                $categories[] = $product->category;
-            }
-        }
-
-        return view('pages.category', compact('category', 'brand', 'categories', 'products','brands_footer','categories_footer'));
-    }
-
-    /**
-     * Affiche les produits favoris de l'utilisateur.
-     *
-     * @return \Illuminite\Http\Response
-     */
-    public function favorites()
-    {
-
-        $favorites = auth()->user()->favorites;
-
-        $categories_footer = Category::getRoots()->get();
-        $brands_footer = Brand::get();
-
-        $products = [];
-        if ($favorites) {
-            foreach ($favorites as $favorite) {
-                if (!empty($favorite->product)) {
-                    $products[] = $favorite->product;
-                }
-            }
-        }
-
-        return view('pages.favorites', compact('products','brands_footer','categories_footer'));
-    }
-
-    /**
-     * Ajoute ou supprime un produit des favoris.
-     *
-     * @return \Illuminite\Http\Response
-     */
-    public function toggleFavorite($productId)
-    {
-        $product = Product::findOrFail($productId);
-
-        $favorite = Favorite::firstOrNew([
-            'product_id' => $product->id,
-            'user_id' => auth()->id()
-        ]);
-
-        if ($favorite->getKey()) {
-            $favorite->delete();
-            $action = 'delete';
-        } else {
-            $favorite->save();
-            $action = 'add';
-        }
-
-        return [
-            'action' => $action,
-            'record' => $favorite
-        ];
-    }
-
-    public function profile(){
-        $user = auth()->user();
-
-
-        if(!empty($_POST)){
-            $this->validate(request(), [
-                'company' => ['required'],
-                'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255'],
-                'password' => ['required', 'string', 'min:6', 'confirmed'],
-                'phone' => ['required'],
-            ]);
-
-            $user->company = request('company');
-            $user->username = request('email');
-            $user->name = request('name');
-            $user->email = request('email');
-            $user->password = Hash::make(request('password'));
-            $user->phone = request('phone');
-
-
-            $user->save();
-        }
-
-        return view('pages.profile', compact('user'));
-
+        
+        return view(
+            'pages.product_range', 
+            compact(
+                'product_range', 
+                'product_ranges', 
+                'materials'
+            )
+        );
     }
 }

@@ -2,8 +2,16 @@
     <div class="container">
         <div class="row">
             {{-- Logo --}}
-            <div id="logo" class="col-md-1 d-flex d-md-flex align-items-center justify-content-center">
+            <div id="logo" class="col-8 offset-2 offset-md-0 col-md-1 d-flex d-md-flex align-items-center justify-content-center">
                 <a href="/"><img src="{{ asset('img/layout/logo-prodice-lite.png') }}" class="img-fluid"></a>
+            </div>
+
+            <div class="col-2 menu d-md-none">
+                <div class="h-100 valign-middle">
+                    @auth
+                        <a href="{{ route('logout') }}" class="profile"><i class="fas fa-sign-out-alt fa-lg"></i></a>
+                    @endauth
+                </div>
             </div>
 
             {{-- Return --}}
@@ -15,8 +23,8 @@
 
             {{-- Title --}}
             @if ($title ?? false)
-            <div id="title" class="@if ($withSearch ?? false) col-6 col-md-2 @else col-6  col-md-3 @endif d-flex align-items-center pt-sm-0">
-                <div>
+            <div id="title" class="@if ($withSearch ?? false) col-6 col-md-2 @else col-12 text-center col-md-3 @endif d-flex align-items-center pt-sm-0">
+                <div class="w-100">
                     <span>{{ $title }}</span><br>
                     @if ($subtitle ?? false)<small>{{ $subtitle }}</small>@endif
                 </div>
@@ -41,7 +49,7 @@
             {{-- Search bar --}}
             @if ($withSearch ?? false)
             <div id="search" class="col-md-5 mt-3 mt-md-0">
-                <form id="search-form" method="get" action="{{ route('product.search.results') }}">
+                <form id="search-form" method="get" action="{{ route('material.search.results') }}">
                     <input type="text" name="q" class="form-control" placeholder="Un produit, une marque ?" value="{{ $q ?? '' }}" autofocus>
                     <button type="sybmit" class="btn btn-link d-none d-md-block">
                         @svg('resources/svg/search', ['width' => 40, 'height' => 40])

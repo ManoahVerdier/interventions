@@ -51,17 +51,21 @@
                     align-items:center;
 
                     span{
-                        width: calc(100% - 86px);
+                        width: calc(100% - 140px);
                         display:inline-block;
                     }
 
                     .counter{
                         padding-top:0px !important;    
-                        margin-bottom:10px;
+                        width:54px;
                     }
 
                     .counter img{
-                        padding-left:10px !important;
+                        padding-left: 10px !important;
+                        padding-bottom: 1px !important;
+                        padding-right:10px !important;
+                        padding-top:0px !important;
+                        float:right;
                     }
                 }
             }

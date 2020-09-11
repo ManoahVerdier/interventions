@@ -13,7 +13,7 @@
     #slideshow {
         background-image: url("/img/layout/slideshow-bg.png");
         background-repeat: repeat;
-        height: 500px;
+        height: auto;
         padding-top: 36px;
         color: white;
         background-color: #f3f3f3;
@@ -147,29 +147,7 @@
         }
     }
 
-    #selection {
-        padding: 1.5rem 0;
-
-        #showmore{
-            font-weight:500;
-            border-width:2px;
-            color:black;
-            border-color:#a0a0a0
-        }
-            
-        .owl-carousel {
-            margin-top: 20px;
-        }
-    }
-
-    #partner {
-        background-color: #ececec;
-        padding: 1.5rem 0;
-
-        .partner-logo {
-            padding: 30px;
-        }
-    }
+    
 
     /*Recherche sur mobile = dans le corps*/
     #search{
@@ -201,6 +179,7 @@
     @import '../headers/categories';
     #categories ul li a .counter img {
         margin-bottom: 0px;
+        padding-left:15px !important;
     }
 
     #categories ul li a span{
@@ -210,7 +189,8 @@
     
     #categories ul li a .counter span{
         color:#C5C3C8;
-        font-size:8pt
+        font-size:8pt;
+        width:auto;
     }
 }
 

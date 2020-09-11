@@ -8,39 +8,42 @@ id="search-results-page"
 
 {{-- Header --}}
 @section('header')
-    @php($productsCount = 1)
     @include('layouts.partials.header.blue', [
         'title' => 'Ma recherche',
-        // 'subtitle' => trans_choice('site.category.products', $productsCount, ['value' => $productsCount]),
+        'subtitle' => trans_choice('site.category.products', $materialsCount, ['value' => $materialsCount]),
         'withSearch' => true
     ])
 @endsection
-
+<?php $test=0;?>
 {{-- Content --}}
 @section('content')
 <section id="product-list">
     <div class="container d-flex d-md-block">
-        @forelse ($products as $product)
-            @include('layouts.partials.product.line', [
-                'image' => $product->image ?? asset('img/product/image_not_available.png'),
-                'category_icon' => $product->category->pictogram ?? null,
-                'category_name' => $product->category->name,
-                'name' => $product->name,
-                'reference' => $product->reference,
-                'description' => $product->description,
-                'short_description' => $product->short_description,
-                'quantity' => $product->quantity,
-                'withBrand' => true,
-                'brandImage' => $product->brand->logo ?? null,
-                'brandName' => $product->brand->name ?? null,
-                'striked_price' => $product->discount ? $product->amount_ht : null,
-                'price' => $product->amountHTAfterDiscount,
-                'discount' => $product->discount,
-                'isFavorite' => $product->isUserFavorite
-            ])
-        @empty
-            <div class="text-danger text-center">{{ __('site.search.empty') }}</div>
-        @endforelse
+        <div class="row">
+            @forelse ($materials as $material)
+                @include('layouts.partials.product.line', [
+                    'image' => $material->image ?? asset('img/product/image_not_available.png'),
+                    'category_icon' => $material->productRanges->pictogram ?? null,
+                    'category_name' => $material->productRanges->name ?? null,
+                    'name' => $material->label,
+                    'reference' => $material->serial,
+                    'model' => $material->model,
+                    'location' => $material->location,
+                    'description' => $material->description,
+                    'short_description' => $material->short_description,
+                    'quantity' => $material->quantity,
+                    'withBrand' => true,
+                    'brandImage' => $material->brand->logo ?? null,
+                    'brandName' => $material->brand->name ?? null,
+                    'striked_price' => $material->discount ? $material->amount_ht : null,
+                    'price' => $material->amountHTAfterDiscount,
+                    'discount' => $material->discount,
+                    'isFavorite' => $material->isUserFavorite
+                ])
+            @empty
+                <div class="text-danger text-center">{{ __('site.search.empty') }}</div>
+            @endforelse
+        </div>
     </div>
 </section>
 @endsection

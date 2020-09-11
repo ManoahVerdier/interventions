@@ -3,24 +3,24 @@
         <div class="row">
             <div class="col-md-6 offset-md-3 mt-md-4">
                 <ul>
-                    @foreach($categories as $category)
-                    {{-- @continue($category->products()->count() === 0 && $category->children() === 0) --}}
+                    @foreach($product_ranges as $product_range)
+                    {{-- @continue($product_range->products()->count() === 0 && $product_range->children() === 0) --}}
                     <?php
                         $nb=0;
-                        if($category??false)
+                        if($product_range??false)
                         {
-                            $nb = $category->products->count();;
-                            foreach($category->children()->get() as $child){
-                                $nb+= $child->products->count();
-                            }
+                            $nb = $product_range->countUser();
+                            /*foreach($product_range->children()->get() as $child){
+                                $nb+= $child->materials->count();
+                            }*/
                             
-                            $route = route('category', ['id' => $category->getKey(), 'name' => $category->name]);
+                            $route = route('product_range', ['id' => $product_range->getKey(), 'name' => $product_range->name]);
                             
                         }
                     ?>
                     <li>
                         <a href="{{ $route }}">
-                            <img src="{{ asset('img/layout/category-icon.png') }}"><span>{{ $category->name }}</span>
+                            <img src="{{ asset('img/layout/category-icon.png') }}"><span>{{ $product_range->name }}</span>
                             <div class="counter">
                                 <span>{{ $nb }}</span>
                                 <img src="{{ asset('img/layout/chevron-right-blue.png') }}">

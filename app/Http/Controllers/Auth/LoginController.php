@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Config;
 
 class LoginController extends Controller
 {
@@ -20,7 +23,9 @@ class LoginController extends Controller
     |
      */
 
-    use AuthenticatesUsers;
+    use AuthenticatesUsers {
+        attemptLogin as baseAttemptLogin;
+    }
 
     /**
      * Where to redirect users after login.
@@ -37,6 +42,14 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    protected function attemptLogin(Request $request)
+    {
+        DB::purge('mysql');
+        config(['database.connections.mysql.database' => $request->societe]);
+        Config::set('database.connections.mysql.database', $request->societe);
+        return $this->baseAttemptLogin($request);
     }
 
     /**
@@ -64,12 +77,14 @@ class LoginController extends Controller
         $this->validate(
             $request,
             [
+                'societe' => ['required', Rule::in(['AHRIES', 'interventions'])],
                 'identity' => 'required|string',
                 'password' => 'required|string',
             ],
             [
                 'identity.required' => trans('uccello::auth.error.identity_required'),
                 'password.required' => trans('uccello::auth.error.password_required'),
+                'societe.required'  => trans('uccello::auth.society_required'),
             ]
         );
     }
@@ -82,7 +97,12 @@ class LoginController extends Controller
      */
     protected function credentials(Request $request)
     {
-        return ['username' => $request->{$this->username()}, 'password' => $request->password, 'is_active' => 1];
+        return ['username' => $request->{$this->username()}, 'password' => $request->password];
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        session(['societe' => $request->societe]);
     }
 
     /**
@@ -96,8 +116,7 @@ class LoginController extends Controller
     protected function sendFailedLoginResponse(Request $request)
     {
         throw ValidationException::withMessages([
-            $this->username() => [trans('auth.failed')],
-            'is_active' => [trans('auth.not_active')]
+            $this->username() => [trans('auth.failed')]
         ]);
     }
 }

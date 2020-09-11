@@ -1,9 +1,17 @@
-<div class="description">
-    <a href="{{ route('product', ['id' => $product->getKey(), 'name' => $product->name]) }}" class="product-name">{{ $name }}</a>
+<div class="description pt-md-3">
+    <a href="{{ route('material', ['id' => $material->getKey(), 'name' => $material->label]) }}" class="product-name">{{ $name }}</a>
    
     <div class="reference d-md-block">
         <span class="label">Référence :</span>
         <span class="value">{{ $reference }}</span>
+    </div>
+    <div class="reference d-md-block">
+        <span class="label">Modèle :</span>
+        <span class="value">{{ $model }}</span>
+    </div>
+    <div class="reference d-md-block">
+        <span class="label">Emplacement :</span>
+        <span class="value">{{ $location }}</span>
     </div>
 
     @if ($withBrand ?? false)

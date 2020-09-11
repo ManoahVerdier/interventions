@@ -37,11 +37,28 @@ id="login-page" class="h-100"
                 <div class="pl-2 pr-2">
                     <div class="d-flex mt-4">
                         <div class="pr-3">
+                            <img src="{{ asset('img/layout/name-blue.png') }}" width="35" class="mt-1">
+                        </div>
+                        <div class="flex-fill form-group mb-2">
+                            <label for="password" class="mb-2">Je choisi ma société</label>
+                            <select name="societe" class="form-control{{ $errors->has('societe') ? ' is-invalid' : '' }}" required autofocus>
+                                <option {{ old('societe') === 'AHRIES' ? 'selected' : '' }} value="AHRIES">AHRIES</option>
+                                <option {{ old('societe') === 'MARTINON' ? 'selected' : '' }} value="interventions">MARTINON</option>
+                            </select>
+                            @if ($errors->has('societe'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('societe') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="d-flex mt-2">
+                        <div class="pr-3">
                             <img src="{{ asset('img/layout/smiley.png') }}">
                         </div>
                         <div class="flex-fill form-group">
                             <label for="identity">J'entre mon identifiant</label>
-                            <input id="identity" type="text" name="identity" class="form-control{{ $errors->has('identity') ? ' is-invalid' : '' }}" placeholder="Adresse email" value="{{ old('email') }}"  autofocus>
+                            <input id="identity" type="text" name="identity" class="form-control{{ $errors->has('identity') ? ' is-invalid' : '' }}" placeholder="Adresse email" value="{{ old('email') }}"  >
 
                             {{-- @if ($errors->has('identity'))
                                 <span class="invalid-feedback" role="alert">
@@ -74,14 +91,6 @@ id="login-page" class="h-100"
                             </a>
                         @endif
                     </div>
-
-                    @if ($errors->has('is_active'))
-                    <div class="mb-3 text-center">
-                        <span class="text-danger error" role="alert" style="text-transform: none">
-                            <strong>{{ $errors->first('is_active') }}</strong>
-                        </span>
-                    </div>
-                    @endif
 
                     <div class="pb-3">
                         <button type="submit" class="btn btn-warning btn-lg btn-block delete-btn">

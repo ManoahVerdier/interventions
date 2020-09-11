@@ -16,4 +16,5 @@ return [
     'failed' => 'Ces identifiants ne correspondent à aucun utilisateur.',
     'throttle' => 'Nombre trop grand d\'essais. Veuillez réessayer dans :seconds secondes.',
     'not_active' => 'Votre compte n\'est pas encore actif. Vous recevrez un email quand notre équipe l\'activera.',
+    'society_required' => 'La société spécifiée est introuvable'
 ];
