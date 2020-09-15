@@ -49,6 +49,8 @@ class LoginController extends Controller
         DB::purge('mysql');
         config(['database.connections.mysql.database' => $request->societe]);
         Config::set('database.connections.mysql.database', $request->societe);
+        config(['filesystems.distant_img_root_default' => $request->societe]);
+        Config::set('filesystems.distant_img_root_default', $request->societe);
         return $this->baseAttemptLogin($request);
     }
 
