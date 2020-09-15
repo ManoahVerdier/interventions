@@ -164,7 +164,7 @@ class SiteController extends Controller
                     'client' => auth()->user()->domain->name,
                     'societe' => Config::get('filesystems.distant_img_root_default'),
                 ), function ($message) {
-                    $message->from('sav@odice.info');
+                    $message->from('sav@odice.cc');
                     $message
                         ->to('verdier.developpement@gmail.com', 'Admin')
                         ->subject('Demande intervention');
