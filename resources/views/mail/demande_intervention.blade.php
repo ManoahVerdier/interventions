@@ -10,6 +10,12 @@
     Client: {{ $client }}
 </p>
 <p>
+    Matériel : {{$material->label}} (Modèle : {{$material->model}})
+</p>
+<p>
+    Référence : {{$material->serial}}
+</p>
+<p>
     Description du problème : {{ $description }}
 </p>
 <p>
