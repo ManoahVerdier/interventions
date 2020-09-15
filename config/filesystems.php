@@ -65,5 +65,11 @@ return [
         ],
 
     ],
+    'distant_img_roots' => [
+        'martinon' =>'https://martinon.ms-erp.com',
+        'pf' =>'https://pf.ms-erp.com',
+        'altecc' =>'https://altecc.ms-erp.com',
+    ],
+    'distant_img_root_default' => 'martinon',
 
 ];
