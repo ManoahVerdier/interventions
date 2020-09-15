@@ -14,11 +14,3 @@
         </div>
     </div>
 </footer>
-MAIL_DRIVER=smtp
-MAIL_HOST=in-v3.mailjet.com
-MAIL_PORT=587
-MAIL_USERNAME=dce8c32fcc4a93c940e4248259fbb633
-MAIL_PASSWORD=78c3ab7a41a826a3a85c64ad1579c2b8
-MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS=sav@odice.cc
-MAIL_FROM_NAME="SAV Prodice"
