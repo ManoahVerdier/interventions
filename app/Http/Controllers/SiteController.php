@@ -16,6 +16,7 @@ use App\ProductRange;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Config;
 
 class SiteController extends Controller
 {
@@ -160,9 +161,10 @@ class SiteController extends Controller
                     'material' => $material,
                     'image' => $filePath,
                     'username' => auth()->user()->name,
-                    'client' => auth()->user()->domain->name
+                    'client' => auth()->user()->domain->name,
+                    'societe' => Config::get('filesystems.distant_img_root_default'),
                 ), function ($message) {
-                    $message->from('sav@gmail.com');
+                    $message->from('sav@odice.info');
                     $message
                         ->to('verdier.developpement@gmail.com', 'Admin')
                         ->subject('Demande intervention');

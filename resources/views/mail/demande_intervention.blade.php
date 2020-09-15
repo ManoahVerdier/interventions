@@ -1,6 +1,9 @@
 <p>Bonjour</p>
 <p>Vous avez recu une demande d'intervention depuis sav.odice.info </p>
 <p>
+    Société : {{ $societe }}
+</p>
+<p>
     Utilisateur : {{ $username }}
 </p>
 <p>
