@@ -4,6 +4,8 @@ namespace App;
 
 use App\Notifications\UserActivated;
 use App\Notifications\UserCreated;
+use App\Material;
+use Illuminate\Support\Collection;
 use Uccello\Core\Models\User as UccelloUser;
 
 class User extends UccelloUser
@@ -20,7 +22,15 @@ class User extends UccelloUser
 
     public function materials()
     {
-        return $this->hasMany(Material::class, 'domain_id', 'domain_id');
+        $domains=[];
+        
+        foreach (auth()->user()->privileges()->get() as $privilege) {
+            $domains[]=$privilege->domain()->first()->id;
+        }
+        $materials = Material::whereNotNull('domain_id')
+            ->whereIn('domain_id', $domains);
+        
+        return $materials;
     }
 
 }

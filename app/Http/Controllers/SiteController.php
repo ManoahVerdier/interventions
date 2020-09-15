@@ -87,12 +87,15 @@ class SiteController extends Controller
     public function searchResults()
     {
         $q = request('q');
-
         $materials = auth()
             ->user()
             ->materials()
-            ->where("label", 'like', "%$q%")
-            ->orWhere("model", 'like', "%$q%")
+            ->where(
+                function ($query) use ($q) {
+                    $query->where("label", 'like', "%$q%")
+                        ->orWhere("model", 'like', "%$q%");
+                }
+            )
             ->groupBy("id")
             ->with('productRanges')
             ->get();
