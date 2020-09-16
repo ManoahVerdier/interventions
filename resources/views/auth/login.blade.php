@@ -61,11 +61,11 @@ id="login-page" class="h-100"
                             <label for="identity">J'entre mon identifiant</label>
                             <input id="identity" type="text" name="identity" class="form-control{{ $errors->has('identity') ? ' is-invalid' : '' }}" placeholder="Adresse email" value="{{ old('email') }}"  >
 
-                            {{-- @if ($errors->has('identity'))
+                            @if ($errors->has('identity'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('identity') }}</strong>
                                 </span>
-                            @endif --}}
+                            @endif
                         </div>
                     </div>
 
