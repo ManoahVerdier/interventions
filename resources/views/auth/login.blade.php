@@ -17,7 +17,6 @@ id="login-page" class="h-100"
 @section('content')
 <div class="container-fluid h-100">
     <div class="row h-100">
-
         <div class="col-md-12 pl-md-5 pt-5 pb-sm-5" style="background-color: #EFEFEF">
             {{-- Login --}}
             <form method="POST" action="{{ route('login') }}" class="login-form">
@@ -75,11 +74,16 @@ id="login-page" class="h-100"
                         </div>
                         <div class="flex-fill form-group mb-2">
                             <label for="password">J'entre mon mot de passe</label>
-                            <input id="password" type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Mot de passe">
+                            <input id="password" type="password" name="password" class="form-control{{ $errors->has('password')||$errors->has('username') ? ' is-invalid' : '' }}" placeholder="Mot de passe">
 
                             @if ($errors->has('password'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                            @endif
+                            @if ($errors->has('username'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('username') }}</strong>
                                 </span>
                             @endif
                         </div>

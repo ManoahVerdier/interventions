@@ -86,7 +86,7 @@ class LoginController extends Controller
             [
                 'identity.required' => trans('uccello::auth.error.identity_required'),
                 'password.required' => trans('uccello::auth.error.password_required'),
-                'societe.required'  => trans('uccello::auth.society_required'),
+                'societe.required'  => trans('auth.society_required'),
             ]
         );
     }
