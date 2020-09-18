@@ -4,7 +4,7 @@ return [
     'name' => 'SAV Odice',
     'manifest' => [
         'name' => env('APP_NAME', 'SAV Odice'),
-        'short_name' => 'SAV',
+        'short_name' => 'SAV Odice',
         'start_url' => '/',
         'background_color' => '#ffffff',
         'theme_color' => '#000000',
