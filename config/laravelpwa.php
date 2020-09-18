@@ -16,6 +16,26 @@ return [
                 'path' => '/img/layout/logo-prodice-lite.png',
                 'purpose' => 'any'
             ],
+            '96x96' => [
+                'path' => '/images/icons/logo_lite_96.png',
+                'purpose' => 'any'
+            ],
+            '128x128' => [
+                'path' => '/images/icons/logo_lite_128.png',
+                'purpose' => 'any'
+            ],
+            '144x144' => [
+                'path' => '/images/icons/logo_lite_144.png',
+                'purpose' => 'any'
+            ],
+            '192x192' => [
+                'path' => '/images/icons/logo_lite_192.png',
+                'purpose' => 'any'
+            ],
+            '384x384' => [
+                'path' => '/images/icons/logo_lite_384.png',
+                'purpose' => 'any'
+            ],
         ],
         'splash' => [
             '640x1136' => '/images/icons/splash-640x1136.png',
