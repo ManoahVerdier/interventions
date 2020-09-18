@@ -12,35 +12,7 @@ return [
         'orientation'=> 'any',
         'status_bar'=> 'black',
         'icons' => [
-            '72x72' => [
-                'path' => '/img/layout/logo-prodice-lite.png',
-                'purpose' => 'any'
-            ],
-            '96x96' => [
-                'path' => '/img/layout/logo-prodice-lite.png',
-                'purpose' => 'any'
-            ],
-            '128x128' => [
-                'path' => '/img/layout/logo-prodice-lite.png',
-                'purpose' => 'any'
-            ],
-            '144x144' => [
-                'path' => '/img/layout/logo-prodice-lite.png',
-                'purpose' => 'any'
-            ],
-            '152x152' => [
-                'path' => '/img/layout/logo-prodice-lite.png',
-                'purpose' => 'any'
-            ],
-            '192x192' => [
-                'path' => '/img/layout/logo-prodice-lite.png',
-                'purpose' => 'any'
-            ],
-            '384x384' => [
-                'path' => '/img/layout/logo-prodice-lite.png',
-                'purpose' => 'any'
-            ],
-            '512x512' => [
+            '26x26' => [
                 'path' => '/img/layout/logo-prodice-lite.png',
                 'purpose' => 'any'
             ],
