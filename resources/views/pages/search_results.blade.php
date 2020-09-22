@@ -28,6 +28,7 @@ id="search-results-page"
                     'name' => $material->label,
                     'reference' => $material->serial,
                     'model' => $material->model,
+                    'code' => $material->product_code,
                     'location' => $material->location,
                     'description' => $material->description,
                     'short_description' => $material->short_description,

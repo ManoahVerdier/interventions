@@ -13,6 +13,10 @@
         <span class="label">Emplacement :</span>
         <span class="value">{{ $location }}</span>
     </div>
+    <div class="reference d-md-block">
+        <span class="label">Code :</span>
+        <span class="value">{{ $code }}</span>
+    </div>
 
     @if ($withBrand ?? false)
     <div class="logo d-none d-md-block">
