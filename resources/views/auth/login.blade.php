@@ -58,7 +58,7 @@ id="login-page" class="h-100"
                         </div>
                         <div class="flex-fill form-group">
                             <label for="identity">J'entre mon identifiant</label>
-                            <input id="identity" type="text" name="identity" class="form-control{{ $errors->has('identity') ? ' is-invalid' : '' }}" placeholder="Adresse email" value="{{ old('email') }}"  >
+                            <input id="identity" type="text" name="identity" class="form-control{{ $errors->has('identity') ? ' is-invalid' : '' }}" placeholder="Identifiant" value="{{ old('email') }}"  >
 
                             @if ($errors->has('identity'))
                                 <span class="invalid-feedback" role="alert">

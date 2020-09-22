@@ -79,7 +79,7 @@ class LoginController extends Controller
         $this->validate(
             $request,
             [
-                'societe' => ['required', Rule::in(['martinon','altecc','pf'])],
+                'societe' => ['required', Rule::in(['martinon','altecc','pf','interventions'])],
                 'identity' => 'required|string',
                 'password' => 'required|string',
             ],
