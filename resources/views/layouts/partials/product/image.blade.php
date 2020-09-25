@@ -6,7 +6,7 @@
             src="{{Config::get('filesystems.distant_img_roots.'.Config::get('filesystems.distant_img_root_default')).$image }}" 
             class="img-responsive"
         >
-        {{Config::get('filesystems.distant_img_root_default')}}
+        {{Config::get('database.connections.mysql.database')}}
         @else 
         <img src="{{$image }}" class="img-responsive">
         @endif
