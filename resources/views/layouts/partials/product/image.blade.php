@@ -3,10 +3,9 @@
     <a href="{{ route('material', ['id' => $material->getKey(), 'name' => $material->label]) }}">
         @if($material->image ?? false)
         <img 
-            src="{{Config::get('filesystems.distant_img_roots.'.Config::get('filesystems.distant_img_root_default')).$image }}" 
+            src="{{Config::get('filesystems.distant_img_roots.'.Config::get('database.connections.mysql.database')).$image }}" 
             class="img-responsive"
         >
-        {{Config::get('database.connections.mysql.database')}}
         @else 
         <img src="{{$image }}" class="img-responsive">
         @endif
