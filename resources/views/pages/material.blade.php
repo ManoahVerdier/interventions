@@ -76,15 +76,14 @@ id="product-page"
             </div>
             
 
-            @if($message ?? false)
-                @if($msg_type!="Error")
+            @if(isset($message) && $msg_type!="Error")
                 <div class="col-12 mt-4">
                     <div class="alert alert-{{ $msg_type=='Error' ? 'danger' : 'success' }}" role="alert">
                         {{$message}}
                     </div>
                     <a href="/" class="btn btn-light btn-block mx-md-3">Effectuer une nouvelle demande</a>
                 </div>
-                @else
+            @else
                 <div class="col-12 mt-4">
                     <div class="alert alert-{{ $msg_type=='Error' ? 'danger' : 'success' }}" role="alert">
                         {{$message}}
@@ -93,7 +92,6 @@ id="product-page"
                 <div class="form-group col-12 mt-4">
                     <input class="form-control btn btn-secondary" type="submit" value="Envoyer">
                 </div>
-                @endif
             @endif
             
         </form>
