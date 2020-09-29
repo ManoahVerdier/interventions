@@ -10,16 +10,19 @@
     Client: {{ $client }}
 </p>
 @if($material ?? false)
-<p>
-    Matériel : {{$material->label}} (Modèle : {{$material->model}})
-</p>
-<p>
-    Référence : {{$material->serial}}
-</p>
+    <p>
+        Matériel : {{$material->label}} (Modèle : {{$material->model}})
+    </p>
+    <p>
+        Référence : {{$material->serial}}
+    </p>
+    <p>
+        Code P : {{$material->product_code}}
+    </p>
 @else
-<p>
-    Matériel : {{$material_name}} (Non enregistré - saisie libre)
-</p>
+    <p>
+        Matériel : {{$material_name}} (Non enregistré - saisie libre)
+    </p>
 @endif
 <p>
     Description du problème : {{ $description }}
