@@ -133,6 +133,18 @@ class SiteController extends Controller
     }
 
     /**
+     * Affiche le formulaire de demande d'intervention hors matériel listé
+     *
+     * @return \Illuminite\Http\Response
+     */
+    public function materialOther()
+    {
+        return view(
+            'pages.material'
+        );
+    }
+
+    /**
      * Traitement du formulaire de demande d'intervention POST 
      * 
      * @param Request $request le formulaire posté
@@ -141,28 +153,31 @@ class SiteController extends Controller
      */
     public function materialPost(Request $request)
     {    
-        //dd($request->all());
         $request->validate(
             [
                 'description' => 'required',
                 'gravite' => 'required',
-                'material_id'=>'required',
-                'image'=>'required|file'
+                'material_name'=>'required',
+                'image'=>'nullable|file'
             ],
             [
                 'required'=>"Le champ :attribute est requis"
             ]
         );
 
-        $material = Material::find($request->get('material_id'));
-        if($filePath = $this->upload($request->file('image'))) {
+        if($request->get('material_id') ?? false) {
+            $material = Material::find($request->get('material_id'));
+        }
+
+        if(!$request->has("image") || $filePath = $this->upload($request->file('image'))) {
             Mail::send(
                 'mail.demande_intervention',
                 array(
                     'description' => $request->get('description'),
                     'gravite' => $request->get('gravite'),
-                    'material' => $material,
-                    'image' => $filePath,
+                    'material' => $material ?? null,
+                    'material_name' => $request->get('material_name'),
+                    'image' => $filePath ?? null,
                     'username' => auth()->user()->name,
                     'client' => auth()->user()->domain->name,
                     'societe' => Config::get('filesystems.distant_img_root_default'),
@@ -180,7 +195,11 @@ class SiteController extends Controller
             $message = "Fichier invalide";
             $msg_type="Error";
         }
-        return view('pages.material', compact('material', 'message', 'msg_type'));
+
+        if($material ?? false )
+            return view('pages.material', compact('material', 'message', 'msg_type'));
+        else
+            return view('pages.material', compact('message', 'msg_type'));
     }
 
     /**

@@ -13,6 +13,7 @@ id="search-page"
         'title' => 'Ma recherche',
         'subtitle' => trans_choice('site.category.products', $materialsCount, ['value' => $materialsCount]),
         'withSearch' => true,
+        'withBack' => true,
         'punchLine' => $fromMenu?'Quel produit<br>recherchez-vous ?':null
     ])
 

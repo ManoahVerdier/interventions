@@ -13,6 +13,7 @@ id="category-page"
         'title' => isset($brand) ? $brand->name : $product_range->name,
         'subtitle' => trans_choice('site.category.products', $materialsCount, ['value' => $materialsCount]),
         'withSearch' => true,
+        'withBack' => true
     ])
 
     @if ($product_ranges->count() > 0)
@@ -43,9 +44,25 @@ id="category-page"
                 'striked_price' => $material->discount ? $material->price : null,
                 'price' => $material->amountHTAfterDiscount,
                 'discount' => $material->discount,
-                'isFavorite' => $material->isUserFavorite
+                'isFavorite' => $material->isUserFavorite,
+                'hasMaterial'=>true
             ])
         @endforeach
+
+        {{--Saisie libre --}}
+        @include('layouts.partials.product.line', [
+            'image' => asset('img/product/image_not_available.png'),
+            'category_icon' => null,
+            'category_name' => null,
+            'name' => "Saisie libre",
+            'reference' => "",
+            'model' => "",
+            'code' => "",
+            'location' => "",
+            'description' => "Votre matériel ne se trouve pas dans la liste ? Choisissez cette option et indiquez le matériel concerné",
+            'short_description' => "",
+            'hasMaterial'=>false
+        ])
     </div>
 </section>
 @endsection

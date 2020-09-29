@@ -10,7 +10,7 @@ id="product-page"
 @section('header')
     @include('layouts.partials.header.blue', [
         'title' => '',
-        'withBack' => false,
+        'withBack' => true,
         'withSearch' => false
     ])
 @endsection
@@ -23,7 +23,7 @@ id="product-page"
             @csrf
             <div class="col-12 text-white mb-4">
                 <h1 class="h4 text-center">Demande d'intervention</h1>
-                <h2 class="h6 text-center">{{$material->label}}</h2>
+                <h2 class="h6 text-center">{{($material ?? false) ? $material->label : "Matériel non enregistré"}}</h2>
             </div>
 
            
@@ -36,7 +36,6 @@ id="product-page"
                     </span>
                 @endif
                 <small id="descHelp" class="form-text text-white">Merci de décrire aussi précisement que possible le problème rencontré</small>
-                
             </div>
             <div class="form-group col-12 text-white">
                 <label for="gravite">Gravité</label>
@@ -61,18 +60,42 @@ id="product-page"
                     </span>
                 @endif
             </div>
-            <input type="hidden" value="{{$material->id}}" name="material_id">
-            @if($message ?? false)
-            <div class="col-12 mt-4">
-                <div class="alert alert-{{ $msg_type=='Error' ? 'danger' : 'success' }}" role="alert">
-                    {{$message}}
-                </div>
-            </div>
-            @else
-            <div class="form-group col-12 mt-4">
-                <input class="form-control btn btn-secondary" type="submit" value="Envoyer">
-            </div>
+
+            @if($material ?? false)
+                <input type="hidden" value="{{$material->id}}" name="material_id">
             @endif
+
+            <div class="@if($material ?? false) d-none @endif form-group col-12 text-white">
+                <label for="material_name">Nom du matériel</label>
+                <input class="form-control{{ $errors->has('material_name') ? ' is-invalid' : '' }}" placeholder="Nom du matériel" type="text" value="@if($material ?? false) $material->label @endif" name="material_name">
+                @if ($errors->has('material_name'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('material_name') }}</strong>
+                    </span>
+                @endif
+            </div>
+            
+
+            @if($message ?? false)
+                @if($msg_type!="Error")
+                <div class="col-12 mt-4">
+                    <div class="alert alert-{{ $msg_type=='Error' ? 'danger' : 'success' }}" role="alert">
+                        {{$message}}
+                    </div>
+                    <a href="/" class="btn btn-light btn-block mx-md-3">Effectuer une nouvelle demande</a>
+                </div>
+                @else
+                <div class="col-12 mt-4">
+                    <div class="alert alert-{{ $msg_type=='Error' ? 'danger' : 'success' }}" role="alert">
+                        {{$message}}
+                    </div>
+                </div>
+                <div class="form-group col-12 mt-4">
+                    <input class="form-control btn btn-secondary" type="submit" value="Envoyer">
+                </div>
+                @endif
+            @endif
+            
         </form>
     </div>
 </section>

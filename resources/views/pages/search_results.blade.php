@@ -11,7 +11,8 @@ id="search-results-page"
     @include('layouts.partials.header.blue', [
         'title' => 'Ma recherche',
         'subtitle' => trans_choice('site.category.products', $materialsCount, ['value' => $materialsCount]),
-        'withSearch' => true
+        'withSearch' => true,
+        'withBack' => true
     ])
 @endsection
 <?php $test=0;?>
@@ -39,11 +40,27 @@ id="search-results-page"
                     'striked_price' => $material->discount ? $material->amount_ht : null,
                     'price' => $material->amountHTAfterDiscount,
                     'discount' => $material->discount,
-                    'isFavorite' => $material->isUserFavorite
+                    'isFavorite' => $material->isUserFavorite,
+                    'hasMaterial'=>true
                 ])
             @empty
                 <div class="text-danger text-center">{{ __('site.search.empty') }}</div>
             @endforelse
+
+            {{--Saisie libre --}}
+            @include('layouts.partials.product.line', [
+                'image' => asset('img/product/image_not_available.png'),
+                'category_icon' => null,
+                'category_name' => null,
+                'name' => "Saisie libre",
+                'reference' => "",
+                'model' => "",
+                'code' => "",
+                'location' => "",
+                'description' => "Votre matériel ne se trouve pas dans la liste ? Choisissez cette option et indiquez le matériel concerné",
+                'short_description' => "",
+                'hasMaterial'=>false
+            ])
         </div>
     </div>
 </section>

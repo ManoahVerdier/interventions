@@ -12,12 +12,21 @@
                 <span>Vous recherchez : <span class="search-type">un produit, une marque ?</span></span>
             </div>
         </a>
-        <div class="col-lg-1 offset-lg-2 col-2 col-md-1 menu ">
+        <div class="col-md-2 text-blue py-1 d-none text-right d-md-block">
+            <div class="w-100">{{auth()->user()->username}}</div>
+            <div class="w-100">{{auth()->user()->company->company}}</div>
+        </div>
+        <div class="col-lg-1 col-2 col-md-1 menu ">
             <div class="h-100 valign-middle text-right">
                 @auth
                     <a href="{{ route('logout') }}" class="profile float-right"><i class="fas fa-sign-out-alt fa-lg"></i></a>
                 @endauth
             </div>
+        </div>
+        <div class="col-12 d-md-none text-center pt-2 text-blue">
+            <div class="small d-inline-block">{{auth()->user()->username}}</div>
+            <div class="dash  d-inline-block"> - </div>
+            <div class="small d-inline-block">{{auth()->user()->company->company}}</div>
         </div>
     </div>
     <div class="row d-none d-md-flex mt-3">

@@ -33,4 +33,9 @@ class User extends UccelloUser
         return $materials;
     }
 
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'domain_id', 'domain_id');
+    }
+
 }

@@ -1,29 +1,36 @@
 <header class="primary-bg">
     <div class="container">
         <div class="row">
+            {{-- Return --}}
+            @if ($withBack ?? false)
+            <div class="col-2 d-md-none col-md-1 d-flex align-items-center justify-content-center">
+                <a href="javascript:history.back()"><img src="{{ asset('img/layout/chevron-return.png') }}" class="img-fluid"></a>
+            </div>
+            @endif
+            
             {{-- Logo --}}
-            <div id="logo" class="col-8 offset-2 offset-md-0 col-md-1 d-flex d-md-flex align-items-center justify-content-center">
+            <div id="logo" class="col-2 offset-3 offset-md-0 col-md-1 d-flex d-md-flex align-items-center justify-content-center">
                 <a href="/"><img src="{{ asset('img/layout/logo-prodice-lite.png') }}" class="img-fluid"></a>
             </div>
 
-            <div class="col-2 menu d-md-none">
-                <div class="h-100 valign-middle">
+            <div class="col-3 text-white py-1 d-md-none text-right px-1">
+                <div class="w-100 small">{{auth()->user()->username}}</div>
+                <div class="w-100 small">{{auth()->user()->company->company}}</div>
+            </div>
+            <div class="col-2 menu d-md-none text-right">
+                <div class="h-100 valign-middle text-right">
                     @auth
-                        <a href="{{ route('logout') }}" class="profile"><i class="fas fa-sign-out-alt fa-lg"></i></a>
+                        <a href="{{ route('logout') }}" class="profile float-right"><i class="fas fa-sign-out-alt fa-lg"></i></a>
                     @endauth
                 </div>
             </div>
 
-            {{-- Return --}}
-            @if ($withBack ?? false)
-            <div class="col-2 col-md-1 d-flex align-items-center justify-content-center">
-                <a href="javascript:history.back()"><img src="{{ asset('img/layout/chevron-return.png') }}" class="img-fluid"></a>
-            </div>
-            @endif
+            
+            
 
             {{-- Title --}}
             @if ($title ?? false)
-            <div id="title" class="@if ($withSearch ?? false) col-6 col-md-2 @else col-12 text-center col-md-3 @endif d-flex align-items-center pt-sm-0">
+            <div id="title" class="@if ($withSearch ?? false) col-7 col-md-2 @else col-12 text-center col-md-3 @endif d-flex align-items-center pt-sm-0">
                 <div class="w-100">
                     <span>{{ $title }}</span><br>
                     @if ($subtitle ?? false)<small>{{ $subtitle }}</small>@endif
@@ -33,7 +40,7 @@
 
             @if ($withSearch ?? false)
             {{-- Search button for mobile --}}
-            <div class="col-2 col-md-1 d-flex d-md-none align-items-center justify-content-center offset-md-0 offset-4 ">
+            <div class="col-2 col-md-1 d-flex d-md-none align-items-center justify-content-center offset-md-0 offset-3 ">
                 <button type="submit" form="search-form" class="btn btn-blank d-blockd-md-none" id="search-mobile">
                     @svg('resources/svg/search', ['width' => 40, 'height' => 40, 'fill' => 'white'])
                 </button>
@@ -56,6 +63,19 @@
                     </button>
                 </form>
             </div>
+            
+            <div class="col-md-2 text-white py-1 d-none text-right d-md-block">
+                <div class="w-100">{{auth()->user()->username}}</div>
+                <div class="w-100">{{auth()->user()->company->company}}</div>
+            </div>
+
+            @else
+
+            <div class="col-md-2 offset-md-8 text-white py-1 d-none text-right d-md-block">
+                <div class="w-100">{{auth()->user()->username}}</div>
+                <div class="w-100">{{auth()->user()->company->company}}</div>
+            </div>
+
             @endif
 
             <div class="col-md-1 menu d-none d-md-block">
