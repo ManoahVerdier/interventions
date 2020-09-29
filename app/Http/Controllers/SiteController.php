@@ -93,7 +93,8 @@ class SiteController extends Controller
             ->where(
                 function ($query) use ($q) {
                     $query->where("label", 'like', "%$q%")
-                        ->orWhere("model", 'like', "%$q%");
+                        ->orWhere("model", 'like', "%$q%")
+                        ->orWhere("product_code", 'like', "%$q%");
                 }
             )
             ->groupBy("id")
