@@ -21,6 +21,20 @@ id="search-results-page"
 <section id="product-list">
     <div class="container d-flex d-md-block">
         <div class="row">
+            {{--Saisie libre --}}
+            @include('layouts.partials.product.line', [
+                'image' => asset('img/homepage/question.png'),
+                'category_icon' => null,
+                'category_name' => null,
+                'name' => "Saisie libre",
+                'reference' => "",
+                'model' => "",
+                'code' => "",
+                'location' => "",
+                'description' => "Votre matériel ne se trouve pas dans la liste ? Choisissez cette option et indiquez le matériel concerné",
+                'short_description' => "",
+                'hasMaterial'=>false
+            ])
             @forelse ($materials as $material)
                 @include('layouts.partials.product.line', [
                     'image' => $material->image ?? asset('img/product/image_not_available.png'),
@@ -46,21 +60,6 @@ id="search-results-page"
             @empty
                 <div class="text-danger text-center">{{ __('site.search.empty') }}</div>
             @endforelse
-
-            {{--Saisie libre --}}
-            @include('layouts.partials.product.line', [
-                'image' => asset('img/product/image_not_available.png'),
-                'category_icon' => null,
-                'category_name' => null,
-                'name' => "Saisie libre",
-                'reference' => "",
-                'model' => "",
-                'code' => "",
-                'location' => "",
-                'description' => "Votre matériel ne se trouve pas dans la liste ? Choisissez cette option et indiquez le matériel concerné",
-                'short_description' => "",
-                'hasMaterial'=>false
-            ])
         </div>
     </div>
 </section>

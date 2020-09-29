@@ -10,7 +10,10 @@
     </div>
     @else 
     <div class="product-line col-12 col-md-12 mx-0 px-1">    
-        <div class="col-md-4  px-0 px-md-3">
+        <div class="col-md-3 offset-md-1 bg-blue">
+            @include('layouts.partials.product.image')
+        </div>
+        <div class="col-md-4  px-0 px-md-3 bg-blue">
             @include('layouts.partials.product.description')
         </div>
     </div>
@@ -26,9 +29,10 @@
             @include('layouts.partials.product.description')
         </div>
     @else
-        <div class="col-md-3 offset-md-1">
+        <div class="col-md-3 offset-md-1 bg-blue">
+            @include('layouts.partials.product.image')
         </div>
-        <div class="col-md-4 b-bordered">
+        <div class="col-md-4 bg-blue">
             @include('layouts.partials.product.description')
         </div>
     @endif

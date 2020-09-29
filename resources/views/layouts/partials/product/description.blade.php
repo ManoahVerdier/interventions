@@ -18,9 +18,12 @@
             <span class="value">{{ $code }}</span>
         </div>
     @else 
-        <a href="{{ route('materialOther') }}" class="product-name">{{ $name }}</a>
-        <div class="reference d-md-block mb-md-5">
+        <a href="{{ route('materialOther') }}" class="product-name text-white">{{ $name }}</a>
+        <div class="reference d-md-block mb-md-3 mb-1">
             {{$description}}
+        </div>
+        <div class="mb-3 w-100 text-center pb-3 pb-md-0">
+            <a href="{{ route('materialOther') }}" class="btn btn-light text-blue">{{ $name }}</a>
         </div>
     @endif
     

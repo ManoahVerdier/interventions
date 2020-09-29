@@ -1,4 +1,4 @@
-<div class="product">
+<div class="product @if(isset($hasMaterial)&& !$hasMaterial) mb-0 bg-transparent @endif">
     @if($hasMaterial ?? true)
         <a href="{{ route('material', ['id' => $material->getKey(), 'name' => $material->label]) }}">
             @if($material->image ?? false)
@@ -16,5 +16,9 @@
             <img src="{{ $category_icon }}">
         </div>
         @endif
+    @else
+        <a href="{{ route('materialOther') }}">
+            <img height="48px" height="48px" src="{{$image }}" class="img-responsive">
+        </a>
     @endif 
 </div>

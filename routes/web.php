@@ -25,17 +25,20 @@ Route::get('/product/search', 'SiteController@search')
 Route::get('/product/search/results', 'SiteController@searchResults')
     ->name('material.search.results')
     ->middleware('auth');
+
 Route::get('/material/{id}/{name}', 'SiteController@material')
     ->name('material')
     ->middleware('auth');
+
 Route::get('/materialOther', 'SiteController@materialOther')
     ->name('materialOther')
     ->middleware('auth');
+
 Route::post('/material/{id}/{name}', 'SiteController@materialPost')
     ->name('material')
     ->middleware('auth');
-    Route::post('/materialOther', 'SiteController@materialPost')
-    ->name('material')
+Route::post('/materialOther', 'SiteController@materialPost')
+    ->name('materialOther')
     ->middleware('auth');
 Route::get('/product_range/{id}/brands', 'SiteController@searchBrands')
     ->name('product_range.brands')

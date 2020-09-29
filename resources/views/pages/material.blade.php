@@ -23,7 +23,7 @@ id="product-page"
             @csrf
             <div class="col-12 text-white mb-4">
                 <h1 class="h4 text-center">Demande d'intervention</h1>
-                <h2 class="h6 text-center">{{($material ?? false) ? $material->label : "Matériel non enregistré"}}</h2>
+                <h2 class="h6 text-center">{{isset($material) ? $material->label : "Matériel non enregistré"}}</h2>
             </div>
 
            
