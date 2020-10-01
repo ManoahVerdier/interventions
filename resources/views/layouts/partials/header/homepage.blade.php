@@ -13,9 +13,10 @@
             </div>
         </a>
         <div class="col-md-2 text-blue py-1 d-none text-right d-md-block">
-            <?php dd(auth()->user()->company)?>
             <div class="w-100">{{auth()->user()->username}}</div>
-            <div class="w-100">{{auth()->user()->company->company}}</div>
+            @if(auth()->user()->company ?? false)
+                <div class="w-100">{{auth()->user()->company->company}}</div>
+            @endif
         </div>
         <div class="col-lg-1 col-2 col-md-1 menu ">
             <div class="h-100 valign-middle text-right">
