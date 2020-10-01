@@ -16,7 +16,9 @@
             <div class="col-3 text-white py-1 d-md-none text-right px-1">
                 @auth
                     <div class="w-100 small">{{auth()->user()->username}}</div>
-                    <div class="w-100 small">{{auth()->user()->company->company}}</div>
+                    @if(auth()->user()->company ?? false)
+                        <div class="w-100 small">{{auth()->user()->company->company}}</div>
+                    @endif
                 @endauth
             </div>
             <div class="col-2 menu d-md-none text-right">
@@ -69,7 +71,9 @@
             <div class="col-md-2 text-white py-1 d-none text-right d-md-block">
                 @auth
                     <div class="w-100">{{auth()->user()->username}}</div>
-                    <div class="w-100">{{auth()->user()->company->company}}</div>
+                    @if(auth()->user()->company ?? false)
+                        <div class="w-100">{{auth()->user()->company->company}}</div>
+                    @endif
                 @endauth
             </div>
 
@@ -78,7 +82,9 @@
             <div class="col-md-2 offset-md-8 text-white py-1 d-none text-right d-md-block">
                 @auth
                     <div class="w-100">{{auth()->user()->username}}</div>
-                    <div class="w-100">{{auth()->user()->company->company}}</div>
+                    @if(auth()->user()->company ?? false)
+                        <div class="w-100">{{auth()->user()->company->company}}</div>
+                    @endif
                 @endauth
             </div>
 
