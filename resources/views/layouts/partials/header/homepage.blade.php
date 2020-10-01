@@ -28,7 +28,9 @@
         <div class="col-12 d-md-none text-center pt-2 text-blue">
             <div class="small d-inline-block">{{auth()->user()->username}}</div>
             <div class="dash  d-inline-block"> - </div>
-            <div class="small d-inline-block">{{auth()->user()->company->company}}</div>
+            @if(auth()->user()->company ?? false)
+                <div class="small d-inline-block">{{auth()->user()->company->company}}</div>
+            @endif
         </div>
     </div>
     <div class="row d-none d-md-flex mt-3">
