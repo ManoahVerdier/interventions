@@ -13,7 +13,7 @@
             </div>
         </a>
         <div class="col-md-2 text-blue py-1 d-none text-right d-md-block">
-            <?php dd(auth()->user())?>
+            <?php dd(auth()->user()->company)?>
             <div class="w-100">{{auth()->user()->username}}</div>
             <div class="w-100">{{auth()->user()->company->company}}</div>
         </div>
