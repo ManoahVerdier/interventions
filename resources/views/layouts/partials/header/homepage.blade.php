@@ -14,9 +14,7 @@
         </a>
         <div class="col-md-2 text-blue py-1 d-none text-right d-md-block">
             <div class="w-100">{{auth()->user()->username}}</div>
-            @if(auth()->user()->company ?? false)
-                <div class="w-100">{{auth()->user()->company->company}}</div>
-            @endif
+            <div class="w-100">{{auth()->user()->domain->name ?? ''}}</div>
         </div>
         <div class="col-lg-1 col-2 col-md-1 menu ">
             <div class="h-100 valign-middle text-right">
@@ -28,9 +26,7 @@
         <div class="col-12 d-md-none text-center pt-2 text-blue">
             <div class="small d-inline-block">{{auth()->user()->username}}</div>
             <div class="dash  d-inline-block"> - </div>
-            @if(auth()->user()->company ?? false)
-                <div class="small d-inline-block">{{auth()->user()->company->company}}</div>
-            @endif
+            <div class="small d-inline-block">{{auth()->user()->domain->name ?? ''}}</div>
         </div>
     </div>
     <div class="row d-none d-md-flex mt-3">
