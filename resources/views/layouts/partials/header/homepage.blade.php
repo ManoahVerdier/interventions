@@ -28,6 +28,7 @@
             <div class="dash  d-inline-block"> - </div>
             <div class="small d-inline-block">{{auth()->user()->domain->name ?? ''}}</div>
         </div>
+        <?php dd(auth()->user()->domain)?>
     </div>
     <div class="row d-none d-md-flex mt-3">
         <div class="col-9 offset-3 border-top border-light pb-1"></div>
