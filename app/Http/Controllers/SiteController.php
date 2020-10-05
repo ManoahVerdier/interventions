@@ -185,8 +185,8 @@ class SiteController extends Controller
                 ), function ($message) {
                     $message->from('sav@odice.cc');
                     $message
-                        ->to('verdier.developpement@gmail.com', 'SAV Odice')
-                        //->to('sav@odice.cc', 'SAV Odice')
+                        //->to('verdier.developpement@gmail.com', 'SAV Odice')
+                        ->to('sav@odice.cc', 'SAV Odice')
                         ->subject('Demande intervention');
                 }
             );
