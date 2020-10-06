@@ -47,3 +47,5 @@ Route::get('/product_range/{id}/{name}', 'SiteController@productRange')
     ->name('product_range')
     ->middleware('auth');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+
+Route::post('/chooseSite','SiteController@chooseSite')->name('chooseSite');

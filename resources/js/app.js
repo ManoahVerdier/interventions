@@ -28,3 +28,22 @@ $('#search input').on('click', event => {
 });
 
 new Autoloader();
+
+if($('meta[name="force-site"]').attr('content') == 'true'){
+    $(function(){
+        $('#siteModal').modal();
+    });
+}
+
+if($('#siteModal').length>0){
+    $('#chooseSiteBtn').on('click',function(){
+        let url = $('meta[name="choose-site-url"]').attr('content');
+        let data = {
+            site: $('#site').val(),
+            _token: $('meta[name="csrf-token"]').attr('content')
+        };
+        $.post(url, data).then(response => {
+            window.location.href = response;
+        });
+    });
+}

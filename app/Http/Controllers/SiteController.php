@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Brand;
 use App\Category;
 use App\CodePromo;
-use App\Favorite;
+use App\Site;
 use App\Notifications\NewOrder;
 use App\Notifications\OrderConfirmation;
 use App\Order;
@@ -14,6 +14,7 @@ use App\Material;
 use App\Product;
 use App\ProductRange;
 use App\User;
+use App\Domain;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Config;
@@ -35,15 +36,25 @@ class SiteController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
         $materials = auth()->user()->materials()->with('productRanges')->get();
         $product_ranges = $materials
             ->pluck('productRanges')
             ->unique()
             ->filter();
+        if (!$request->session()->has('site') && auth()->user()->sites()->count()==1) {
+            session(['site' => auth()->user()->sites()->first()->id]);
+            session(['site_name' => auth()->user()->sites()->first()->name]);
+        }
+        $force=!$request->session()->has('site');
+        return view('pages.home', compact('product_ranges', 'force'));
+    }
 
-        return view('pages.home', compact('product_ranges'));
+    public function chooseSite(Request $request){
+        session(['site' => $request->get('site')]);
+        session(['site_name' => Site::find($request->get('site'))->name]);
+        return env('SITE_URL');
     }
 
     /**

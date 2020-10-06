@@ -6,6 +6,10 @@
 id="home-page"
 @endsection
 
+@section('extra-meta')
+<meta name="force-site" content="{{$force ? 'true' : 'false'}}">
+@endsection
+
 {{-- Header --}}
 @section('header')
     @include('layouts.partials.header.homepage')
@@ -33,9 +37,6 @@ id="home-page"
                     <i class="fas fa-search fa-lg float-right mr-2"></i>
                 </div>
             </a>
-            {{--
-            <img src="{{ asset('img/homepage/caroussel/slideshow-1.png') }}" class="col-12 mt-3">
-            --}}
             {{-- Categories --}}
             @include('layouts.partials.header.categories', ['linkToBrands' => true])
     </section>
