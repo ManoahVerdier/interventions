@@ -16,7 +16,7 @@
                 <select id="site" name='site' class="form-control">
                     @foreach($sites as $site)
                         @if($site ?? false)
-                        <option value="{{$site->id}}">{{$site->name}}</option>
+                        <option @if(session('site') && $site->id==session('site')) selected @endif  value="{{$site->id}}">{{$site->name}}</option>
                         @endif
                     @endforeach
                 </select>

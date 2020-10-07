@@ -26,16 +26,22 @@ class User extends UccelloUser
     {
         $sites=[];
         //dd(auth()->user());
-        foreach (auth()->user()->privileges()->get() as $privilege) {
-            $sites_tmp = $privilege->domain()->first()->site()->get();
-            foreach($sites_tmp as $site){
-                if($site ?? false) {
-                    $sites[]=$site;
-                }    
+        if(!auth()->user()->privileges()->first()->domain()->first()->isRoot()) {
+            foreach (auth()->user()->privileges()->get() as $privilege) {
+                $sites_tmp = $privilege->domain()->first()->site()->get();
+                foreach($sites_tmp as $site){
+                    if($site ?? false) {
+                        $sites[]=$site;
+                    }    
+                }
             }
+            return collect($sites)->sortBy('name');
+        }
+        else{
+            return Site::orderBy('name')->get();
         }
         
-        return collect($sites);
+        
     }
 
     public function materials()
