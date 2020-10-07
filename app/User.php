@@ -27,6 +27,7 @@ class User extends UccelloUser
         $sites=[];
         
         foreach (auth()->user()->privileges()->get() as $privilege) {
+            dd($privilege->domain()->first());
             if($privilege->domain()->first()->site()->first() ?? false){
                 $sites[]=$privilege->domain()->first()->site()->first();
             }
