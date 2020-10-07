@@ -38,7 +38,7 @@ class SiteController extends Controller
      */
     public function index(Request $request)
     {
-        $materials = auth()->user()->materials()->with('productRanges')->get();
+        
         $product_ranges = $materials
             ->pluck('productRanges')
             ->unique()
@@ -48,6 +48,7 @@ class SiteController extends Controller
             session(['site_name' => auth()->user()->sites()->first()->name]);
         }
         $force=!$request->session()->has('site');
+        $materials = auth()->user()->materials()->with('productRanges')->get();
         return view('pages.home', compact('product_ranges', 'force'));
     }
 

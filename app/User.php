@@ -36,8 +36,12 @@ class User extends UccelloUser
     public function materials()
     {
         $domains=[];
-        
-        $domain_id = Site::find(session('site'))->domain()->first()->id;
+        if(Site::find(session('site')) ?? false) {
+            $domain_id = Site::find(session('site'))->domain()->first()->id;
+        }
+        else{
+            $domain_id = -1;
+        }
 
         $materials = Material::whereNotNull('domain_id')
             ->where('domain_id', $domain_id);
