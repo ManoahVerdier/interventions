@@ -44,8 +44,10 @@ class SiteController extends Controller
             ->unique()
             ->filter();
         if (!$request->session()->has('site') && auth()->user()->sites()->count()==1) {
-            session(['site' => auth()->user()->sites()->first()->id]);
-            session(['site_name' => auth()->user()->sites()->first()->name]);
+            if(auth()->user()->sites()->first() ?? false){
+                session(['site' => auth()->user()->sites()->first()->id]);
+                session(['site_name' => auth()->user()->sites()->first()->name]);
+            }
         }
         $force=!$request->session()->has('site');
         
