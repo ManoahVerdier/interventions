@@ -31,7 +31,7 @@ new Autoloader();
 
 if($('meta[name="force-site"]').attr('content') == 'true'){
     $(function(){
-        $('#siteModal').modal();
+        $('#siteModal').modal({backdrop: 'static', keyboard: false});
     });
 }
 
