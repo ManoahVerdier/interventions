@@ -15,7 +15,9 @@
                 <p>Veuillez sélectionner un site.</p>
                 <select id="site" name='site' class="form-control">
                     @foreach($sites as $site)
+                        @if($site ?? false)
                         <option value="{{$site->id}}">{{$site->name}}</option>
+                        @endif
                     @endforeach
                 </select>
             </div>
