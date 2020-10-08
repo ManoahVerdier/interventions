@@ -38,11 +38,17 @@ class SiteController extends Controller
      */
     public function index(Request $request)
     {
-        $materials = auth()->user()->materials()->with('productRanges')->get();
+        $materials = auth()
+            ->user()
+            ->materials()
+            ->whereNotNull("product_range_id")
+            ->with('productRanges')
+            ->get();
         $product_ranges = $materials
             ->pluck('productRanges')
             ->unique()
             ->filter();
+            
         if (!$request->session()->has('site') && auth()->user()->sites()->count()==1) {
             
             if(auth()->user()->sites()->first() ?? false){
