@@ -1,6 +1,6 @@
 <div class="description pt-md-3">
     @if($hasMaterial ?? true)
-        <a href="{{ route('material', ['id' => $material->getKey(), 'name' => $material->label]) }}" class="product-name">{{ $name }}</a>
+        <a href="{{ route('material', ['id' => $material->getKey()]) }}" class="product-name">{{ $name }}</a>
         <div class="reference d-md-block">
             <span class="label">Référence :</span>
             <span class="value">{{ $reference }}</span>

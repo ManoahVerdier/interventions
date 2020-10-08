@@ -26,7 +26,7 @@ Route::get('/product/search/results', 'SiteController@searchResults')
     ->name('material.search.results')
     ->middleware('auth');
 
-Route::get('/material/{id}/{name}', 'SiteController@material')
+Route::get('/material/{id}', 'SiteController@material')
     ->name('material')
     ->middleware('auth');
 
@@ -34,7 +34,7 @@ Route::get('/materialOther', 'SiteController@materialOther')
     ->name('materialOther')
     ->middleware('auth');
 
-Route::post('/material/{id}/{name}', 'SiteController@materialPost')
+Route::post('/material/{id}', 'SiteController@materialPost')
     ->name('material')
     ->middleware('auth');
 Route::post('/materialOther', 'SiteController@materialPost')

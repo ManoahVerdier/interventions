@@ -1,6 +1,6 @@
 <div class="product @if(isset($hasMaterial)&& !$hasMaterial) mb-0 bg-transparent @endif">
     @if($hasMaterial ?? true)
-        <a href="{{ route('material', ['id' => $material->getKey(), 'name' => $material->label]) }}">
+        <a href="{{ route('material', ['id' => $material->getKey()]) }}">
             @if($material->image ?? false)
             <img 
                 src="{{Config::get('filesystems.distant_img_roots.'.Config::get('database.connections.mysql.database')).$image }}" 
