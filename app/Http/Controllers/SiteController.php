@@ -124,8 +124,22 @@ class SiteController extends Controller
     public function searchResults()
     {
         $q = request('q');
-        $site = Site::find(session('site'));
+        /*$site = Site::find(session('site'));
         $materials = $site
+        ->materials()
+        ->where(
+            function ($query) use ($q) {
+                $query->where("label", 'like', "%$q%")
+                    ->orWhere("model", 'like', "%$q%")
+                    ->orWhere("product_code", 'like', "%$q%");
+            }
+        )
+        ->groupBy("id")
+        ->with('productRanges')
+        ->get();*/
+            
+        $materials = auth()
+            ->user()
             ->materials()
             ->where(
                 function ($query) use ($q) {
