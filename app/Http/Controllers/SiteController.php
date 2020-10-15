@@ -91,8 +91,8 @@ class SiteController extends Controller
     public function search($fromMenu=true)
     {
         $fromMenu = request()->get('fromMenu') ?? true;
-        $materials = auth()
-            ->user()
+        $site = Site::find(session('site'));
+        $materials = $site
             ->materials()
             ->whereNotNull("product_range_id")
             ->with('productRanges')
@@ -124,8 +124,8 @@ class SiteController extends Controller
     public function searchResults()
     {
         $q = request('q');
-        $materials = auth()
-            ->user()
+        $site = Site::find(session('site'));
+        $materials = $site
             ->materials()
             ->where(
                 function ($query) use ($q) {
