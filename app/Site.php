@@ -11,7 +11,7 @@ class Site extends Model
         return $this->belongsTo(Domain::class);
     }
 
-    public function domain()
+    public function materials()
     {
         return $this->hasMany(Material::class);
     }
