@@ -56,6 +56,16 @@ class SiteController extends Controller
                 session(['site_name' => auth()->user()->sites()->first()->name]);
             }
         }
+        else{
+            $site = Site::find(session('site'));
+            $materials = $site->materials()->whereNotNull("product_range_id")
+            ->with('productRanges')
+            ->get();
+            $product_ranges = $materials
+            ->pluck('productRanges')
+            ->unique()
+            ->filter();
+        }
         $force=!$request->session()->has('site');
         
         return view('pages.home', compact('product_ranges', 'force'));

@@ -10,4 +10,9 @@ class Site extends Model
     {
         return $this->belongsTo(Domain::class);
     }
+
+    public function domain()
+    {
+        return $this->hasMany(Material::class);
+    }
 }
