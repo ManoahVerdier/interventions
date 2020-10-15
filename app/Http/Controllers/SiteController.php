@@ -38,16 +38,7 @@ class SiteController extends Controller
      */
     public function index(Request $request)
     {
-        $materials = auth()
-            ->user()
-            ->materials()
-            ->whereNotNull("product_range_id")
-            ->with('productRanges')
-            ->get();
-        $product_ranges = $materials
-            ->pluck('productRanges')
-            ->unique()
-            ->filter();
+        
             
         if (!$request->session()->has('site') && auth()->user()->sites()->count()==1) {
             
@@ -55,7 +46,9 @@ class SiteController extends Controller
                 session(['site' => auth()->user()->sites()->first()->id]);
                 session(['site_name' => auth()->user()->sites()->first()->name]);
             }
-        } else {
+        } 
+        
+        if ($request->session()->has('site')) {
             $site = Site::find(session('site'));
             $materials = $site
                 ->materials()
@@ -66,7 +59,19 @@ class SiteController extends Controller
                 ->pluck('productRanges')
                 ->unique()
                 ->filter();
+        } else {
+            $materials = auth()
+                ->user()
+                ->materials()
+                ->whereNotNull("product_range_id")
+                ->with('productRanges')
+                ->get();
+            $product_ranges = $materials
+                ->pluck('productRanges')
+                ->unique()
+                ->filter();
         }
+
         $force=!$request->session()->has('site');
         
         return view('pages.home', compact('product_ranges', 'force'));

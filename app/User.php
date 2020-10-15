@@ -55,7 +55,7 @@ class User extends UccelloUser
         }
 
         $materials = Material::whereNotNull('domain_id')
-            ->where('site_id', session('site'));
+            ->where('domain_id', $domain_id);
         //dd($domain_id,session('site'));
         return $materials;
     }
