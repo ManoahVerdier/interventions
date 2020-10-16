@@ -18,8 +18,14 @@ class ProductRange extends Model
 
     public function countUser()
     {
+        if (session('site') ?? false) {
+            $site = Site::find(session('site'));
+            $userMaterials = $site->materials()->with('productRanges')->get();
+        } else {
+            $userMaterials = auth()->user()->materials()->with('productRanges')->get();
+        }
         $allMaterials = $this->materials()->get();
-        $userMaterials = auth()->user()->materials()->with('productRanges')->get();
+        
         return $allMaterials->intersect($userMaterials)->count();
     }
 }
