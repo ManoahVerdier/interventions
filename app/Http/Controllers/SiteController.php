@@ -53,6 +53,7 @@ class SiteController extends Controller
             $materials = $site
                 ->materials()
                 ->whereNotNull("product_range_id")
+                ->whereNotNull("sub_product_range_id")
                 ->with('productRanges')
                 ->get();
             $product_ranges = $materials
@@ -95,6 +96,7 @@ class SiteController extends Controller
         $materials = $site
             ->materials()
             ->whereNotNull("product_range_id")
+            ->whereNotNull("sub_product_range_id")->whereNotNull("sub_product_range_id")
             ->with('productRanges')
             ->get();
         $product_ranges = $materials
@@ -127,6 +129,7 @@ class SiteController extends Controller
         $site = Site::find(session('site'));
         $materials = $site
         ->materials()
+        ->whereNotNull("sub_product_range_id")
         ->where(
             function ($query) use ($q) {
                 $query->where("label", 'like', "%$q%")
@@ -288,6 +291,7 @@ class SiteController extends Controller
         $materials = $site
             ->materials()
             ->whereIn('product_range_id', [$id])
+            ->whereNotNull("sub_product_range_id")
             ->get();
 
         /*$materials = auth()
