@@ -124,7 +124,7 @@ class SiteController extends Controller
     public function searchResults()
     {
         $q = request('q');
-        /*$site = Site::find(session('site'));
+        $site = Site::find(session('site'));
         $materials = $site
         ->materials()
         ->where(
@@ -136,9 +136,9 @@ class SiteController extends Controller
         )
         ->groupBy("id")
         ->with('productRanges')
-        ->get();*/
+        ->get();
             
-        $materials = auth()
+        /*$materials = auth()
             ->user()
             ->materials()
             ->where(
@@ -151,7 +151,7 @@ class SiteController extends Controller
             ->groupBy("id")
             ->with('productRanges')
             ->get();
-
+*/
         $materialsCount = $materials->count();
 
         return view(
@@ -284,12 +284,18 @@ class SiteController extends Controller
         
         $product_ranges = $product_range->children()->get();
 
-        $materials = auth()
+        $site = Site::find(session('site'));
+        $materials = $site
+            ->materials()
+            ->whereIn('product_range_id', [$id])
+            ->get();
+
+        /*$materials = auth()
             ->user()
             ->materials()
             ->whereIn('product_range_id', [$id])
             ->get();
-        
+        */
         return view(
             'pages.product_range', 
             compact(
