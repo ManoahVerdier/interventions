@@ -9,6 +9,9 @@
 <p>
     Client: {{ $client }}
 </p>
+<p>
+    Site: {{ $site }}
+</p>
 @if($material ?? false)
     <p>
         Matériel : {{$material->label}} (Modèle : {{$material->model}})

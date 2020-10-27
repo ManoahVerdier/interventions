@@ -235,7 +235,8 @@ class SiteController extends Controller
                     'image' => $filePath ?? null,
                     'username' => auth()->user()->name,
                     'client' => auth()->user()->domain->name,
-                    'societe' => Config::get('filesystems.distant_img_root_default'),
+                    'site' => Site::find(session('site'))->name,
+                    'societe' => Config::get('database.connections.mysql.database'),
                 ), function ($message) {
                     $message->from('sav@odice.cc');
                     $message
