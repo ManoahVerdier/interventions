@@ -53,7 +53,7 @@ class LoginController extends Controller
         Config::set('filesystems.distant_img_root_default', $request->societe);
         switch($request->societe) {
             case 'pf':session(['mail' => "sav@provence-froid.fr"]);break;
-            case 'martinon':session(['mail' => "sav@martinon.fr"]);break;
+            case 'martinon':session(['mail' => "sav@martinon.cc"]);break;
             case 'altecc':session(['mail' => "sav@altecc.fr"]);break;
             default : session(['mail' => "sav@odice.cc"]);break;
         }
